@@ -43,6 +43,13 @@ int main(int argCount, char * args[])
 				done = true;
 		}
 
+		// Start the Dear ImGui frame
+		ImGui_ImplOpenGL2_NewFrame();
+		ImGui_ImplSDL2_NewFrame(window);
+		ImGui::NewFrame();
+
+
+		ImGui::Render();
 	}
 
 	SDL_GL_DeleteContext(gl_context);
