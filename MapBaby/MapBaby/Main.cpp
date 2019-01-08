@@ -36,6 +36,13 @@ int main(int argCount, char * args[])
 	bool done = false;
 	while (!done)
 	{
+		SDL_Event event;
+		while (SDL_PollEvent(&event))
+		{
+			if (event.type == SDL_QUIT)
+				done = true;
+		}
+
 	}
 
 	SDL_GL_DeleteContext(gl_context);
