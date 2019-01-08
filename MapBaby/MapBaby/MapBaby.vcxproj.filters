@@ -28,10 +28,31 @@
     <Filter Include="Header Files\Include\SDL">
       <UniqueIdentifier>{17bb08b8-bf4f-4543-9692-b013b0dbc5fb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Include\imgui">
+      <UniqueIdentifier>{10868a96-b341-4211-b106-43491cd29a42}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Include\Imgui\imgui.cpp">
+      <Filter>Header Files\Include\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Include\Imgui\imgui_demo.cpp">
+      <Filter>Header Files\Include\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Include\Imgui\imgui_draw.cpp">
+      <Filter>Header Files\Include\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Include\Imgui\imgui_impl_opengl2.cpp">
+      <Filter>Header Files\Include\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Include\Imgui\imgui_widgets.cpp">
+      <Filter>Header Files\Include\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Include\Imgui\imgui_impl_sdl.cpp">
+      <Filter>Header Files\Include\imgui</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -283,6 +304,30 @@
     </ClInclude>
     <ClInclude Include="Include\SDL.h">
       <Filter>Header Files\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Imgui\imgui.h">
+      <Filter>Header Files\Include\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Imgui\imgui_impl_opengl2.h">
+      <Filter>Header Files\Include\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Imgui\imgui_internal.h">
+      <Filter>Header Files\Include\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Imgui\imstb_rectpack.h">
+      <Filter>Header Files\Include\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Imgui\imstb_textedit.h">
+      <Filter>Header Files\Include\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Imgui\imstb_truetype.h">
+      <Filter>Header Files\Include\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Imgui\imgui_impl_sdl.h">
+      <Filter>Header Files\Include\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Imgui\imconfig.h">
+      <Filter>Header Files\Include\imgui</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
