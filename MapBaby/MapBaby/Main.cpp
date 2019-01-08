@@ -39,6 +39,7 @@ int main(int argCount, char * args[])
 		SDL_Event event;
 		while (SDL_PollEvent(&event))
 		{
+			ImGui_ImplSDL2_ProcessEvent(&event);
 			if (event.type == SDL_QUIT)
 				done = true;
 		}
