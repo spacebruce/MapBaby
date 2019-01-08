@@ -28,8 +28,10 @@ int main(int argCount, char * args[])
 	SDL_GLContext gl_context = SDL_GL_CreateContext(window);
 	SDL_GL_SetSwapInterval(1); // Enable vsync
 
-	SDL_Delay(1000);
 
+
+	SDL_GL_DeleteContext(gl_context);
 	SDL_DestroyWindow(window);
+	SDL_Quit();
 	return 0;
 }
