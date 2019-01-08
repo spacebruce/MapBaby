@@ -8,13 +8,16 @@
 
 int main(int argCount, char * args[])
 {
-	SDL_Window * window = SDL_CreateWindow("SDL!", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 400, SDL_WindowFlags::SDL_WINDOW_ALLOW_HIGHDPI);
 	// Setup SDL
 	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER) != 0)
 	{
 		printf("Error: %s\n", SDL_GetError());
 		return -1;
 	}
+	// Setup window
+	SDL_DisplayMode current;
+	SDL_GetCurrentDisplayMode(0, &current);
+	SDL_Window* window = SDL_CreateWindow("MapBaby", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1280, 720, SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE);
 
 	SDL_Delay(1000);
 
