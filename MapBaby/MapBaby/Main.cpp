@@ -1,4 +1,5 @@
 #include <SDL.h>
+#include <SDL/SDL_opengl.h>
 
 int main(int argCount, char * args[])
 {
