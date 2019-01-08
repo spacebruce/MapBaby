@@ -28,7 +28,10 @@ int main(int argCount, char * args[])
 	SDL_GLContext gl_context = SDL_GL_CreateContext(window);
 	SDL_GL_SetSwapInterval(1); // Enable vsync
 
-
+	ImGui::CreateContext();
+	ImGuiIO& io = ImGui::GetIO(); (void)io;    
+	ImGui_ImplSDL2_InitForOpenGL(window, gl_context);
+	ImGui_ImplOpenGL2_Init();
 
 	SDL_GL_DeleteContext(gl_context);
 	SDL_DestroyWindow(window);
