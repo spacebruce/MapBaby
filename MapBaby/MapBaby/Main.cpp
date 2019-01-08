@@ -33,6 +33,11 @@ int main(int argCount, char * args[])
 	ImGui_ImplSDL2_InitForOpenGL(window, gl_context);
 	ImGui_ImplOpenGL2_Init();
 
+	bool done = false;
+	while (!done)
+	{
+	}
+
 	SDL_GL_DeleteContext(gl_context);
 	SDL_DestroyWindow(window);
 	SDL_Quit();
