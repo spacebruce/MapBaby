@@ -15,6 +15,7 @@ void UserInterface::start()
 	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER) != 0)
 	{
 		printf("Error: %s\n", SDL_GetError());
+		finished = true;
 		return;
 	}
 
