@@ -73,3 +73,8 @@ void UserInterface::render()
 	ImGui_ImplOpenGL2_RenderDrawData(ImGui::GetDrawData());
 	SDL_GL_SwapWindow(this->window);
 }
+
+void UserInterface::update()
+{
+	render();
+}

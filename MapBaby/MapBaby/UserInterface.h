@@ -12,12 +12,13 @@ private:
 	SDL_Window* window;
 	SDL_GLContext gl_context;
 	ImGuiIO* io;
+	void render();
 public:
 	UserInterface();
 	~UserInterface();
 	void start();
 	void end();
-	void render();
+	void update();
 
 	bool finished = false;
 };

@@ -17,7 +17,7 @@ int main(int argCount, char * args[])
 
 	while (!ui.finished)
 	{
-		ui.render();
+		ui.update();
 	}
 
 	ui.end();
