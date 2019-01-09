@@ -90,7 +90,14 @@ void UserInterface::updateWindows()
 	{
 		if (ImGui::BeginMenu("File"))
 		{
-			if (ImGui::MenuItem("Thingy")) {}
+			if (ImGui::MenuItem("Thingy"))
+			{
+				
+			}
+			if (ImGui::MenuItem("Quit"))
+			{
+				finished = true;
+			}
 			ImGui::EndMenu();
 		}
 		ImGui::EndMainMenuBar();
