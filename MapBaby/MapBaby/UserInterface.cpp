@@ -53,7 +53,10 @@ void UserInterface::render()
 	{
 		ImGui_ImplSDL2_ProcessEvent(&event);
 		if (event.type == SDL_QUIT)
+		{
 			finished = true;
+			return;
+		}
 	}
 
 	// Start the Dear ImGui frame
