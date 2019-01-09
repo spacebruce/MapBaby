@@ -70,6 +70,9 @@ void UserInterface::render()
 	glViewport(0, 0, static_cast<int>(this->io->DisplaySize.x), static_cast<int>(this->io->DisplaySize.y));
 	glClearColor(0.39f, 0.58f, 0.93f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
+
+	mapEditor.render();
+
 	ImGui_ImplOpenGL2_RenderDrawData(ImGui::GetDrawData());
 	SDL_GL_SwapWindow(this->window);
 }
