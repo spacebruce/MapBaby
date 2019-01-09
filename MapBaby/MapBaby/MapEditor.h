@@ -8,4 +8,6 @@ class MapEditor
 public:
 	MapEditor();
 	~MapEditor();
+
+	void render();
 };
