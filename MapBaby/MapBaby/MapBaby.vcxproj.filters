@@ -54,6 +54,9 @@
     <ClCompile Include="Include\Imgui\imgui_impl_sdl.cpp">
       <Filter>Header Files\Include\imgui</Filter>
     </ClCompile>
+    <ClCompile Include="UserInterface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Include\SDL\begin_code.h">
@@ -328,6 +331,9 @@
     </ClInclude>
     <ClInclude Include="Include\Imgui\imconfig.h">
       <Filter>Header Files\Include\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="UserInterface.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
