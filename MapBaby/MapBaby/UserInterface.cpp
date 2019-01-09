@@ -64,7 +64,7 @@ void UserInterface::render()
 	ImGui_ImplSDL2_NewFrame(this->window);
 	ImGui::NewFrame();
 
-	ImGui::ShowDemoWindow();
+
 
 	ImGui::Render();
 	glViewport(0, 0, static_cast<int>(this->io->DisplaySize.x), static_cast<int>(this->io->DisplaySize.y));
