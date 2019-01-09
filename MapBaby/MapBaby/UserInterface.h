@@ -13,6 +13,8 @@ private:
 	SDL_GLContext gl_context;
 	ImGuiIO* io;
 	void render();
+
+	void updateWindows();
 public:
 	UserInterface();
 	~UserInterface();
