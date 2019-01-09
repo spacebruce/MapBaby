@@ -18,6 +18,9 @@ void MapEditor::render(const int WindowWidth, const int WindowHeight)
 	glMatrixMode( GL_MODELVIEW ); 
 	glLoadIdentity(); 
 
+	glTranslatef(0.0f, 0.0f, 0.0f);
+	glPushMatrix();
+
 	//Draw stuff
 	glColor3f(0.0f, 0.0f, 0.0f);
 	glRectf(64, 64, 128, 128);
