@@ -9,5 +9,5 @@ public:
 	MapEditor();
 	~MapEditor();
 
-	void render();
+	void render(const int WindowWidth, const int WindowHeight);
 };
