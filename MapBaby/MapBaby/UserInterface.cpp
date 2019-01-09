@@ -54,7 +54,7 @@ void UserInterface::render()
 	glClearColor(0.39f, 0.58f, 0.93f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
 
-	mapEditor.render(DisplayWidth, DisplayHeight);
+	mapEditor.render();
 
 	glViewport(0, 0, DisplayWidth, DisplayHeight);
 	ImGui_ImplOpenGL2_RenderDrawData(ImGui::GetDrawData());
@@ -85,6 +85,14 @@ void UserInterface::update()
 
 void UserInterface::updateWindows()
 {
+	if (ImGui::BeginMainMenuBar())
+	{
+		if (ImGui::BeginMenu("File"))
+		{
+			if (ImGui::MenuItem("Thingy")) {}
+			ImGui::EndMenu();
+		}
+		ImGui::EndMainMenuBar();
 	}
 
 	
