@@ -48,6 +48,21 @@ void UserInterface::end()
 
 void UserInterface::render()
 {
+	ImGui::Render();
+	const int DisplayWidth = static_cast<int>(this->io->DisplaySize.x);
+	const int DisplayHeight = static_cast<int>(this->io->DisplaySize.y);
+	glClearColor(0.39f, 0.58f, 0.93f, 1.0f);
+	glClear(GL_COLOR_BUFFER_BIT);
+
+	mapEditor.render();
+
+	glViewport(0, 0, DisplayWidth, DisplayHeight);
+	ImGui_ImplOpenGL2_RenderDrawData(ImGui::GetDrawData());
+	SDL_GL_SwapWindow(this->window);
+}
+
+void UserInterface::update()
+{
 	SDL_Event event;
 	while (SDL_PollEvent(&event))
 	{
@@ -59,29 +74,24 @@ void UserInterface::render()
 		}
 	}
 
-	// Start the Dear ImGui frame
 	ImGui_ImplOpenGL2_NewFrame();
 	ImGui_ImplSDL2_NewFrame(this->window);
 	ImGui::NewFrame();
 
 	updateWindows();
 
-	ImGui::Render();
-	glViewport(0, 0, static_cast<int>(this->io->DisplaySize.x), static_cast<int>(this->io->DisplaySize.y));
-	glClearColor(0.39f, 0.58f, 0.93f, 1.0f);
-	glClear(GL_COLOR_BUFFER_BIT);
-
-	mapEditor.render();
-
-	ImGui_ImplOpenGL2_RenderDrawData(ImGui::GetDrawData());
-	SDL_GL_SwapWindow(this->window);
-}
-
-void UserInterface::update()
-{
 	render();
 }
 
 void UserInterface::updateWindows()
 {
+	if (ImGui::BeginMainMenuBar())
+	{
+		if (ImGui::BeginMenu("File"))
+		{
+			if (ImGui::MenuItem("Thingy")) {}
+			ImGui::EndMenu();
+		}
+		ImGui::EndMainMenuBar();
+	}
 }
