@@ -14,14 +14,15 @@ private:
 	SDL_Window* window;
 	SDL_GLContext gl_context;
 	ImGuiIO* io;
-	void render();
 
+	void render();
 	void updateWindows();
 
-	MapEditor mapEditor;
+	MapEditor* mapEditor;
 public:
-	UserInterface();
+	UserInterface(MapEditor & mapEditor);
 	~UserInterface();
+
 	void start();
 	void end();
 	void update();

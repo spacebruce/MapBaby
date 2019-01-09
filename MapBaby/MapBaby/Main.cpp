@@ -1,8 +1,11 @@
+#include "MapEditor.h"
 #include "UserInterface.h"
 
 int main(int argCount, char * args[])
 {
-	UserInterface ui;
+	MapEditor mapEditor;
+	UserInterface ui(mapEditor);
+
 	ui.start();
 
 	while (!ui.finished)

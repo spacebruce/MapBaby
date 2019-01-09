@@ -1,8 +1,9 @@
 #include "UserInterface.h"
 
 
-UserInterface::UserInterface()
+UserInterface::UserInterface(MapEditor& mapEditor)
 {
+	this->mapEditor = &mapEditor;
 }
 
 UserInterface::~UserInterface()
@@ -29,7 +30,7 @@ void UserInterface::start()
 	SDL_GetCurrentDisplayMode(0, &current);
 	this->window = SDL_CreateWindow("MapBaby", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1280, 720, SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE);
 	this->gl_context = SDL_GL_CreateContext(this->window);
-	SDL_GL_SetSwapInterval(1); // Enable vsync
+	//SDL_GL_SetSwapInterval(1); // Enable vsync
 
 	// Setup Imgui
 	ImGui::CreateContext();
@@ -54,7 +55,7 @@ void UserInterface::render()
 	glClearColor(0.39f, 0.58f, 0.93f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
 
-	mapEditor.render(DisplayWidth, DisplayHeight);
+	mapEditor->render(DisplayWidth, DisplayHeight);
 
 	glViewport(0, 0, DisplayWidth, DisplayHeight);
 	ImGui_ImplOpenGL2_RenderDrawData(ImGui::GetDrawData());
@@ -94,4 +95,6 @@ void UserInterface::updateWindows()
 		}
 		ImGui::EndMainMenuBar();
 	}
+
+	ImGui::ShowDemoWindow();
 }
