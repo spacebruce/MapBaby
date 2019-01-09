@@ -84,7 +84,4 @@ void UserInterface::update()
 
 void UserInterface::updateWindows()
 {
-	}
-
-	
 }
