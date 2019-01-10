@@ -8,16 +8,22 @@ MapManager::~MapManager()
 {
 }
 
-Map * MapManager::getMap(std::size_t index)
+void MapManager::setCurrent(int index)
 {
-	if((index < 0) || (index > getCount()))
-		return nullptr;
-	return &mapPool[index];
+	this->current = index;
+}
+void MapManager::deselect()
+{
+	this->current = -1;
+}
+int MapManager::getCurrent()
+{
+	return this->current;
 }
 
-std::size_t MapManager::getCount()
+int MapManager::getCount()
 {
-	return mapPool.size();
+	return (mapPool.size());
 }
 
 void MapManager::newMap()
@@ -25,25 +31,12 @@ void MapManager::newMap()
 	mapPool.emplace_back(Map());
 }
 
-void MapManager::closeMap(std::size_t index)
+void MapManager::newMap(Map map)
 {
-	if ((index >= 0) && (index < getCount()))
-	{
-		mapPool.erase(mapPool.begin() + index);
-	}
+	mapPool.emplace_back(map);
 }
 
-void MapManager::setCurrent(std::size_t index)
+bool MapManager::isCurrent(int index)
 {
-	current = getMap(index);
-}
-
-Map * MapManager::currentMap()
-{
-	return current;
-}
-
-bool MapManager::isCurrent(std::size_t index)
-{
-	return (getMap(index) == currentMap());
+	return (index == this->current);
 }
