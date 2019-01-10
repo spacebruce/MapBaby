@@ -21,6 +21,8 @@ private:
 
 	MapEditor* mapEditor;
 	MapManager * mapManager;
+
+	bool ShowFileWindow = true;
 public:
 	UserInterface(MapManager & mapManager, MapEditor & mapEditor);
 	~UserInterface();

@@ -92,9 +92,20 @@ void UserInterface::updateWindows()
 	{
 		if (ImGui::BeginMenu("File"))
 		{
-			if (ImGui::MenuItem("Thingy"))
+			if (ImGui::MenuItem("New map"));
+			if (ImGui::MenuItem("Load map"));
+			if (ImGui::MenuItem("Save map"));
+			ImGui::Separator();
+			if (mapManager->getCount() > 0)
 			{
-				
+				for (int i = 0; i < mapManager->getCount(); ++i)
+				{
+					if (ImGui::MenuItem("test", nullptr, false, true))
+					{
+						mapEditor->changeMap(mapManager->getMap(i));
+					}
+				}		
+				ImGui::Separator();
 			}
 			if (ImGui::MenuItem("Quit"))
 			{
@@ -105,21 +116,26 @@ void UserInterface::updateWindows()
 		ImGui::EndMainMenuBar();
 	}
 
-	//show open files
-	static bool FileWindow = true;
+	//File window
+	if(ShowFileWindow)
 	{
-		if (!ImGui::Begin("Files", &FileWindow, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoCollapse))
-		{
-			ImGui::End();
-		}
+		ImGui::Begin("Files", &ShowFileWindow, ImGuiWindowFlags_AlwaysAutoResize);
 		for (auto i = 0; i < mapManager->getCount(); ++i)
 		{
+			ImGui::SameLine();
 			if (ImGui::Button("test"))
 			{
 				mapEditor->changeMap(mapManager->getMap(i));
 			}
 		}
-		ImGui::Button("+");
+		ImGui::SameLine();
+		if(ImGui::Button("+"))
+		{
+			mapManager->newMap();
+		}
 		ImGui::End();
 	}
+
+	ImGui::Render();
+
 }
