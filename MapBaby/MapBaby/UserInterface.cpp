@@ -92,11 +92,24 @@ void UserInterface::updateWindows()
 	{
 		if (ImGui::BeginMenu("File"))
 		{
-			if (ImGui::MenuItem("New map")) {}
+			if (ImGui::MenuItem("New map"))
+			{
+				mapManager->newMap();
+				mapManager->setCurrent(mapManager->getCount());
+			}
 			if (ImGui::MenuItem("Load map")) {};
 			if (ImGui::MenuItem("Save map")) {};
 			ImGui::Separator();
-			if (mapManager->getCount() > 0)
+			if (ImGui::MenuItem("Quit"))
+			{
+				finished = true;
+			}
+			ImGui::EndMenu();
+		}
+
+		if (mapManager->getCount() > 0)
+		{
+			if (ImGui::BeginMenu("Tabs"))
 			{
 				for (auto i = 0; i < mapManager->getCount(); ++i)
 				{
@@ -105,12 +118,8 @@ void UserInterface::updateWindows()
 						mapManager->setCurrent(i);
 						mapEditor->changeMap(mapManager->getMap(i));
 					}
-				}		
-				ImGui::Separator();
-			}
-			if (ImGui::MenuItem("Quit"))
-			{
-				finished = true;
+				}
+				ImGui::EndMenu();
 			}
 		}
 
