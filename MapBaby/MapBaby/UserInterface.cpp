@@ -129,16 +129,27 @@ void UserInterface::updateWindows()
 	if(ShowFileWindow)
 	{
 		ImGui::Begin("Files", &ShowFileWindow, ImGuiWindowFlags_AlwaysAutoResize);
+
+		ImGui::Text("Current : %p", mapManager->currentMap());
 		for (std::size_t i = 0; i < mapManager->getCount(); ++i)
 		{
-			ImGui::SameLine();
-			if (ImGui::Button("test"))
+			//replace
+			char name[50];
+			sprintf_s(name, "test###%p", mapManager->getMap(i));
+			//replace
+
+			if (mapManager->isCurrent(i))
+			{
+				ImGui::Text("test");
+			}
+			else if (ImGui::Button(name))
 			{
 				mapManager->setCurrent(i);
 				mapEditor->changeMap(mapManager->getMap(i));
 			}
+
+			ImGui::SameLine();
 		}
-		ImGui::SameLine();
 		if(ImGui::Button("+"))
 		{
 			mapManager->newMap();
