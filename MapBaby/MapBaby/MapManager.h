@@ -11,6 +11,9 @@ public:
 	MapManager();
 	~MapManager();
 
+	Map * getCurrentMap();
+	Map * getMap(int index);
+
 	void setCurrent(int index);
 	void deselect();
 	int getCurrent();

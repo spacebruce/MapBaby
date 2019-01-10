@@ -8,6 +8,19 @@ MapManager::~MapManager()
 {
 }
 
+Map * MapManager::getCurrentMap()
+{
+	return getMap(getCurrent());
+}
+
+Map * MapManager::getMap(int index)
+{
+	if ((index < 0) || (index > getCount()))
+		return nullptr;
+	else
+		return &(mapPool[index]);
+}
+
 void MapManager::setCurrent(int index)
 {
 	this->current = index;
