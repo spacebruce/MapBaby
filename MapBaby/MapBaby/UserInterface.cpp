@@ -112,14 +112,11 @@ void UserInterface::updateWindows()
 			{
 				finished = true;
 			}
-			ImGui::EndMenu();
 		}
+
 		if (ImGui::BeginMenu("Windows"))
 		{
-			if (ImGui::MenuItem("Open Maps", nullptr, ShowOpenMapsWindow))
-			{
-				ShowOpenMapsWindow = !ShowOpenMapsWindow;
-			}
+			if (ImGui::MenuItem("Tabs", nullptr, ShowTabsWindow))	{ ShowTabsWindow = !ShowTabsWindow;	}
 			if (ImGui::MenuItem("Map Stats", nullptr, ShowMapStatsWindow))	{	ShowMapStatsWindow = !ShowMapStatsWindow;	}
 			ImGui::EndMenu();
 		}
@@ -127,12 +124,11 @@ void UserInterface::updateWindows()
 	}
 
 	//File window
-	if(ShowOpenMapsWindow)
+	if(ShowTabsWindow)
 	{
-		ImGui::Begin("Open Maps", &ShowOpenMapsWindow, ImGuiWindowFlags_AlwaysAutoResize);
+		ImGui::Begin("Tabs", &ShowTabsWindow, ImGuiWindowFlags_AlwaysAutoResize);
 
 		ImGui::Text("Current : %i", mapManager->getCurrent());
-		ImGui::Separator();
 
 		if (ImGui::Button("-"))
 		{
@@ -170,6 +166,7 @@ void UserInterface::updateWindows()
 		if(ImGui::Button("+"))
 		{
 			mapManager->newMap();
+			mapManager->setCurrent(mapManager->getCount());
 		}
 		ImGui::End();
 	}
