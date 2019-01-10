@@ -113,6 +113,14 @@ void UserInterface::updateWindows()
 			}
 			ImGui::EndMenu();
 		}
+		if (ImGui::BeginMenu("Windows"))
+		{
+			if (ImGui::MenuItem("Open maps", nullptr, ShowFileWindow))
+			{
+				ShowFileWindow = !ShowFileWindow;
+			}
+			ImGui::EndMenu();
+		}
 		ImGui::EndMainMenuBar();
 	}
 
