@@ -120,6 +120,7 @@ void UserInterface::updateWindows()
 			{
 				ShowOpenMapsWindow = !ShowOpenMapsWindow;
 			}
+			if (ImGui::MenuItem("Map Stats", nullptr, ShowMapStatsWindow))	{	ShowMapStatsWindow = !ShowMapStatsWindow;	}
 			ImGui::EndMenu();
 		}
 		ImGui::EndMainMenuBar();
@@ -169,6 +170,21 @@ void UserInterface::updateWindows()
 		if(ImGui::Button("+"))
 		{
 			mapManager->newMap();
+		}
+		ImGui::End();
+	}
+
+	//Map stats
+	if (ShowMapStatsWindow)
+	{
+		ImGui::Begin("Stats", &ShowMapStatsWindow);
+		if (mapManager->getCurrent() == -1)
+		{
+			ImGui::Text("no map open");
+		}
+		else
+		{
+
 		}
 		ImGui::End();
 	}

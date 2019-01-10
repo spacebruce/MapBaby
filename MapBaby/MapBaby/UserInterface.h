@@ -23,6 +23,7 @@ private:
 	MapManager * mapManager;
 
 	bool ShowOpenMapsWindow = true;
+	bool ShowMapStatsWindow = true;
 public:
 	UserInterface(MapManager & mapManager, MapEditor & mapEditor);
 	~UserInterface();
