@@ -341,6 +341,9 @@
     <ClInclude Include="MapEditor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Library Include="Lib\x86\SDL2test.lib">

@@ -30,3 +30,8 @@ void MapEditor::render(const int WindowWidth, const int WindowHeight)
 	glColor3f(0.0f, 0.0f, 0.0f);
 	glRectf(64, 64, 128, 128);
 }
+
+void MapEditor::changeMap(Map * map)
+{
+	this->map = map;
+}

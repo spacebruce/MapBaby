@@ -15,4 +15,5 @@ public:
 	~MapEditor();
 
 	void render(const int WindowWidth, const int WindowHeight);
+	void changeMap(Map * map);
 };
