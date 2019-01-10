@@ -19,3 +19,8 @@ std::size_t MapManager::getCount()
 {
 	return mapPool.size();
 }
+
+void MapManager::newMap()
+{
+	mapPool.emplace_back(Map());
+}

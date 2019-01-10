@@ -12,4 +12,5 @@ public:
 
 	Map * getMap(std::size_t index);
 	std::size_t getCount();
+	void newMap();
 };
