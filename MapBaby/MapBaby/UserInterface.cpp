@@ -133,6 +133,13 @@ void UserInterface::updateWindows()
 		ImGui::Text("Current : %i", mapManager->getCurrent());
 		ImGui::Separator();
 
+		if (ImGui::Button("-"))
+		{
+			mapManager->deselect();
+			mapEditor->changeMap(nullptr);
+		}
+		ImGui::SameLine();
+
 		for (auto i = 0; i < mapManager->getCount(); ++i)
 		{
 			ImGui::PushID(i);
