@@ -130,12 +130,14 @@ void UserInterface::updateWindows()
 	{
 		ImGui::Begin("Files", &ShowFileWindow, ImGuiWindowFlags_AlwaysAutoResize);
 
-		ImGui::Text("Current : %p", mapManager->currentMap());
+		ImGui::Text("Current : %i", mapManager->getCurrent());
+		ImGui::Separator();
+
 		for (std::size_t i = 0; i < mapManager->getCount(); ++i)
 		{
 			//replace
 			char name[50];
-			sprintf_s(name, "test###%p", mapManager->getMap(i));
+			sprintf_s(name, "test###%i",i);
 			//replace
 
 			if (mapManager->isCurrent(i))
