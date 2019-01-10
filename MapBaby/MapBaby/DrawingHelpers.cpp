@@ -1,6 +1,6 @@
 #include "DrawingHelpers.h"
 
-void Drawing::DrawLine(float x, float y, float x2, float y2)
+void Drawing::drawLine(const float x, const float y, const float x2, const float y2)
 {
 	glBegin(GL_LINES);
 	glVertex3f(x, y, 0.0);
@@ -8,8 +8,7 @@ void Drawing::DrawLine(float x, float y, float x2, float y2)
 	glEnd();
 }
 
-
-void Drawing::DrawRectangleOutline(float x, float y, float x2, float y2)
+void Drawing::drawRectangleOutline(const float x, const float y, const float x2, const float y2)
 {
 	glBegin(GL_LINES);
 	glVertex3f(x, y, 0.0);
@@ -20,5 +19,20 @@ void Drawing::DrawRectangleOutline(float x, float y, float x2, float y2)
 	glVertex3f(x, y2, 0);
 	glVertex3f(x, y2, 0.0);
 	glVertex3f(x, y, 0);
+	glEnd();
+}
+
+void Drawing::drawCircleOutline(const float radius, const int resolution = 16)
+{
+	const float step = static_cast<float>(tau / resolution);
+	glBegin(GL_LINE_LOOP);
+	{
+		float angle = 0;
+		for (int i = 0; i <= resolution; ++i)
+		{
+			glVertex2f(std::cos(angle) * radius, std::sin(angle) * radius);
+			angle += step;
+		}
+	}
 	glEnd();
 }

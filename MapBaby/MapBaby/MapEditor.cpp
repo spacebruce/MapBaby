@@ -30,7 +30,7 @@ void MapEditor::render(const int WindowWidth, const int WindowHeight)
 		return;
 
 	//Draw stuff
-	Drawing::DrawRectangleOutline(0, 0, 256, 256);// map->Width, map->Height);
+	Drawing::drawRectangleOutline(0, 0, 256, 256);// map->Width, map->Height);
 }
 
 void MapEditor::changeMap(Map * map)
