@@ -26,6 +26,9 @@ void MapEditor::render(const int WindowWidth, const int WindowHeight)
 	glTranslatef(0.0f, 0.0f, 0.0f);
 	glPushMatrix();
 
+	if (map == nullptr)
+		return;
+
 	//Draw stuff
 	glColor3f(0.0f, 0.0f, 0.0f);
 	glRectf(64, 64, 128, 128);
