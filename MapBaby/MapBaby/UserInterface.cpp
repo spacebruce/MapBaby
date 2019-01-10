@@ -100,8 +100,9 @@ void UserInterface::updateWindows()
 			{
 				for (int i = 0; i < mapManager->getCount(); ++i)
 				{
-					if (ImGui::MenuItem("test", nullptr, false, true))
+					if (ImGui::MenuItem("test", nullptr, mapManager->isCurrent(i)))
 					{
+						mapManager->setCurrent(i);
 						mapEditor->changeMap(mapManager->getMap(i));
 					}
 				}		
@@ -133,6 +134,7 @@ void UserInterface::updateWindows()
 			ImGui::SameLine();
 			if (ImGui::Button("test"))
 			{
+				mapManager->setCurrent(i);
 				mapEditor->changeMap(mapManager->getMap(i));
 			}
 		}
