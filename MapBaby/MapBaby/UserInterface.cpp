@@ -98,7 +98,7 @@ void UserInterface::updateWindows()
 			ImGui::Separator();
 			if (mapManager->getCount() > 0)
 			{
-				for (std::size_t i = 0; i < mapManager->getCount(); ++i)
+				for (auto i = 0; i < mapManager->getCount(); ++i)
 				{
 					if (ImGui::MenuItem("test", nullptr, mapManager->isCurrent(i)))
 					{
@@ -133,7 +133,7 @@ void UserInterface::updateWindows()
 		ImGui::Text("Current : %i", mapManager->getCurrent());
 		ImGui::Separator();
 
-		for (std::size_t i = 0; i < mapManager->getCount(); ++i)
+		for (auto i = 0; i < mapManager->getCount(); ++i)
 		{
 			//replace
 			char buttonID[20];
