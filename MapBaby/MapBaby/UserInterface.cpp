@@ -92,13 +92,13 @@ void UserInterface::updateWindows()
 	{
 		if (ImGui::BeginMenu("File"))
 		{
-			if (ImGui::MenuItem("New map"));
-			if (ImGui::MenuItem("Load map"));
-			if (ImGui::MenuItem("Save map"));
+			if (ImGui::MenuItem("New map")) {}
+			if (ImGui::MenuItem("Load map")) {};
+			if (ImGui::MenuItem("Save map")) {};
 			ImGui::Separator();
 			if (mapManager->getCount() > 0)
 			{
-				for (int i = 0; i < mapManager->getCount(); ++i)
+				for (std::size_t i = 0; i < mapManager->getCount(); ++i)
 				{
 					if (ImGui::MenuItem("test", nullptr, mapManager->isCurrent(i)))
 					{
@@ -129,7 +129,7 @@ void UserInterface::updateWindows()
 	if(ShowFileWindow)
 	{
 		ImGui::Begin("Files", &ShowFileWindow, ImGuiWindowFlags_AlwaysAutoResize);
-		for (auto i = 0; i < mapManager->getCount(); ++i)
+		for (std::size_t i = 0; i < mapManager->getCount(); ++i)
 		{
 			ImGui::SameLine();
 			if (ImGui::Button("test"))
