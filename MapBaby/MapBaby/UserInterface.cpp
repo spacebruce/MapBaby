@@ -87,6 +87,7 @@ void UserInterface::update()
 
 void UserInterface::updateWindows()
 {
+	//main bar
 	if (ImGui::BeginMainMenuBar())
 	{
 		if (ImGui::BeginMenu("File"))
@@ -104,5 +105,21 @@ void UserInterface::updateWindows()
 		ImGui::EndMainMenuBar();
 	}
 
-	ImGui::ShowDemoWindow();
+	//show open files
+	static bool FileWindow = true;
+	{
+		if (!ImGui::Begin("Files", &FileWindow, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoCollapse))
+		{
+			ImGui::End();
+		}
+		for (auto i = 0; i < mapManager->getCount(); ++i)
+		{
+			if (ImGui::Button("test"))
+			{
+				mapEditor->changeMap(mapManager->getMap(i));
+			}
+		}
+		ImGui::Button("+");
+		ImGui::End();
+	}
 }
