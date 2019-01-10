@@ -116,9 +116,9 @@ void UserInterface::updateWindows()
 		}
 		if (ImGui::BeginMenu("Windows"))
 		{
-			if (ImGui::MenuItem("Open maps", nullptr, ShowFileWindow))
+			if (ImGui::MenuItem("Open Maps", nullptr, ShowOpenMapsWindow))
 			{
-				ShowFileWindow = !ShowFileWindow;
+				ShowOpenMapsWindow = !ShowOpenMapsWindow;
 			}
 			ImGui::EndMenu();
 		}
@@ -126,9 +126,9 @@ void UserInterface::updateWindows()
 	}
 
 	//File window
-	if(ShowFileWindow)
+	if(ShowOpenMapsWindow)
 	{
-		ImGui::Begin("Files", &ShowFileWindow, ImGuiWindowFlags_AlwaysAutoResize);
+		ImGui::Begin("Open Maps", &ShowOpenMapsWindow, ImGuiWindowFlags_AlwaysAutoResize);
 
 		ImGui::Text("Current : %i", mapManager->getCurrent());
 		ImGui::Separator();
@@ -136,20 +136,26 @@ void UserInterface::updateWindows()
 		for (std::size_t i = 0; i < mapManager->getCount(); ++i)
 		{
 			//replace
-			char name[50];
-			sprintf_s(name, "test###%i",i);
+			char buttonID[20];
+			char closeID[20];
+			sprintf_s(buttonID, "test###%i",i);
+			sprintf_s(closeID, "x###%i", i);
 			//replace
 
 			if (mapManager->isCurrent(i))
 			{
 				ImGui::Text("test");
 			}
-			else if (ImGui::Button(name))
+			else if (ImGui::Button(buttonID))
 			{
 				mapManager->setCurrent(i);
 				mapEditor->changeMap(mapManager->getMap(i));
 			}
-
+			ImGui::SameLine();
+			if (ImGui::SmallButton(closeID))
+			{
+				//close tab
+			}
 			ImGui::SameLine();
 		}
 		if(ImGui::Button("+"))
