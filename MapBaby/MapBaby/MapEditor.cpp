@@ -4,6 +4,11 @@ MapEditor::MapEditor()
 {
 }
 
+MapEditor::MapEditor(Map * map)
+{
+	this->map = map;
+}
+
 MapEditor::~MapEditor()
 {
 }

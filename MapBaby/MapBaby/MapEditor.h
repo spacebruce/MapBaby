@@ -10,6 +10,8 @@ private:
 	Map *map;
 public:
 	MapEditor();
+	MapEditor(Map * map);
+
 	~MapEditor();
 
 	void render(const int WindowWidth, const int WindowHeight);
