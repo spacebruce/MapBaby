@@ -135,28 +135,29 @@ void UserInterface::updateWindows()
 
 		for (auto i = 0; i < mapManager->getCount(); ++i)
 		{
-			//replace
-			char buttonID[20];
-			char closeID[20];
-			sprintf_s(buttonID, "test###%i",i);
-			sprintf_s(closeID, "x###%i", i);
-			//replace
+			ImGui::PushID(i);
 
 			if (mapManager->isCurrent(i))
 			{
 				ImGui::Text("test");
 			}
-			else if (ImGui::Button(buttonID))
+			else if (ImGui::Button("test"))
 			{
 				mapManager->setCurrent(i);
 				mapEditor->changeMap(mapManager->getMap(i));
 			}
-			ImGui::SameLine();
-			if (ImGui::SmallButton(closeID))
+			ImGui::SameLine(); 
+			if (ImGui::Button("x"))
 			{
-				//close tab
+				if (mapManager->getCurrent() == i)
+				{
+					mapEditor->changeMap(nullptr);
+				}
+				mapManager->closeMap(i);
 			}
 			ImGui::SameLine();
+
+			ImGui::PopID();
 		}
 		if(ImGui::Button("+"))
 		{
