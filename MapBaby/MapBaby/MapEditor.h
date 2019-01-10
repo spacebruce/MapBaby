@@ -2,6 +2,7 @@
 #include <SDL.h>
 #include <SDL/SDL_opengl.h>
 
+#include "DrawingHelpers.h"
 #include "Map.h"
 
 class MapEditor

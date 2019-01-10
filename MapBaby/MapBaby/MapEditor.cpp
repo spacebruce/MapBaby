@@ -30,8 +30,7 @@ void MapEditor::render(const int WindowWidth, const int WindowHeight)
 		return;
 
 	//Draw stuff
-	glColor3f(0.0f, 0.0f, 0.0f);
-	glRectf(64, 64, 128, 128);
+	Drawing::DrawRectangleOutline(0, 0, 256, 256);// map->Width, map->Height);
 }
 
 void MapEditor::changeMap(Map * map)
