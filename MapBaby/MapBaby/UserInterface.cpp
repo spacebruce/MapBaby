@@ -1,8 +1,9 @@
 #include "UserInterface.h"
 
 
-UserInterface::UserInterface(MapEditor& mapEditor)
+UserInterface::UserInterface(MapManager& mapManager, MapEditor& mapEditor)
 {
+	this->mapManager = &mapManager;
 	this->mapEditor = &mapEditor;
 }
 

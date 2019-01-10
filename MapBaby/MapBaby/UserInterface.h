@@ -6,6 +6,7 @@
 #include "imgui/imgui_impl_sdl.h"
 #include "imgui/imgui_impl_opengl2.h"
 
+#include "MapManager.h"
 #include "MapEditor.h"
 
 class UserInterface
@@ -19,8 +20,9 @@ private:
 	void updateWindows();
 
 	MapEditor* mapEditor;
+	MapManager * mapManager;
 public:
-	UserInterface(MapEditor & mapEditor);
+	UserInterface(MapManager & mapManager, MapEditor & mapEditor);
 	~UserInterface();
 
 	void start();
