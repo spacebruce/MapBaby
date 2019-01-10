@@ -17,6 +17,7 @@ public:
 	void setCurrent(int index);
 	void deselect();
 	int getCurrent();
+	void closeMap(int index);
 	bool isCurrent(int index);
 
 	int getCount();

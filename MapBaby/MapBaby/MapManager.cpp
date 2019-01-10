@@ -10,15 +10,15 @@ MapManager::~MapManager()
 
 Map * MapManager::getCurrentMap()
 {
-	return getMap(getCurrent());
+	return this->getMap(this->getCurrent());
 }
 
 Map * MapManager::getMap(int index)
 {
-	if ((index < 0) || (index > getCount()))
+	if ((index < 0) || (index > this->getCount()))
 		return nullptr;
 	else
-		return &(mapPool[index]);
+		return &(this->mapPool[index]);
 }
 
 void MapManager::setCurrent(int index)
@@ -34,19 +34,30 @@ int MapManager::getCurrent()
 	return this->current;
 }
 
+void MapManager::closeMap(int index)
+{
+	if ((index < 0) || (index > this->getCount()))
+		return;
+	this->mapPool.erase(this->mapPool.begin() + index);
+	if (index == this->current)
+	{
+		this->deselect();
+	}
+}
+
 int MapManager::getCount()
 {
-	return (mapPool.size());
+	return (this->mapPool.size());
 }
 
 void MapManager::newMap()
 {
-	mapPool.emplace_back(Map());
+	this->mapPool.emplace_back(Map());
 }
 
 void MapManager::newMap(Map map)
 {
-	mapPool.emplace_back(map);
+	this->mapPool.emplace_back(map);
 }
 
 bool MapManager::isCurrent(int index)
