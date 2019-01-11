@@ -19,14 +19,8 @@ void MapEditor::render(const int WindowWidth, const int WindowHeight)
 	glViewport( 0, 0, WindowWidth, WindowHeight);
 	glMatrixMode(GL_PROJECTION); 
 	glLoadIdentity(); 
-
-	float zoom = (camera.zoom / 100.0f);
-	float left = camera.x - (WindowWidth / 2) / zoom;
-	float top = camera.y - (WindowHeight / 2) / zoom;
-	float right = camera.x + (WindowWidth / 2) / zoom;
-	float bottom = camera.y + (WindowHeight / 2) / zoom;
-
-	glOrtho( left, right, top, bottom , 1.0, -1.0 );
+	
+	glOrtho(camera.left, camera.right, camera.bottom, camera.top, 1.0f, -1.0f);
 	glMatrixMode(GL_MODELVIEW); 
 	glLoadIdentity(); 
 
