@@ -1,7 +1,8 @@
 #pragma once
 #include <SDL.h>
-
 #include "MathsHelpers.h"
+
+#include "Map.h"
 
 class MapCamera
 {
@@ -19,7 +20,7 @@ public:
 	float left, top, right, bottom;
 
 	void updateOrtho(const int WindowWidth, const int WindowHeight);
-	void updateMouse(const int WindowWidth, const int WindowHeight);
+	void updateMouse(const int WindowWidth, const int WindowHeight, const Map &map);
 
 	MapCamera();
 	~MapCamera();

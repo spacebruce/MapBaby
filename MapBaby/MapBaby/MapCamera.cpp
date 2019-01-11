@@ -20,7 +20,7 @@ void MapCamera::updateOrtho(const int WindowWidth, const int WindowHeight)
 	bottom = y + (windowHeight / 2) / zoomPercent;
 }
 
-void MapCamera::updateMouse(const int WindowWidth, const int WindowHeight)
+void MapCamera::updateMouse(const int WindowWidth, const int WindowHeight, const Map &map)
 {
 	//requires projection to be up to date!
 	int mx, my;
