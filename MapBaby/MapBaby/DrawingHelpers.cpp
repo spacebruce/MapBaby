@@ -22,7 +22,7 @@ void Drawing::drawRectangleOutline(const float x, const float y, const float x2,
 	glEnd();
 }
 
-void Drawing::drawCircleOutline(const float radius, const int resolution = 16)
+void Drawing::drawCircleOutline(const float x, const float y, const float radius, const int resolution = 16)
 {
 	const float step = static_cast<float>(tau / resolution);
 	glBegin(GL_LINE_LOOP);
@@ -30,7 +30,7 @@ void Drawing::drawCircleOutline(const float radius, const int resolution = 16)
 		float angle = 0;
 		for (int i = 0; i <= resolution; ++i)
 		{
-			glVertex2f(std::cos(angle) * radius, std::sin(angle) * radius);
+			glVertex2f(x + std::cos(angle) * radius, y + std::sin(angle) * radius);
 			angle += step;
 		}
 	}

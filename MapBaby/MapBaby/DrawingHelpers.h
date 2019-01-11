@@ -10,5 +10,5 @@ namespace Drawing
 
 	void drawLine(const float x, const float y, const float x2, const float y2);
 	void drawRectangleOutline(const float x, const float y, const float x2, const float y2);
-	void drawCircleOutline(const float radius, const int resolution);
+	void drawCircleOutline(const float x, const float y, const float radius, const int resolution);
 }
