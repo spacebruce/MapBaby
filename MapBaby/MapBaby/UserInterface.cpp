@@ -229,7 +229,7 @@ void UserInterface::updateWindows()
 		}
 		if(ImGui::Button("+"))
 		{
-			mapManager->newMap();
+			mapManager->newMap(Map(0,0));
 			selectMap(mapManager->getCount() - 1);
 		}
 		ImGui::End();
@@ -248,7 +248,7 @@ void UserInterface::updateWindows()
 			Map * map = mapManager->getCurrentMap();
 			ImGui::Text("test");
 			ImGui::Separator();
-			ImGui::Text("Size : %i x %i", map->Width, map->Height);
+			ImGui::Text("Size : %i x %i", map->getWidth(), map->getHeight());
 		}
 		ImGui::End();
 	}

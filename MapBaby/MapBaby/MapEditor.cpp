@@ -39,9 +39,10 @@ void MapEditor::render(const int WindowWidth, const int WindowHeight)
 		return;
 
 	//Draw stuff
-	const int Width = map->Width;
-	const int Height = map->Height;
-	const int TileSize = map->TileSize;
+	const int Width = map->getWidth();
+	const int Height = map->getHeight();
+	const int TileSize = map->getTileSize();
+
 	const int WidthReal = Width * TileSize;
 	const int HeightReal = Height * TileSize;
 	
