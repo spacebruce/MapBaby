@@ -15,10 +15,7 @@ MapEditor::~MapEditor()
 
 void MapEditor::update(const int WindowWidth, const int WindowHeight)
 {
-	camera.updateOrtho(WindowWidth, WindowHeight);
-
-	if(map != nullptr)
-		camera.updateMouse(WindowWidth, WindowHeight, *map);
+	camera.update(WindowWidth, WindowHeight, map);
 }
 
 void MapEditor::render(const int WindowWidth, const int WindowHeight)
@@ -57,10 +54,10 @@ void MapEditor::render(const int WindowWidth, const int WindowHeight)
 		Drawing::drawLine(0.0f, i * TileSize, WidthReal, i * TileSize);
 	}
 
-	if (camera.mouseTileValid)
+	if (camera.isMouseTileValid())
 	{
-		float mx = camera.mouseTileX * TileSize;
-		float my = camera.mouseTileY * TileSize;
+		float mx = camera.getMouseTileX() * TileSize;
+		float my = camera.getMouseTileY() * TileSize;
 		Drawing::drawLine(mx, my, mx + TileSize, my + TileSize);
 		Drawing::drawLine(mx + TileSize, my, mx, my + TileSize);
 	}

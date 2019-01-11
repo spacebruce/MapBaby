@@ -40,6 +40,13 @@ bool MapCamera::isMouseTileValid() const
 }
 
 
+void MapCamera::update(const int WindowWidth, const int WindowHeight, const Map *map)
+{
+	updateOrtho(WindowWidth, WindowHeight);
+	if (map != nullptr)
+		updateMouse(WindowWidth, WindowHeight, map);
+}
+
 void MapCamera::updateOrtho(const int WindowWidth, const int WindowHeight)
 {
 	float windowWidth = static_cast<float>(WindowWidth);
@@ -52,7 +59,7 @@ void MapCamera::updateOrtho(const int WindowWidth, const int WindowHeight)
 	bottom = y + (windowHeight / 2) / zoomPercent;
 }
 
-void MapCamera::updateMouse(const int WindowWidth, const int WindowHeight, const Map &map)
+void MapCamera::updateMouse(const int WindowWidth, const int WindowHeight, const Map * map)
 {
 	//requires projection to be up to date!
 	int mx, my;
