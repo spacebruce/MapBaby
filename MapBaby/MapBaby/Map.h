@@ -16,7 +16,7 @@ public:
 	}
 	void setSize(int width, int height)
 	{
-		this->Width = width;
-		this->Height = height;
+		this->Width = Numbers::max(width, 1);
+		this->Height = Numbers::max(height, 1);
 	}
 };
