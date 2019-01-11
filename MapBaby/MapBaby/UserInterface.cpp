@@ -137,7 +137,26 @@ void UserInterface::updateWindows()
 	{
 		ImGui::Begin("View", &ShowViewWindow);
 
-		ImGui::SliderFloat("Zoom", &(mapEditor->camera.zoom), 0.05f, 10.0f, "%.4f", 2.0f);
+		//Zoom
+		ImGui::Separator();
+		ImGui::Text("Zoom");
+		ImGui::SliderFloat("###Zoom", &(mapEditor->camera.zoom), 0.05f, 10.0f, "%.4f", 2.0f);
+		ImGui::SameLine();
+		if (ImGui::Button("-"))
+		{
+			mapEditor->camera.zoom -= 0.1f;
+		}
+		ImGui::SameLine();
+		if (ImGui::Button("+"))
+		{
+			mapEditor->camera.zoom += 0.1f;
+		}
+		ImGui::SameLine();
+		if (ImGui::Button("100%"))
+		{
+			mapEditor->camera.zoom = 1.0f;
+		}
+
 		ImGui::End();
 	}
 
