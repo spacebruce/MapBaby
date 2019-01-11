@@ -7,4 +7,16 @@ namespace Numbers
 	{
 		return ((value - fromLow) / (fromHigh - fromLow) * (toHigh - toLow)) + toLow;
 	}
+
+	template <typename T>
+	T max(const T left, const T right)
+	{
+		return (left > right) ? left : right;
+	}
+
+	template <typename T>
+	T min(const T left, const T right)
+	{
+		return (left < right) ? left : right;
+	}
 }
