@@ -15,11 +15,20 @@ MapEditor::~MapEditor()
 
 void MapEditor::render(const int WindowWidth, const int WindowHeight)
 {
+	if (camera.zoom <= 0.01)
+		camera.zoom = 0.01;
+
 	//Set the viewport
 	glViewport( 0, 0, WindowWidth, WindowHeight);
 	glMatrixMode(GL_PROJECTION); 
 	glLoadIdentity(); 
-	glOrtho( 0.0, WindowWidth, WindowHeight, 0.0, 1.0, -1.0 );
+
+	float left = camera.x - (WindowWidth / 2) / camera.zoom;
+	float top  = camera.y - (WindowHeight / 2) / camera.zoom;
+	float right = camera.x + (WindowWidth / 2) / camera.zoom;
+	float bottom = camera.y + (WindowHeight / 2) / camera.zoom;
+
+	glOrtho( left, right, top, bottom , 1.0, -1.0 );
 	glMatrixMode(GL_MODELVIEW); 
 	glLoadIdentity(); 
 

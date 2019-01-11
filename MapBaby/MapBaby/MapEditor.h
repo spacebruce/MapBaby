@@ -4,12 +4,15 @@
 
 #include "DrawingHelpers.h"
 #include "Map.h"
+#include "MapCamera.h"
 
 class MapEditor
 {
 private:
 	Map *map;
 public:
+	MapCamera camera;
+
 	MapEditor();
 	MapEditor(Map * map);
 
