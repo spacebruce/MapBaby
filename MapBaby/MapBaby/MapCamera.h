@@ -6,11 +6,7 @@
 
 class MapCamera
 {
-public:
-	int x = 0;
-	int y = 0;
-	float zoom = 100.0;
-
+private:
 	float mouseX = 0.0f;
 	float mouseY = 0.0f;
 
@@ -21,7 +17,22 @@ public:
 	float left, top, right, bottom;
 
 	void updateOrtho(const int WindowWidth, const int WindowHeight);
-	void updateMouse(const int WindowWidth, const int WindowHeight, const Map &map);
+	void updateMouse(const int WindowWidth, const int WindowHeight, const Map *map);
+public:
+	int x = 0;
+	int y = 0;
+	float zoom = 100.0;
+
+	int getMouseX() const;
+	int getMouseY() const;
+
+	Numbers::Rectangle<float> getBox();
+
+	int getMouseTileX() const;
+	int getMouseTileY() const;
+	bool isMouseTileValid() const;
+
+	void update(const int WindowWidth, const int WindowHeight, const Map *map);
 
 	MapCamera();
 	~MapCamera();

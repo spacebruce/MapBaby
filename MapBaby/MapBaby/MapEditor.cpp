@@ -28,7 +28,8 @@ void MapEditor::render(const int WindowWidth, const int WindowHeight)
 	glMatrixMode(GL_PROJECTION); 
 	glLoadIdentity(); 
 	
-	glOrtho(camera.left, camera.right, camera.bottom, camera.top, 1.0f, -1.0f);
+	auto cameraBox = camera.getBox();
+	glOrtho(cameraBox.left, cameraBox.right, cameraBox.bottom, cameraBox.top, 1.0f, -1.0f);
 	glMatrixMode(GL_MODELVIEW); 
 	glLoadIdentity(); 
 

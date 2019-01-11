@@ -8,6 +8,38 @@ MapCamera::~MapCamera()
 {
 }
 
+int MapCamera::getMouseX() const
+{
+	return this->mouseX;
+}
+
+int MapCamera::getMouseY() const
+{
+	return this->mouseY;
+}
+
+Numbers::Rectangle<float> MapCamera::getBox()
+{
+	auto box = Numbers::Rectangle<float>(left, right, top, bottom);
+	return box;
+}
+
+int MapCamera::getMouseTileX() const
+{
+	return this->mouseTileX;
+}
+
+int MapCamera::getMouseTileY() const
+{
+	return this->mouseTileY;
+}
+
+bool MapCamera::isMouseTileValid() const
+{
+	return this->mouseTileValid;
+}
+
+
 void MapCamera::updateOrtho(const int WindowWidth, const int WindowHeight)
 {
 	float windowWidth = static_cast<float>(WindowWidth);
@@ -35,9 +67,9 @@ void MapCamera::updateMouse(const int WindowWidth, const int WindowHeight, const
 	}
 	else
 	{
-		this->mouseTileX = static_cast<int>(this->mouseX / map.getTileSize());
-		this->mouseTileY = static_cast<int>(this->mouseY / map.getTileSize());
+		this->mouseTileX = static_cast<int>(this->mouseX / map->getTileSize());
+		this->mouseTileY = static_cast<int>(this->mouseY / map->getTileSize());
 	}
 
-	mouseTileValid = ((mouseTileX >= 0) && (mouseTileY >= 0) && (mouseTileX < map.getWidth()) && (mouseTileY < map.getHeight()));
+	mouseTileValid = ((mouseTileX >= 0) && (mouseTileY >= 0) && (mouseTileX < map->getWidth()) && (mouseTileY < map->getHeight()));
 }

@@ -148,12 +148,14 @@ void UserInterface::updateWindows()
 
 		if (ImGui::CollapsingHeader("Debug"))
 		{
-			ImGui::Text("mouse x : %f", mapEditor->camera.mouseY);
-			ImGui::Text("mouse y : %f", mapEditor->camera.mouseY);
-			ImGui::Text("cam l %f", mapEditor->camera.left);
-			ImGui::Text("cam r %f", mapEditor->camera.right);
-			ImGui::Text("cam t %f", mapEditor->camera.top);
-			ImGui::Text("cam b %f", mapEditor->camera.bottom);
+			ImGui::Text("mouse x : %f", mapEditor->camera.getMouseX());
+			ImGui::Text("mouse y : %f", mapEditor->camera.getMouseY());
+
+			auto cameraBox = mapEditor->camera.getBox();
+			ImGui::Text("cam l %f", cameraBox.left);
+			ImGui::Text("cam r %f", cameraBox.right);
+			ImGui::Text("cam t %f", cameraBox.top);
+			ImGui::Text("cam b %f", cameraBox.bottom);
 		}
 
 		//Position
