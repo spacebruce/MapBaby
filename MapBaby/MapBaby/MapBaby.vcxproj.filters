@@ -362,6 +362,9 @@
     <ClInclude Include="MapCamera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="MathsHelpers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Library Include="Lib\x86\SDL2test.lib">

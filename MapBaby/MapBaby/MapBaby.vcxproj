@@ -255,6 +255,7 @@
     <ClInclude Include="MapCamera.h" />
     <ClInclude Include="MapEditor.h" />
     <ClInclude Include="MapManager.h" />
+    <ClInclude Include="MathsHelpers.h" />
     <ClInclude Include="UserInterface.h" />
   </ItemGroup>
   <ItemGroup>
