@@ -23,8 +23,8 @@ public:
 	int y = 0;
 	float zoom = 100.0;
 
-	int getMouseX() const;
-	int getMouseY() const;
+	float getMouseX() const;
+	float getMouseY() const;
 
 	Numbers::Rectangle<float> getBox();
 

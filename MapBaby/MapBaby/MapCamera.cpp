@@ -8,12 +8,12 @@ MapCamera::~MapCamera()
 {
 }
 
-int MapCamera::getMouseX() const
+float MapCamera::getMouseX() const
 {
 	return this->mouseX;
 }
 
-int MapCamera::getMouseY() const
+float MapCamera::getMouseY() const
 {
 	return this->mouseY;
 }
