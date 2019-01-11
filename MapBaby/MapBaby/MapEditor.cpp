@@ -36,6 +36,8 @@ void MapEditor::render(const int WindowWidth, const int WindowHeight)
 	if (map == nullptr)
 		return;
 
+	Drawing::drawCircleOutline(camera.mouseX, camera.mouseY, 16.0f, 16);
+
 	//Draw stuff
 	const int Width = 12;
 	const int Height = 8;
