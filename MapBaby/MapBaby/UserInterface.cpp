@@ -221,6 +221,7 @@ void UserInterface::updateWindows()
 		{
 			mapManager->newMap();
 			mapManager->setCurrent(mapManager->getCount() - 1);
+			mapEditor->changeMap(mapManager->getCurrentMap());
 		}
 		ImGui::End();
 	}
