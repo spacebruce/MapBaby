@@ -22,6 +22,8 @@ private:
 	MapEditor* mapEditor;
 	MapManager * mapManager;
 
+	void selectMap(int index);
+
 	bool ShowViewWindow = true;
 	bool ShowTabsWindow = true;
 	bool ShowMapStatsWindow = true;
@@ -32,6 +34,7 @@ public:
 	void start();
 	void end();
 	void update();
+
 
 	bool finished = false;
 };

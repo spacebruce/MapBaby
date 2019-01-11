@@ -87,6 +87,12 @@ void UserInterface::update()
 	render();
 }
 
+void UserInterface::selectMap(int index)
+{
+	mapManager->setCurrent(index);
+	mapEditor->changeMap(mapManager->getMap(index));
+}
+
 void UserInterface::updateWindows()
 {
 	//main bar
@@ -117,8 +123,7 @@ void UserInterface::updateWindows()
 				{
 					if (ImGui::MenuItem("test", nullptr, mapManager->isCurrent(i)))
 					{
-						mapManager->setCurrent(i);
-						mapEditor->changeMap(mapManager->getMap(i));
+						selectMap(i);
 					}
 				}
 				ImGui::EndMenu();
@@ -225,8 +230,7 @@ void UserInterface::updateWindows()
 		if(ImGui::Button("+"))
 		{
 			mapManager->newMap();
-			mapManager->setCurrent(mapManager->getCount() - 1);
-			mapEditor->changeMap(mapManager->getCurrentMap());
+			selectMap(mapManager->getCount() - 1);
 		}
 		ImGui::End();
 	}
