@@ -13,13 +13,20 @@ MapEditor::~MapEditor()
 {
 }
 
+void MapEditor::update(const int WindowWidth, const int WindowHeight)
+{
+	camera.update(WindowWidth, WindowHeight, map);
+}
+
 void MapEditor::render(const int WindowWidth, const int WindowHeight)
 {
 	//Set the viewport
 	glViewport( 0, 0, WindowWidth, WindowHeight);
 	glMatrixMode(GL_PROJECTION); 
 	glLoadIdentity(); 
-	glOrtho( 0.0, WindowWidth, WindowHeight, 0.0, 1.0, -1.0 );
+	
+	auto cameraBox = camera.getBox();
+	glOrtho(cameraBox.left, cameraBox.right, cameraBox.bottom, cameraBox.top, 1.0f, -1.0f);
 	glMatrixMode(GL_MODELVIEW); 
 	glLoadIdentity(); 
 
@@ -30,12 +37,13 @@ void MapEditor::render(const int WindowWidth, const int WindowHeight)
 		return;
 
 	//Draw stuff
-	const int Width = 12;
-	const int Height = 8;
-	const int TileSize = 16;
+	const int Width = map->getWidth();
+	const int Height = map->getHeight();
+	const int TileSize = map->getTileSize();
+
 	const int WidthReal = Width * TileSize;
 	const int HeightReal = Height * TileSize;
-
+	
 	Drawing::drawRectangleOutline(0, 0, WidthReal, HeightReal);
 	for (int i = 0; i < Width; ++i)
 	{
@@ -44,6 +52,14 @@ void MapEditor::render(const int WindowWidth, const int WindowHeight)
 	for (int i = 0; i < Height; ++i)
 	{
 		Drawing::drawLine(0.0f, i * TileSize, WidthReal, i * TileSize);
+	}
+
+	if (camera.isMouseTileValid())
+	{
+		float mx = camera.getMouseTileX() * TileSize;
+		float my = camera.getMouseTileY() * TileSize;
+		Drawing::drawLine(mx, my, mx + TileSize, my + TileSize);
+		Drawing::drawLine(mx + TileSize, my, mx, my + TileSize);
 	}
 }
 

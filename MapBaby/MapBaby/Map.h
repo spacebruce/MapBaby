@@ -1,7 +1,22 @@
 #pragma once
 
-struct Map
+#include  "MathsHelpers.h"
+
+class Map
 {
-	int Width, Height;
-	int TileSize;
+private:
+	int Width = 12;
+	int Height = 12;
+	int TileSize = 16;
+public:
+	Map() = default;
+
+	Map(int width, int height);
+	void setSize(int width, int height);
+
+	int getWidth() const;
+	int getHeight() const;
+	int getTileSize() const;
+
+	bool isResizeSafe(int newWidth, int newHeight) const;
 };

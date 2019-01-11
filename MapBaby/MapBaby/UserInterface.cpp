@@ -76,6 +76,8 @@ void UserInterface::update()
 		}
 	}
 
+	mapEditor->update(this->io->DisplaySize.x, this->io->DisplaySize.y);
+
 	ImGui_ImplOpenGL2_NewFrame();
 	ImGui_ImplSDL2_NewFrame(this->window);
 	ImGui::NewFrame();
@@ -83,6 +85,12 @@ void UserInterface::update()
 	updateWindows();
 
 	render();
+}
+
+void UserInterface::selectMap(int index)
+{
+	mapManager->setCurrent(index);
+	mapEditor->changeMap(mapManager->getMap(index));
 }
 
 void UserInterface::updateWindows()
@@ -95,7 +103,7 @@ void UserInterface::updateWindows()
 			if (ImGui::MenuItem("New map"))
 			{
 				mapManager->newMap();
-				mapManager->setCurrent(mapManager->getCount());
+				selectMap(mapManager->getCount() - 1);
 			}
 			if (ImGui::MenuItem("Load map")) {};
 			if (ImGui::MenuItem("Save map")) {};
@@ -115,8 +123,7 @@ void UserInterface::updateWindows()
 				{
 					if (ImGui::MenuItem("test", nullptr, mapManager->isCurrent(i)))
 					{
-						mapManager->setCurrent(i);
-						mapEditor->changeMap(mapManager->getMap(i));
+						selectMap(i);
 					}
 				}
 				ImGui::EndMenu();
@@ -127,9 +134,59 @@ void UserInterface::updateWindows()
 		{
 			if (ImGui::MenuItem("Tabs", nullptr, ShowTabsWindow))	{ ShowTabsWindow = !ShowTabsWindow;	}
 			if (ImGui::MenuItem("Map Stats", nullptr, ShowMapStatsWindow))	{	ShowMapStatsWindow = !ShowMapStatsWindow;	}
+			if (ImGui::MenuItem("View", nullptr, ShowViewWindow)) {	ShowViewWindow = !ShowViewWindow; }
 			ImGui::EndMenu();
 		}
 		ImGui::EndMainMenuBar();
+	}
+
+	//View window
+	if (ShowViewWindow)
+	{
+		ImGui::Begin("View", &ShowViewWindow, ImGuiWindowFlags_AlwaysAutoResize);
+
+
+		if (ImGui::CollapsingHeader("Debug"))
+		{
+			ImGui::Text("mouse x : %f", mapEditor->camera.getMouseX());
+			ImGui::Text("mouse y : %f", mapEditor->camera.getMouseY());
+
+			auto cameraBox = mapEditor->camera.getBox();
+			ImGui::Text("cam l %f", cameraBox.left);
+			ImGui::Text("cam r %f", cameraBox.right);
+			ImGui::Text("cam t %f", cameraBox.top);
+			ImGui::Text("cam b %f", cameraBox.bottom);
+		}
+
+		//Position
+		if (ImGui::CollapsingHeader("Position"))
+		{
+			ImGui::DragInt("x", &(mapEditor->camera.x));
+			ImGui::DragInt("y", &(mapEditor->camera.y));
+		}
+
+		//Zoom
+		if (ImGui::CollapsingHeader("Zoom"))
+		{
+			ImGui::SliderFloat("###Zoom", &(mapEditor->camera.zoom), 1.0f, 1000.0f, "%.1f", 2.0f);
+			ImGui::SameLine();
+			if (ImGui::Button("-"))
+			{
+				mapEditor->camera.zoom -= 50.0f;
+			}
+			ImGui::SameLine();
+			if (ImGui::Button("+"))
+			{
+				mapEditor->camera.zoom += 50.0f;
+			}
+			ImGui::SameLine();
+			if (ImGui::Button("100%"))
+			{
+				mapEditor->camera.zoom = 100.0f;
+			}
+		}
+
+		ImGui::End();
 	}
 
 	//File window
@@ -148,7 +205,7 @@ void UserInterface::updateWindows()
 
 		for (auto i = 0; i < mapManager->getCount(); ++i)
 		{
-			ImGui::PushID(i);
+			ImGui::PushID(reinterpret_cast<int>(mapManager->getMap(i)));
 
 			if (mapManager->isCurrent(i))
 			{
@@ -174,8 +231,8 @@ void UserInterface::updateWindows()
 		}
 		if(ImGui::Button("+"))
 		{
-			mapManager->newMap();
-			mapManager->setCurrent(mapManager->getCount());
+			mapManager->newMap(Map(0,0));
+			selectMap(mapManager->getCount() - 1);
 		}
 		ImGui::End();
 	}
@@ -190,7 +247,10 @@ void UserInterface::updateWindows()
 		}
 		else
 		{
-
+			Map * map = mapManager->getCurrentMap();
+			ImGui::Text("test");
+			ImGui::Separator();
+			ImGui::Text("Size : %i x %i", map->getWidth(), map->getHeight());
 		}
 		ImGui::End();
 	}
