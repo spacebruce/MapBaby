@@ -103,7 +103,7 @@ void UserInterface::updateWindows()
 			if (ImGui::MenuItem("New map"))
 			{
 				mapManager->newMap();
-				mapManager->setCurrent(mapManager->getCount());
+				selectMap(mapManager->getCount() - 1);
 			}
 			if (ImGui::MenuItem("Load map")) {};
 			if (ImGui::MenuItem("Save map")) {};
