@@ -139,28 +139,31 @@ void UserInterface::updateWindows()
 		ImGui::Begin("View", &ShowViewWindow, ImGuiWindowFlags_AlwaysAutoResize);
 
 		//Position
-		ImGui::Text("Position");
-		ImGui::DragInt("x", &(mapEditor->camera.x));
-		ImGui::DragInt("y", &(mapEditor->camera.y));
+		if (ImGui::CollapsingHeader("Position"))
+		{
+			ImGui::DragInt("x", &(mapEditor->camera.x));
+			ImGui::DragInt("y", &(mapEditor->camera.y));
+		}
 
 		//Zoom
-		ImGui::Separator();
-		ImGui::Text("Zoom");
-		ImGui::SliderFloat("###Zoom", &(mapEditor->camera.zoom), 1.0f, 1000.0f, "%.1f", 2.0f);
-		ImGui::SameLine();
-		if (ImGui::Button("-"))
+		if (ImGui::CollapsingHeader("Zoom"))
 		{
-			mapEditor->camera.zoom -= 50.0f;
-		}
-		ImGui::SameLine();
-		if (ImGui::Button("+"))
-		{
-			mapEditor->camera.zoom += 50.0f;
-		}
-		ImGui::SameLine();
-		if (ImGui::Button("100%"))
-		{
-			mapEditor->camera.zoom = 100.0f;
+			ImGui::SliderFloat("###Zoom", &(mapEditor->camera.zoom), 1.0f, 1000.0f, "%.1f", 2.0f);
+			ImGui::SameLine();
+			if (ImGui::Button("-"))
+			{
+				mapEditor->camera.zoom -= 50.0f;
+			}
+			ImGui::SameLine();
+			if (ImGui::Button("+"))
+			{
+				mapEditor->camera.zoom += 50.0f;
+			}
+			ImGui::SameLine();
+			if (ImGui::Button("100%"))
+			{
+				mapEditor->camera.zoom = 100.0f;
+			}
 		}
 
 		ImGui::End();
