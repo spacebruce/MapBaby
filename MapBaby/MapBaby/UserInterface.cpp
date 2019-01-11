@@ -132,6 +132,13 @@ void UserInterface::updateWindows()
 		ImGui::EndMainMenuBar();
 	}
 
+	//View window
+	if (ShowViewWindow)
+	{
+		ImGui::Begin("View", &ShowViewWindow);
+		ImGui::End();
+	}
+
 	//File window
 	if(ShowTabsWindow)
 	{

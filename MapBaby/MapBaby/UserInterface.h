@@ -22,6 +22,7 @@ private:
 	MapEditor* mapEditor;
 	MapManager * mapManager;
 
+	bool ShowViewWindow = true;
 	bool ShowTabsWindow = true;
 	bool ShowMapStatsWindow = true;
 public:
