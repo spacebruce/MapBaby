@@ -38,15 +38,13 @@ void MapEditor::render(const int WindowWidth, const int WindowHeight)
 	if (map == nullptr)
 		return;
 
-	Drawing::drawCircleOutline(camera.mouseX, camera.mouseY, 16.0f, 16);
-
 	//Draw stuff
 	const int Width = 12;
 	const int Height = 8;
 	const int TileSize = 16;
 	const int WidthReal = Width * TileSize;
 	const int HeightReal = Height * TileSize;
-
+	
 	Drawing::drawRectangleOutline(0, 0, WidthReal, HeightReal);
 	for (int i = 0; i < Width; ++i)
 	{
@@ -56,6 +54,11 @@ void MapEditor::render(const int WindowWidth, const int WindowHeight)
 	{
 		Drawing::drawLine(0.0f, i * TileSize, WidthReal, i * TileSize);
 	}
+
+	float mx = camera.mouseTileX * TileSize;
+	float my = camera.mouseTileY * TileSize;
+	Drawing::drawLine(mx, my, mx + TileSize, my + TileSize);
+	Drawing::drawLine(mx + TileSize, my, mx, my + TileSize);
 }
 
 void MapEditor::changeMap(Map * map)
