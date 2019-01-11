@@ -19,3 +19,8 @@ int Map::getHeight() const
 {
 	return this->Height;
 }
+
+int Map::getTileSize() const
+{
+	return this->TileSize;
+}
