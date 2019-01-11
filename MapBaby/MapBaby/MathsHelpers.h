@@ -47,6 +47,6 @@ namespace Numbers
 	template <typename T>
 	T clamp(const T value, const T low, const T high)
 	{
-		return;
+		return min(max(value, low), high);
 	}
 }
