@@ -16,6 +16,7 @@ public:
 
 	int mouseTileX = 0;
 	int mouseTileY = 0;
+	bool mouseTileValid = false;
 
 	float left, top, right, bottom;
 

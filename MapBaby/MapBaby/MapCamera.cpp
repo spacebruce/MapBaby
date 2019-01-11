@@ -28,6 +28,16 @@ void MapCamera::updateMouse(const int WindowWidth, const int WindowHeight, const
 	this->mouseX = Numbers::mapValue(static_cast<float>(mx), 0.0f, static_cast<float>(WindowWidth), left, right);
 	this->mouseY = Numbers::mapValue(static_cast<float>(my), 0.0f, static_cast<float>(WindowHeight), top, bottom);
 
-	this->mouseTileX = static_cast<int>(this->mouseX / map.getTileSize());
-	this->mouseTileY = static_cast<int>(this->mouseY / map.getTileSize());
+	if ((mouseX < 0) || (mouseY < 0))
+	{
+		this->mouseTileX = -1;
+		this->mouseTileY = -1;
+	}
+	else
+	{
+		this->mouseTileX = static_cast<int>(this->mouseX / map.getTileSize());
+		this->mouseTileY = static_cast<int>(this->mouseY / map.getTileSize());
+	}
+
+	mouseTileValid = ((mouseTileX >= 0) && (mouseTileY >= 0) && (mouseTileX < map.getWidth()) && (mouseTileY < map.getHeight()));
 }
