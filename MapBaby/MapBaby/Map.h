@@ -10,13 +10,10 @@ private:
 	int TileSize = 16;
 public:
 	Map() = default;
-	Map(int width, int height)
-	{
-		this->setSize(width, height);
-	}
-	void setSize(int width, int height)
-	{
-		this->Width = Numbers::max(width, 1);
-		this->Height = Numbers::max(height, 1);
-	}
+
+	Map(int width, int height);
+	void setSize(int width, int height);
+
+	int getWidth() const;
+	int getHeight() const;
 };
