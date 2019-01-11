@@ -11,12 +11,12 @@ private:
 public:
 	Map() = default;
 
-	Map(int width, int height);
-	void setSize(int width, int height);
+	Map(const int width, const int height);
+	void setSize(const int width, const int height);
 
 	int getWidth() const;
 	int getHeight() const;
 	int getTileSize() const;
 
-	bool isResizeSafe(int newWidth, int newHeight) const;
+	bool isResizeSafe(const int newWidth, const int newHeight) const;
 };
