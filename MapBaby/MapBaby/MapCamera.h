@@ -14,7 +14,7 @@ private:
 	int mouseTileY = 0;
 	bool mouseTileValid = false;
 
-	float left, top, right, bottom;
+	float left, top, right, bottom = 0.0f;
 
 	void updateOrtho(const int WindowWidth, const int WindowHeight);
 	void updateMouse(const int WindowWidth, const int WindowHeight, const Map *map);

@@ -29,7 +29,7 @@ void MapManager::deselect()
 {
 	this->current = -1;
 }
-int MapManager::getCurrent()
+int MapManager::getCurrent() const
 {
 	return this->current;
 }
@@ -45,7 +45,7 @@ void MapManager::closeMap(int index)
 	}
 }
 
-int MapManager::getCount()
+int MapManager::getCount() const
 {
 	return (this->mapPool.size());
 }
@@ -60,7 +60,7 @@ void MapManager::newMap(Map map)
 	this->mapPool.emplace_back(map);
 }
 
-bool MapManager::isCurrent(int index)
+bool MapManager::isCurrent(const int index) const
 {
 	return (index == this->current);
 }

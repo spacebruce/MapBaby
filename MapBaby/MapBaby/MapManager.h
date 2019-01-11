@@ -16,11 +16,11 @@ public:
 
 	void setCurrent(int index);
 	void deselect();
-	int getCurrent();
+	int getCurrent() const;
 	void closeMap(int index);
-	bool isCurrent(int index);
+	bool isCurrent(int index) const;
 
-	int getCount();
+	int getCount() const;
 
 	void newMap();
 	void newMap(Map map);
