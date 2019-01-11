@@ -24,3 +24,9 @@ int Map::getTileSize() const
 {
 	return this->TileSize;
 }
+
+bool Map::isResizeSafe(int newWidth, int newHeight) const
+{
+	return ((newWidth >= Width) && (newHeight >= Height));
+	//add tile checks later...
+}
