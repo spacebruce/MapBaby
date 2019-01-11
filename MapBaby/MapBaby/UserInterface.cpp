@@ -136,7 +136,12 @@ void UserInterface::updateWindows()
 	//View window
 	if (ShowViewWindow)
 	{
-		ImGui::Begin("View", &ShowViewWindow);
+		ImGui::Begin("View", &ShowViewWindow, ImGuiWindowFlags_AlwaysAutoResize);
+
+		//Position
+		ImGui::Text("Position");
+		ImGui::DragInt("x", &(mapEditor->camera.x));
+		ImGui::DragInt("y", &(mapEditor->camera.y));
 
 		//Zoom
 		ImGui::Separator();
