@@ -28,9 +28,6 @@ void MapCamera::updateMouse(const int WindowWidth, const int WindowHeight)
 		mouseX = static_cast<float>(mx);
 		mouseY = static_cast<float>(my);
 	}
-	float mouseXnormal = Numbers::mapValue(mouseX, 0.0f, static_cast<float>(WindowWidth), 0.0f, 1.0f);
-	float mouseYnormal = Numbers::mapValue(mouseY, 0.0f, static_cast<float>(WindowHeight), 0.0f, 1.0f);
-
-	mouseX = Numbers::mapValue(mouseXnormal, 0.0f, 1.0f, left, right);
-	mouseY = Numbers::mapValue(mouseYnormal, 0.0f, 1.0f, top, bottom);
+	mouseX = Numbers::mapValue(mouseX, 0.0f, static_cast<float>(WindowWidth), left, right);
+	mouseY = Numbers::mapValue(mouseY, 0.0f, static_cast<float>(WindowHeight), top, bottom);
 }
