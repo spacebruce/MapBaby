@@ -23,13 +23,8 @@ void MapCamera::updateOrtho(const int WindowWidth, const int WindowHeight)
 void MapCamera::updateMouse(const int WindowWidth, const int WindowHeight)
 {
 	//requires projection to be up to date!
-	float mouseX, mouseY;
-	{
-		int mx, my;
-		SDL_GetMouseState(&mx, &my);
-		mouseX = static_cast<float>(mx);
-		mouseY = static_cast<float>(my);
-	}
-	mouseX = Numbers::mapValue(mouseX, 0.0f, static_cast<float>(WindowWidth), left, right);
-	mouseY = Numbers::mapValue(mouseY, 0.0f, static_cast<float>(WindowHeight), top, bottom);
+	int mx, my;
+	SDL_GetMouseState(&mx, &my);
+	this->mouseX = Numbers::mapValue(static_cast<float>(mx), 0.0f, static_cast<float>(WindowWidth), left, right);
+	this->mouseY = Numbers::mapValue(static_cast<float>(my), 0.0f, static_cast<float>(WindowHeight), top, bottom);
 }
