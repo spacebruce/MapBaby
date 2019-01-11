@@ -3,5 +3,5 @@
 struct Map
 {
 	int Width, Height;
-	int TileSize;
+	int TileSize = 16;
 };
