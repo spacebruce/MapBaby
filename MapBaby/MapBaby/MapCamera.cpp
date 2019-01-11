@@ -27,4 +27,7 @@ void MapCamera::updateMouse(const int WindowWidth, const int WindowHeight, const
 	SDL_GetMouseState(&mx, &my);
 	this->mouseX = Numbers::mapValue(static_cast<float>(mx), 0.0f, static_cast<float>(WindowWidth), left, right);
 	this->mouseY = Numbers::mapValue(static_cast<float>(my), 0.0f, static_cast<float>(WindowHeight), top, bottom);
+
+	this->mouseTileX = static_cast<int>(this->mouseX / map.TileSize);
+	this->mouseTileY = static_cast<int>(this->mouseY / map.TileSize);
 }
