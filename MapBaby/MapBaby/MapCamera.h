@@ -13,6 +13,9 @@ public:
 	float mouseX = 0.0f;
 	float mouseY = 0.0f;
 
+	int mouseTileX = 0;
+	int mouseTileY = 0;
+
 	float left, top, right, bottom;
 
 	void updateOrtho(const int WindowWidth, const int WindowHeight);
