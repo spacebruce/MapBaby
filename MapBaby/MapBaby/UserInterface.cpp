@@ -245,7 +245,10 @@ void UserInterface::updateWindows()
 		}
 		else
 		{
-
+			Map * map = mapManager->getCurrentMap();
+			ImGui::Text("test");
+			ImGui::Separator();
+			ImGui::Text("Size : %i x %i", map->Width, map->Height);
 		}
 		ImGui::End();
 	}
