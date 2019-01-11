@@ -56,10 +56,13 @@ void MapEditor::render(const int WindowWidth, const int WindowHeight)
 		Drawing::drawLine(0.0f, i * TileSize, WidthReal, i * TileSize);
 	}
 
-	float mx = camera.mouseTileX * TileSize;
-	float my = camera.mouseTileY * TileSize;
-	Drawing::drawLine(mx, my, mx + TileSize, my + TileSize);
-	Drawing::drawLine(mx + TileSize, my, mx, my + TileSize);
+	if (camera.mouseTileValid)
+	{
+		float mx = camera.mouseTileX * TileSize;
+		float my = camera.mouseTileY * TileSize;
+		Drawing::drawLine(mx, my, mx + TileSize, my + TileSize);
+		Drawing::drawLine(mx + TileSize, my, mx, my + TileSize);
+	}
 }
 
 void MapEditor::changeMap(Map * map)
