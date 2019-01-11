@@ -18,6 +18,8 @@ public:
 
 	~MapEditor();
 
+	void update(const int WindowWidth, const int WindowHeight);
 	void render(const int WindowWidth, const int WindowHeight);
+
 	void changeMap(Map * map);
 };

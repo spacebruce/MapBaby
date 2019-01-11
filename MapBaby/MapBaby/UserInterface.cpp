@@ -76,6 +76,8 @@ void UserInterface::update()
 		}
 	}
 
+	mapEditor->update(this->io->DisplaySize.x, this->io->DisplaySize.y);
+
 	ImGui_ImplOpenGL2_NewFrame();
 	ImGui_ImplSDL2_NewFrame(this->window);
 	ImGui::NewFrame();
