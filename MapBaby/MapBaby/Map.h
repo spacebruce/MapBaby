@@ -2,6 +2,7 @@
 
 struct Map
 {
-	int Width, Height;
+	int Width = 12;
+	int Height = 12;
 	int TileSize = 16;
 };
