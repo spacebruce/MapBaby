@@ -16,7 +16,9 @@ MapEditor::~MapEditor()
 void MapEditor::update(const int WindowWidth, const int WindowHeight)
 {
 	camera.updateOrtho(WindowWidth, WindowHeight);
-	camera.updateMouse(WindowWidth, WindowHeight);
+
+	if(map != nullptr)
+		camera.updateMouse(WindowWidth, WindowHeight, *map);
 }
 
 void MapEditor::render(const int WindowWidth, const int WindowHeight)
