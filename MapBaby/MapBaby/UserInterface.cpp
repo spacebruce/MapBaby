@@ -140,6 +140,12 @@ void UserInterface::updateWindows()
 	{
 		ImGui::Begin("View", &ShowViewWindow, ImGuiWindowFlags_AlwaysAutoResize);
 
+		ImGui::Text("mouse x : %f", &(mapEditor->camera.mouseX));
+		ImGui::Text("mouse y : %f", &(mapEditor->camera.mouseY));
+		ImGui::Text("cam l%f", &(mapEditor->camera.left));
+		ImGui::Text("cam r%f", &(mapEditor->camera.right));
+		ImGui::Text("cam t%f", &(mapEditor->camera.top));
+		ImGui::Text("cam b%f", &(mapEditor->camera.bottom));
 		//Position
 		if (ImGui::CollapsingHeader("Position"))
 		{
@@ -187,7 +193,7 @@ void UserInterface::updateWindows()
 
 		for (auto i = 0; i < mapManager->getCount(); ++i)
 		{
-			ImGui::PushID(i);
+			ImGui::PushID(reinterpret_cast<int>(mapManager->getMap(i)));
 
 			if (mapManager->isCurrent(i))
 			{
