@@ -43,6 +43,11 @@ void MapManager::closeMap(int index)
 	{
 		this->deselect();
 	}
+	else if (index < this->current)
+	{
+		--this->current;
+	}
+
 }
 
 int MapManager::getCount() const
