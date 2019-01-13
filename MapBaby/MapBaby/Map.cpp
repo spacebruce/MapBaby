@@ -1,5 +1,10 @@
 #include "Map.h"
 
+ResourceID::Type Map::getID()
+{
+	return this->ID;
+}
+
 Map::Map(const int width, const int height)
 {
 	this->setSize(width, height);
