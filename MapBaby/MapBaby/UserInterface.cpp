@@ -115,19 +115,16 @@ void UserInterface::updateWindows()
 			ImGui::EndMenu();
 		}
 
-		if (mapManager->getCount() > 0)
+		if (ImGui::BeginMenu("Tabs", (mapManager->getCount() != 0)))
 		{
-			if (ImGui::BeginMenu("Tabs"))
+			for (auto i = 0; i < mapManager->getCount(); ++i)
 			{
-				for (auto i = 0; i < mapManager->getCount(); ++i)
+				if (ImGui::MenuItem("test", nullptr, mapManager->isCurrent(i)))
 				{
-					if (ImGui::MenuItem("test", nullptr, mapManager->isCurrent(i)))
-					{
-						selectMap(i);
-					}
+					selectMap(i);
 				}
-				ImGui::EndMenu();
 			}
+			ImGui::EndMenu();
 		}
 
 		if (ImGui::BeginMenu("Windows"))
