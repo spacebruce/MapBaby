@@ -1,18 +1,15 @@
 #pragma once
 
 #include "MathsHelpers.h"
-#include "ResourceID.h"
 
 class Map
 {
 private:
-	ResourceID::Type ID = ResourceID::Create();
 
 	int Width = 12;
 	int Height = 12;
 	int TileSize = 16;
 public:
-	ResourceID::Type getID();
 
 	Map() = default;
 
