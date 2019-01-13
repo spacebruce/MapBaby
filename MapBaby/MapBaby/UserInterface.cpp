@@ -205,7 +205,7 @@ void UserInterface::updateWindows()
 
 		for (auto i = 0; i < mapManager->getCount(); ++i)
 		{
-			ImGui::PushID(reinterpret_cast<int>(mapManager->getMap(i)));
+			ImGui::PushID(static_cast<int>(mapManager->getMap(i)->getID()));
 
 			if (mapManager->isCurrent(i))
 			{
@@ -219,7 +219,7 @@ void UserInterface::updateWindows()
 			ImGui::SameLine(); 
 			if (ImGui::Button("x"))
 			{
-				if (mapManager->getCurrent() == i)
+				if (mapManager->isCurrent(i))
 				{
 					mapEditor->changeMap(nullptr);
 				}
