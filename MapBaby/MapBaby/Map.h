@@ -1,16 +1,15 @@
 #pragma once
-
 #include "MathsHelpers.h"
 
-class Map
+#include  "Resource.h"
+
+class Map : public Resource
 {
 private:
-
 	int Width = 12;
 	int Height = 12;
 	int TileSize = 16;
 public:
-
 	Map() = default;
 
 	Map(const int width, const int height);
