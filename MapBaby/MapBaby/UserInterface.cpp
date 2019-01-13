@@ -133,6 +133,7 @@ void UserInterface::updateWindows()
 		if (ImGui::BeginMenu("Windows"))
 		{
 			if (ImGui::MenuItem("Tabs", nullptr, ShowTabsWindow))	{ ShowTabsWindow = !ShowTabsWindow;	}
+			if (ImGui::MenuItem("Tiles", nullptr, ShowTilePickWindow)) { ShowTilePickWindow = !ShowTilePickWindow; }
 			if (ImGui::MenuItem("Map Stats", nullptr, ShowMapStatsWindow))	{	ShowMapStatsWindow = !ShowMapStatsWindow;	}
 			if (ImGui::MenuItem("View", nullptr, ShowViewWindow)) {	ShowViewWindow = !ShowViewWindow; }
 			ImGui::EndMenu();
@@ -253,6 +254,13 @@ void UserInterface::updateWindows()
 			ImGui::Separator();
 			ImGui::Text("Size : %i x %i", map->getWidth(), map->getHeight());
 		}
+		ImGui::End();
+	}
+
+	//Tile picker
+	if (ShowTilePickWindow)
+	{
+		ImGui::Begin("Tiles", &ShowMapStatsWindow);
 		ImGui::End();
 	}
 

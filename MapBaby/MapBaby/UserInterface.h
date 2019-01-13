@@ -24,6 +24,7 @@ private:
 
 	void selectMap(int index);
 
+	bool ShowTilePickWindow = true;
 	bool ShowViewWindow = true;
 	bool ShowTabsWindow = true;
 	bool ShowMapStatsWindow = true;
