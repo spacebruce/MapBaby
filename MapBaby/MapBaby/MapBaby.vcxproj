@@ -157,6 +157,7 @@
     <ClCompile Include="MapCamera.cpp" />
     <ClCompile Include="MapEditor.cpp" />
     <ClCompile Include="MapManager.cpp" />
+    <ClCompile Include="ResourceID.cpp" />
     <ClCompile Include="UserInterface.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -257,6 +258,7 @@
     <ClInclude Include="MapEditor.h" />
     <ClInclude Include="MapManager.h" />
     <ClInclude Include="MathsHelpers.h" />
+    <ClInclude Include="ResourceID.h" />
     <ClInclude Include="UserInterface.h" />
   </ItemGroup>
   <ItemGroup>
