@@ -241,13 +241,14 @@ void UserInterface::updateWindows()
 	if (ShowMapStatsWindow)
 	{
 		ImGui::Begin("Stats", &ShowMapStatsWindow);
-		if (mapManager->getCurrent() == -1)
+		Map * map = mapManager->getCurrentMap();
+		if (map == nullptr)
 		{
 			ImGui::Text("no map open");
 		}
 		else
 		{
-			Map * map = mapManager->getCurrentMap();
+			
 			ImGui::Text("test (%i)", map->getID());
 			ImGui::Separator();
 			ImGui::Text("Size : %i x %i", map->getWidth(), map->getHeight());
