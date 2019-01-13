@@ -8,7 +8,7 @@ Resource::~Resource()
 {
 }
 
-ResourceID::Type Resource::getID()
+ResourceID::Type Resource::getID() const
 {
 	return this->ID;
 }

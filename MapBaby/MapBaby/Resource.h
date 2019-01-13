@@ -6,7 +6,7 @@ class Resource
 private:
 	ResourceID::Type ID = ResourceID::Create();
 public:
-	ResourceID::Type getID();
+	ResourceID::Type getID() const;
 
 	Resource();
 	~Resource();
