@@ -157,7 +157,10 @@
     <ClCompile Include="MapCamera.cpp" />
     <ClCompile Include="MapEditor.cpp" />
     <ClCompile Include="MapManager.cpp" />
+    <ClCompile Include="Resource.cpp" />
     <ClCompile Include="ResourceID.cpp" />
+    <ClCompile Include="Tile.cpp" />
+    <ClCompile Include="TileManager.cpp" />
     <ClCompile Include="UserInterface.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -258,7 +261,10 @@
     <ClInclude Include="MapEditor.h" />
     <ClInclude Include="MapManager.h" />
     <ClInclude Include="MathsHelpers.h" />
+    <ClInclude Include="Resource.h" />
     <ClInclude Include="ResourceID.h" />
+    <ClInclude Include="Tile.h" />
+    <ClInclude Include="TileManager.h" />
     <ClInclude Include="UserInterface.h" />
   </ItemGroup>
   <ItemGroup>
