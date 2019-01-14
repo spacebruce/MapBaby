@@ -259,19 +259,30 @@ void UserInterface::updateWindows()
 	if (ShowTilePickWindow)
 	{
 		ImGui::Begin("Tiles", &ShowTilePickWindow);
-		ImGui::BeginChild("TilePickerScroll", ImVec2(0,0), true, 0);
-		for (int i = 0; i < tileManager->getCount(); ++i)
-		{
-			if(tileManager->getTile(i)->getTexture()->isLoaded())
-				ImGui::ImageButton((void*)tileManager->getTile(i)->getTexture()->get(), ImVec2(32, 32));
-		}
-		ImGui::EndChild();
 
 		if (ImGui::Button("new"))
 		{
 			tileManager->createTile();
 		}
 
+		ImGui::BeginChild("TilePickerScroll", ImVec2(0,0), true, 0);
+		for (int i = 0; i < tileManager->getCount(); ++i)
+		{
+			if (tileManager->getTile(i)->getTexture()->isLoaded())
+			{
+				Tile * tile = tileManager->getTile(i);
+				ImGui::ImageButton((void*)tile->getTexture()->get(), ImVec2(32, 32));
+				if (ImGui::IsItemHovered())
+				{
+					ImGui::BeginTooltip();
+					ImGui::Image((void*)tile->getTexture()->get(), ImVec2(128, 128));
+					ImGui::EndTooltip();
+				}
+				ImGui::SameLine();
+				ImGui::Text("ID : %i", tile->getID());
+			}
+		}
+		ImGui::EndChild();
 		ImGui::End();
 	}
 
