@@ -31,7 +31,7 @@ private:
 	bool ShowTabsWindow = true;
 	bool ShowMapStatsWindow = true;
 public:
-	UserInterface(MapManager & mapManager, TileManager & tileManager, MapEditor & mapEditor);
+	UserInterface(MapManager& mapManager, TileManager& tileManager, MapEditor& mapEditor);
 	~UserInterface();
 
 	void start();
