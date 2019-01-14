@@ -40,10 +40,10 @@ bool MapCamera::isMouseTileValid() const
 }
 
 
-void MapCamera::update(const int WindowWidth, const int WindowHeight, const Map *map)
+void MapCamera::update(const int WindowWidth, const int WindowHeight, const Map *map, const bool CheckInput)
 {
 	updateOrtho(WindowWidth, WindowHeight);
-	if (map != nullptr)
+	if ((CheckInput) && (map != nullptr))
 		updateMouse(WindowWidth, WindowHeight, map);
 }
 

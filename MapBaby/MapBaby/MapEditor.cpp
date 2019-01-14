@@ -9,9 +9,9 @@ MapEditor::~MapEditor()
 {
 }
 
-void MapEditor::update(const int WindowWidth, const int WindowHeight)
+void MapEditor::update(const int WindowWidth, const int WindowHeight, const bool CheckInput)
 {
-	camera.update(WindowWidth, WindowHeight, map);
+	camera.update(WindowWidth, WindowHeight, map, CheckInput);
 }
 
 void MapEditor::render(const int WindowWidth, const int WindowHeight)

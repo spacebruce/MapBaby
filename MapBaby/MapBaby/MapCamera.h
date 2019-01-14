@@ -32,7 +32,7 @@ public:
 	int getMouseTileY() const;
 	bool isMouseTileValid() const;
 
-	void update(const int WindowWidth, const int WindowHeight, const Map *map);
+	void update(const int WindowWidth, const int WindowHeight, const Map *map, const bool CheckInput);
 
 	MapCamera();
 	~MapCamera();

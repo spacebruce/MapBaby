@@ -20,7 +20,7 @@ public:
 
 	~MapEditor();
 
-	void update(const int WindowWidth, const int WindowHeight);
+	void update(const int WindowWidth, const int WindowHeight, const bool CheckInput);
 	void render(const int WindowWidth, const int WindowHeight);
 
 	void changeMap(Map * map);
