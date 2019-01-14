@@ -1,6 +1,6 @@
 #include "Map.h"
 
-Map::Map(const int width, const int height)
+Map::Map(const int width, const int height) : Resource()
 {
 	this->setSize(width, height);
 }
@@ -14,7 +14,7 @@ Map::Map(const ResourceID::Type ID, const int width, const int height) : Resourc
 	this->setSize(width, height);
 }
 
-void Map::setSize(const int width, const int height)
+void Map::setSize(const int width, const int height) 
 {
 	this->Width = Numbers::max(width, 1);
 	this->Height = Numbers::max(height, 1);
