@@ -77,7 +77,8 @@ void UserInterface::update()
 		}
 	}
 
-	mapEditor->update(this->io->DisplaySize.x, this->io->DisplaySize.y);
+	bool updateMouse = (!this->io->WantCaptureMouse);
+	mapEditor->update(this->io->DisplaySize.x, this->io->DisplaySize.y, updateMouse);
 
 	ImGui_ImplOpenGL2_NewFrame();
 	ImGui_ImplSDL2_NewFrame(this->window);
