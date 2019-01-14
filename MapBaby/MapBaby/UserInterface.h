@@ -6,6 +6,7 @@
 #include "imgui/imgui_impl_sdl.h"
 #include "imgui/imgui_impl_opengl2.h"
 
+#include "TileManager.h"
 #include "MapManager.h"
 #include "MapEditor.h"
 
@@ -20,6 +21,7 @@ private:
 	void updateWindows();
 
 	MapEditor* mapEditor;
+	TileManager * tileManager;
 	MapManager * mapManager;
 
 	void selectMap(int index);
@@ -29,7 +31,7 @@ private:
 	bool ShowTabsWindow = true;
 	bool ShowMapStatsWindow = true;
 public:
-	UserInterface(MapManager & mapManager, MapEditor & mapEditor);
+	UserInterface(MapManager & mapManager, TileManager & tileManager, MapEditor & mapEditor);
 	~UserInterface();
 
 	void start();
