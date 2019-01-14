@@ -13,5 +13,6 @@ public:
 
 	void createTile();
 
+	Tile * getTile(const int index);
 	int getCount() const;
 };

@@ -40,6 +40,13 @@ void TileManager::createTile()
 	tilePool.emplace_back(newTile);
 }
 
+Tile * TileManager::getTile(const int index)
+{
+	if ((index < 0) || (index > this->getCount()))
+		return nullptr;
+	return &(this->tilePool[index]);
+}
+
 int TileManager::getCount() const
 {
 	return (this->tilePool.size());
