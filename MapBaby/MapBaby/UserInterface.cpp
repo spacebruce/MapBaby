@@ -259,7 +259,12 @@ void UserInterface::updateWindows()
 	//Tile picker
 	if (ShowTilePickWindow)
 	{
-		ImGui::Begin("Tiles", &ShowMapStatsWindow);
+		ImGui::Begin("Tiles", &ShowTilePickWindow);
+		if (ImGui::Button("new"))
+		{
+			tileManager->createTile();
+		}
+
 		ImGui::End();
 	}
 
