@@ -260,6 +260,13 @@ void UserInterface::updateWindows()
 	if (ShowTilePickWindow)
 	{
 		ImGui::Begin("Tiles", &ShowTilePickWindow);
+		ImGui::BeginChild("TilePickerScroll", ImVec2(0,0), true, 0);
+		for (int i = 0; i < tileManager->getCount(); ++i)
+		{
+			ImGui::Text("test");
+		}
+		ImGui::EndChild();
+
 		if (ImGui::Button("new"))
 		{
 			tileManager->createTile();
