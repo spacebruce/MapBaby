@@ -39,3 +39,8 @@ void TileManager::createTile()
 
 	tilePool.emplace_back(newTile);
 }
+
+int TileManager::getCount() const
+{
+	return (this->tilePool.size());
+}

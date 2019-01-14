@@ -12,4 +12,6 @@ public:
 	~TileManager();
 
 	void createTile();
+
+	int getCount() const;
 };
