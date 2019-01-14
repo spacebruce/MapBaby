@@ -159,6 +159,7 @@
     <ClCompile Include="MapManager.cpp" />
     <ClCompile Include="Resource.cpp" />
     <ClCompile Include="ResourceID.cpp" />
+    <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="TileManager.cpp" />
     <ClCompile Include="UserInterface.cpp" />
@@ -263,6 +264,7 @@
     <ClInclude Include="MathsHelpers.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="ResourceID.h" />
+    <ClInclude Include="Texture.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="TileManager.h" />
     <ClInclude Include="UserInterface.h" />
