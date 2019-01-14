@@ -248,7 +248,6 @@ void UserInterface::updateWindows()
 		}
 		else
 		{
-			
 			ImGui::Text("test (%i)", map->getID());
 			ImGui::Separator();
 			ImGui::Text("Size : %i x %i", map->getWidth(), map->getHeight());
@@ -263,7 +262,8 @@ void UserInterface::updateWindows()
 		ImGui::BeginChild("TilePickerScroll", ImVec2(0,0), true, 0);
 		for (int i = 0; i < tileManager->getCount(); ++i)
 		{
-			ImGui::Text("test");
+			if(tileManager->getTile(i)->getTexture()->isLoaded())
+				ImGui::ImageButton((void*)tileManager->getTile(i)->getTexture()->get(), ImVec2(32, 32));
 		}
 		ImGui::EndChild();
 

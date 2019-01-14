@@ -18,9 +18,12 @@ public:
 	void createFromArray(GLuint Width, GLuint Height, GLuint * pixels);
 	void freeTexture();
 
-	GLuint getTexture() const;
+	GLuint get() const;
 	int getWidth() const;
 	int getHeight() const;
 	bool isLoaded() const;
+
+	//don't actually use this
+	void testRender(int x, int y);
 };
 

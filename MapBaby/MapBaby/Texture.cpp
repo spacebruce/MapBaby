@@ -38,7 +38,7 @@ void Texture::createFromArray(GLuint Width, GLuint Height, GLuint *pixels)
 	glBindTexture(GL_TEXTURE_2D, NULL);
 }
 
-GLuint Texture::getTexture() const
+GLuint Texture::get() const
 {
 	return this->TextureID;
 }
@@ -56,4 +56,26 @@ int Texture::getHeight() const
 bool Texture::isLoaded() const
 {
 	return (this->TextureID != 0);
+}
+
+void Texture::testRender(int x, int y)
+{
+	if (!this->isLoaded())
+		return;
+	//Remove any previous transformations
+	glLoadIdentity();
+
+	//Move to rendering point
+	glTranslatef(x, y, 0.f);
+
+	//Set texture ID
+	glBindTexture(GL_TEXTURE_2D, TextureID);
+
+	//Render textured quad
+	glBegin(GL_QUADS);
+	glTexCoord2f(0.f, 0.f); glVertex2f(0.f, 0.f);
+	glTexCoord2f(1.f, 0.f); glVertex2f(Width, 0.f);
+	glTexCoord2f(1.f, 1.f); glVertex2f(Width, Height);
+	glTexCoord2f(0.f, 1.f); glVertex2f(0.f, Height);
+	glEnd();
 }
