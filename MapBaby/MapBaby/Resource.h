@@ -8,7 +8,7 @@ private:
 public:
 	ResourceID::Type getID() const;
 
-	Resource() = default;
+	Resource();
 	Resource(ResourceID::Type ID);
 
 	virtual ~Resource();
