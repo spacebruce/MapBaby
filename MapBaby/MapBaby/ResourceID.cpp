@@ -7,16 +7,10 @@ namespace ResourceID
 
 ResourceID::Type ResourceID::Create(void)
 {
-	++Count;
-	return (Count);
-}
-
-void ResourceID::setCount(const Type value)
-{
-	ResourceID::Count = value;
-}
-
-void ResourceID::setMax(const Type value)
-{
-	ResourceID::Count = (value >= ResourceID::Count) ? (value + 1) : ResourceID::Count;
+	std::time_t timeValue;
+	std::time_t time = std::time(&timeValue);
+	ResourceID::TypeHalf half = time;
+	ResourceID::Type result = (static_cast<Type>(half) << 24) + ResourceID::Count;
+	ResourceID::Count++;
+	return result;
 }
