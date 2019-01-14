@@ -2,6 +2,8 @@
 #include <SDL.h>
 #include <SDL/SDL_opengl.h>
 
+#include "TileManager.h"
+
 #include "DrawingHelpers.h"
 #include "Map.h"
 #include "MapCamera.h"
@@ -9,12 +11,12 @@
 class MapEditor
 {
 private:
+	TileManager * tileManager;
 	Map *map;
 public:
 	MapCamera camera;
 
-	MapEditor();
-	MapEditor(Map * map);
+	MapEditor(TileManager& tileManager);
 
 	~MapEditor();
 

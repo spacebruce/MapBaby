@@ -5,9 +5,10 @@
 
 int main(int argCount, char * args[])
 {
-	MapEditor mapEditor;
 	MapManager mapManager;
 	TileManager tileManager;
+	
+	MapEditor mapEditor(tileManager);
 	UserInterface ui(mapManager, tileManager, mapEditor);
 
 	ui.start();

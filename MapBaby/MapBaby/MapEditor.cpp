@@ -1,12 +1,8 @@
 #include "MapEditor.h"
 
-MapEditor::MapEditor()
+MapEditor::MapEditor(TileManager& tileManager)
 {
-}
-
-MapEditor::MapEditor(Map * map)
-{
-	this->map = map;
+	this->tileManager = &tileManager;
 }
 
 MapEditor::~MapEditor()
