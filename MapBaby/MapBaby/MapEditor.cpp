@@ -50,6 +50,11 @@ void MapEditor::render(const int WindowWidth, const int WindowHeight)
 		Drawing::drawLine(0.0f, i * TileSize, WidthReal, i * TileSize);
 	}
 
+	if (tileManager->getCount() > 0)
+	{
+		tileManager->getTile(0)->getTexture()->testRender(0, 0);
+	}
+
 	if (camera.isMouseTileValid())
 	{
 		float mx = camera.getMouseTileX() * TileSize;
