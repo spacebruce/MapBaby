@@ -7,5 +7,7 @@ namespace ResourceID
 	extern Type Count;
 
 	Type Create(void);
-	void SetCount(const Type value);
+
+	void setCount(const Type value);
+	void setMax(const Type value);
 }

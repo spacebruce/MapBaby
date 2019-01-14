@@ -11,7 +11,12 @@ ResourceID::Type ResourceID::Create(void)
 	return (Count);
 }
 
-void ResourceID::SetCount(const Type value)
+void ResourceID::setCount(const Type value)
 {
-	ResourceID::Count = 0;
+	ResourceID::Count = value;
+}
+
+void ResourceID::setMax(const Type value)
+{
+	ResourceID::Count = (value >= ResourceID::Count) ? (value + 1) : ResourceID::Count;
 }
