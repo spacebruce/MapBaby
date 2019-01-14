@@ -2,7 +2,7 @@
 
 namespace ResourceID
 {
-	ResourceID::Type Count = 0;
+	ResourceID::Type Count = 1;
 }
 
 ResourceID::Type ResourceID::Create(void)
