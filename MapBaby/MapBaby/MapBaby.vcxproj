@@ -160,7 +160,7 @@
     <ClCompile Include="Resource.cpp" />
     <ClCompile Include="ResourceID.cpp" />
     <ClCompile Include="Texture.cpp" />
-    <ClCompile Include="Tile.cpp" />
+    <ClCompile Include="TileType.cpp" />
     <ClCompile Include="TileManager.cpp" />
     <ClCompile Include="UserInterface.cpp" />
   </ItemGroup>
@@ -265,7 +265,8 @@
     <ClInclude Include="Resource.h" />
     <ClInclude Include="ResourceID.h" />
     <ClInclude Include="Texture.h" />
-    <ClInclude Include="Tile.h" />
+    <ClInclude Include="TextureMode.h" />
+    <ClInclude Include="TileType.h" />
     <ClInclude Include="TileManager.h" />
     <ClInclude Include="UserInterface.h" />
   </ItemGroup>

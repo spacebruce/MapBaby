@@ -270,7 +270,7 @@ void UserInterface::updateWindows()
 		{
 			if (tileManager->getTile(i)->getTexture()->isLoaded())
 			{
-				Tile * tile = tileManager->getTile(i);
+				TileType * tile = tileManager->getTile(i);
 				ImGui::ImageButton((void*)tile->getTexture()->get(), ImVec2(32, 32));
 				if (ImGui::IsItemHovered())
 				{

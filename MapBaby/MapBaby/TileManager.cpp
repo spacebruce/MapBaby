@@ -10,7 +10,7 @@ TileManager::~TileManager()
 
 void TileManager::createTile()
 {
-	SharedTile newTile = std::make_shared<Tile>();
+	SharedTile newTile = std::make_shared<TileType>();
 	Texture * tex = newTile.get()->getTexture();
 
 	//dummy texture
@@ -40,7 +40,7 @@ void TileManager::createTile()
 	tilePool.emplace_back(newTile);
 }
 
-Tile * TileManager::getTile(const int index)
+TileType * TileManager::getTile(const int index)
 {
 	if ((index < 0) || (index > this->getCount()))
 		return nullptr;

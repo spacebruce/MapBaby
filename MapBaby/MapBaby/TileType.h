@@ -5,14 +5,14 @@
 
 #include "Texture.h"
 
-class Tile : public Resource
+class TileType : public Resource
 {
 private:
 	Texture texture;
 public:
-	Tile() = default;
-	Tile(const ResourceID::Type ID);
-	~Tile();
+	TileType() = default;
+	TileType(const ResourceID::Type ID);
+	~TileType();
 
 	Texture * getTexture();
 };
