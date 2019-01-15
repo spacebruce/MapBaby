@@ -16,21 +16,21 @@ void MapEditor::update(const int WindowWidth, const int WindowHeight, const bool
 
 void MapEditor::render(const int WindowWidth, const int WindowHeight)
 {
-	//Set the viewport
-	glViewport( 0, 0, WindowWidth, WindowHeight);
-	glMatrixMode(GL_PROJECTION); 
-	glLoadIdentity(); 
-	
-	auto cameraBox = camera.getBox();
-	glOrtho(cameraBox.left, cameraBox.right, cameraBox.bottom, cameraBox.top, 1.0f, -1.0f);
-	glMatrixMode(GL_MODELVIEW); 
-	glLoadIdentity(); 
-
-	glTranslatef(0.0f, 0.0f, 0.0f);
-	glPushMatrix();
-
 	if (map == nullptr)
 		return;
+
+	//Project!
+	auto cameraBox = camera.getBox();
+	glViewport(0, 0, (GLsizei)WindowWidth, (GLsizei)WindowHeight);
+	glMatrixMode(GL_PROJECTION);
+	glPushMatrix();
+	glLoadIdentity();
+
+	glOrtho(cameraBox.left, cameraBox.right, cameraBox.bottom, cameraBox.top, -1.0f, +1.0f);
+	glMatrixMode(GL_MODELVIEW);
+	glPushMatrix();
+	glLoadIdentity();
+
 
 	//Draw stuff
 	const int Width = map->getWidth();
@@ -62,6 +62,12 @@ void MapEditor::render(const int WindowWidth, const int WindowHeight)
 		Drawing::drawLine(mx, my, mx + TileSize, my + TileSize);
 		Drawing::drawLine(mx + TileSize, my, mx, my + TileSize);
 	}
+	
+	//Unproject!
+	glMatrixMode(GL_MODELVIEW);
+	glPopMatrix();
+	glMatrixMode(GL_PROJECTION);
+	glPopMatrix();
 }
 
 void MapEditor::changeMap(Map * map)

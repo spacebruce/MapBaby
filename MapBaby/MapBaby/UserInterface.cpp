@@ -285,7 +285,4 @@ void UserInterface::updateWindows()
 		ImGui::EndChild();
 		ImGui::End();
 	}
-
-	ImGui::Render();
-
 }

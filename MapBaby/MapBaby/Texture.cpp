@@ -30,10 +30,15 @@ void Texture::createFromArray(GLuint Width, GLuint Height, GLuint *pixels)
 	glGenTextures(1, &this->TextureID);
 	glBindTexture( GL_TEXTURE_2D, this->TextureID);
 
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Width, Height, 0, GL_RGBA, GL_UNSIGNED_BYTE, pixels);
+	float border[] = { 1.0f, 0.0f, 0.0f, 1.0f };
+	glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, border);
 
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Width, Height, 0, GL_RGBA, GL_UNSIGNED_BYTE, pixels);
 
 	glBindTexture(GL_TEXTURE_2D, NULL);
 }
@@ -68,8 +73,10 @@ void Texture::testRender(int x, int y)
 	//Move to rendering point
 	glTranslatef(x, y, 0.f);
 
+	glEnable(GL_TEXTURE_2D);
+
 	//Set texture ID
-	glBindTexture(GL_TEXTURE_2D, TextureID);
+	glBindTexture(GL_TEXTURE_2D, (this->TextureID));
 
 	//Render textured quad
 	glBegin(GL_QUADS);
@@ -78,4 +85,6 @@ void Texture::testRender(int x, int y)
 	glTexCoord2f(1.f, 1.f); glVertex2f(Width, Height);
 	glTexCoord2f(0.f, 1.f); glVertex2f(0.f, Height);
 	glEnd();
+
+	glDisable(GL_TEXTURE_2D);
 }
