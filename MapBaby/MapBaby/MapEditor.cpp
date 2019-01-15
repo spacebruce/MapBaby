@@ -50,9 +50,22 @@ void MapEditor::render(const int WindowWidth, const int WindowHeight)
 		Drawing::drawLine(0.0f, i * TileSize, WidthReal, i * TileSize);
 	}
 
-	if (tileManager->getCount() > 0)
+	//int clipLeft = (cameraBox.left >= 0) ? static_cast<int>(cameraBox.left) : 0;
+	//int clipTop = (cameraBox.top >= 0) ? static_cast<int>(cameraBox.top) : 0;
+
+	for (int x = 0; x < Width; ++x)
 	{
-		tileManager->getTile(0)->getTexture()->testRender(0, 0);
+		for (int y = 0; y < Height; ++y)
+		{
+			if (0)	//not yet, comrade
+			{
+				TileType * tile = tileManager->getTile(0);
+				if (tile != nullptr)
+				{
+					tile->getTexture()->testRender(x * TileSize, y * TileSize);
+				}
+			}
+		}
 	}
 
 	if (camera.isMouseTileValid())
