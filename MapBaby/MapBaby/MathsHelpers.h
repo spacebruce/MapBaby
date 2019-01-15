@@ -6,24 +6,14 @@ namespace Numbers
 	struct Rectangle
 	{
 		T left, right, top, bottom;
-		Rectangle(T left, T right, T top, T bottom)
-		{
-			this->left = left;
-			this->right = right;
-			this->top = top;
-			this->bottom = bottom;
-		}
+		Rectangle(T left, T right, T top, T bottom) : left(left), right(right), top(top), bottom(bottom) {};
 	};
 
 	template< typename T>
 	struct Point
 	{
 		T x, y;
-		Point(T x, T y)
-		{
-			this->x = x;
-			this->y = y;
-		}
+		Point(T x, T y) : x(x), y(y) {}
 	};
 
 	template <typename T>
