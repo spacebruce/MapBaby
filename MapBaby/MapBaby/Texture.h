@@ -23,6 +23,8 @@ public:
 	int getHeight() const;
 	bool isLoaded() const;
 
+	void bind();
+
 	//don't actually use this
 	void testRender(int x, int y);
 };

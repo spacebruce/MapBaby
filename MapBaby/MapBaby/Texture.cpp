@@ -63,6 +63,11 @@ bool Texture::isLoaded() const
 	return (this->TextureID != 0);
 }
 
+void Texture::bind()
+{
+	glBindTexture(GL_TEXTURE_2D, (this->TextureID));
+}
+
 void Texture::testRender(int x, int y)
 {
 	if (!this->isLoaded())
@@ -72,8 +77,6 @@ void Texture::testRender(int x, int y)
 
 	//Move to rendering point
 	glTranslatef(x, y, 0.f);
-
-	glEnable(GL_TEXTURE_2D);
 
 	//Set texture ID
 	glBindTexture(GL_TEXTURE_2D, (this->TextureID));
@@ -85,6 +88,4 @@ void Texture::testRender(int x, int y)
 	glTexCoord2f(1.f, 1.f); glVertex2f(Width, Height);
 	glTexCoord2f(0.f, 1.f); glVertex2f(0.f, Height);
 	glEnd();
-
-	glDisable(GL_TEXTURE_2D);
 }
