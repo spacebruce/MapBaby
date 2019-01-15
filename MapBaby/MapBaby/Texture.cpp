@@ -73,8 +73,10 @@ void Texture::testRender(int x, int y)
 	//Move to rendering point
 	glTranslatef(x, y, 0.f);
 
+	glEnable(GL_TEXTURE_2D);
+
 	//Set texture ID
-	glBindTexture(GL_TEXTURE_2D, TextureID);
+	glBindTexture(GL_TEXTURE_2D, (this->TextureID));
 
 	//Render textured quad
 	glBegin(GL_QUADS);
@@ -83,4 +85,6 @@ void Texture::testRender(int x, int y)
 	glTexCoord2f(1.f, 1.f); glVertex2f(Width, Height);
 	glTexCoord2f(0.f, 1.f); glVertex2f(0.f, Height);
 	glEnd();
+
+	glDisable(GL_TEXTURE_2D);
 }
