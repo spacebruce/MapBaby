@@ -10,8 +10,8 @@ TileManager::~TileManager()
 
 void TileManager::createTile()
 {
-	Tile newTile;
-	Texture * tex = newTile.getTexture();
+	SharedTile newTile = std::make_shared<Tile>();
+	Texture * tex = newTile.get()->getTexture();
 
 	//dummy texture
 	constexpr static int width = 16;
@@ -44,7 +44,7 @@ Tile * TileManager::getTile(const int index)
 {
 	if ((index < 0) || (index > this->getCount()))
 		return nullptr;
-	return &(this->tilePool[index]);
+	return (this->tilePool[index].get());
 }
 
 int TileManager::getCount() const
