@@ -20,6 +20,11 @@ public:
 	explicit operator Type() const;
 };
 
+inline ResourceID ResourceEmpty(void)
+{
+	return ResourceID(0);
+}
+
 inline bool operator==(const ResourceID &left, const ResourceID &right)
 {
 	return(left.get() == right.get());
