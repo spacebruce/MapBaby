@@ -66,19 +66,33 @@ void UserInterface::render()
 
 void UserInterface::update()
 {
+	bool sendClick = false;
+
 	SDL_Event event;
 	while (SDL_PollEvent(&event))
 	{
 		ImGui_ImplSDL2_ProcessEvent(&event);
-		if (event.type == SDL_QUIT)
+		switch(event.type)
 		{
+		case SDL_QUIT:
 			finished = true;
 			return;
+		break;
+		case SDL_MOUSEBUTTONDOWN:
+			sendClick = true;
+		break;
 		}
 	}
 
 	bool updateMouse = (!this->io->WantCaptureMouse);
 	mapEditor->update(this->io->DisplaySize.x, this->io->DisplaySize.y, updateMouse);
+
+	if (updateMouse)
+	{
+		if(sendClick)
+			mapEditor->click();
+	}
+
 
 	ImGui_ImplOpenGL2_NewFrame();
 	ImGui_ImplSDL2_NewFrame(this->window);
