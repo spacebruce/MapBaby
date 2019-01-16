@@ -271,7 +271,12 @@ void UserInterface::updateWindows()
 			if (tileManager->getTile(i)->getTexture()->isLoaded())
 			{
 				TileType * tile = tileManager->getTile(i);
-				ImGui::ImageButton((void*)tile->getTexture()->get(), ImVec2(32, 32));
+				bool selected = (tileManager->getSelectedID() == tile->getID());
+
+				if (ImGui::ImageButton((void*)tile->getTexture()->get(), ImVec2(32, 32)))
+				{
+					tileManager->setSelected(tile->getID());
+				};
 				if (ImGui::IsItemHovered())
 				{
 					ImGui::BeginTooltip();
@@ -280,6 +285,11 @@ void UserInterface::updateWindows()
 				}
 				ImGui::SameLine();
 				ImGui::Text("ID : %i", tile->getID());
+				if (selected)
+				{
+					ImGui::SameLine();
+					ImGui::Text("SELECTED");
+				}
 			}
 		}
 		ImGui::EndChild();
