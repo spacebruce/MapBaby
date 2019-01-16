@@ -231,7 +231,7 @@ void UserInterface::updateWindows()
 		}
 		if(ImGui::Button("+"))
 		{
-			mapManager->newMap(Map(0,0));
+			mapManager->newMap();
 			selectMap(mapManager->getCount() - 1);
 		}
 		ImGui::End();
