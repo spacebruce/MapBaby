@@ -52,18 +52,18 @@ void MapEditor::render(const int WindowWidth, const int WindowHeight)
 
 	//int clipLeft = (cameraBox.left >= 0) ? static_cast<int>(cameraBox.left) : 0;
 	//int clipTop = (cameraBox.top >= 0) ? static_cast<int>(cameraBox.top) : 0;
+	//int clipRight = (cameraBox.right < WidthReal) ? static_cast<int>(cameraBox.right) : static_cast<int>(WidthReal);
+	//int clipBottom = (cameraBox.bottom < HeightReal) ? static_cast<int>(cameraBox.bottom) : static_cast<int>(HeightReal);
 
 	for (int x = 0; x < Width; ++x)
 	{
 		for (int y = 0; y < Height; ++y)
 		{
-			if (0)	//not yet, comrade
+			ResourceID::Type tileID = map->getTile(x, y)->tileID;
+			if(tileID != ResourceID::Invalid)
 			{
-				TileType * tile = tileManager->getTile(0);
-				if (tile != nullptr)
-				{
-					tile->getTexture()->testRender(x * TileSize, y * TileSize);
-				}
+				TileType * tile = tileManager->getTile(tileID);
+				tile->getTexture()->testRender(x * TileSize, y * TileSize);
 			}
 		}
 	}
