@@ -38,6 +38,7 @@ void TileManager::createTile()
 	tex->createFromArray(width, height, pixels);
 
 	tilePool.emplace_back(newTile);
+	tileLookup.emplace(std::make_pair(newTile.get()->getID(), &newTile));
 }
 
 TileType * TileManager::getTile(const int index)
