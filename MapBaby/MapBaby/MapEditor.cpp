@@ -31,7 +31,6 @@ void MapEditor::render(const int WindowWidth, const int WindowHeight)
 	glPushMatrix();
 	glLoadIdentity();
 
-
 	//Draw stuff
 	const int Width = map->getWidth();
 	const int Height = map->getHeight();
@@ -62,14 +61,13 @@ void MapEditor::render(const int WindowWidth, const int WindowHeight)
 		for (int y = clipTop; y < clipBottom; ++y)
 		{
 			Drawing::drawRectangleOutline(x * TileSize, y * TileSize, (x + 1) * TileSize, (y + 1)*TileSize);
-			/*
-			ResourceID::Type tileID = map->getTile(x, y)->tileID;
-			if(!tileID.invalid())
+			
+			ResourceID resource = map->getTile(x, y)->tileID;
+			if (!resource.isInvalid())
 			{
-				TileType * tile = tileManager->getTile(tileID);
+				TileType * tile = tileManager->getTile(resource);
 				tile->getTexture()->testRender(x * TileSize, y * TileSize);
 			}
-			*/
 		}
 	}
 
