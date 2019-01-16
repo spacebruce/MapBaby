@@ -12,7 +12,7 @@ public:
 	using SharedTile = std::shared_ptr<TileType>;
 private:
 	std::vector<SharedTile> tilePool;
-	std::map<ResourceID::Type, SharedTile*> tileLookup;
+	std::map<ResourceID, SharedTile*> tileLookup;
 public:
 	TileManager();
 	~TileManager();
@@ -20,7 +20,7 @@ public:
 	void createTile();
 
 	TileType * getTile(const int index);
-	TileType * getTile(const ResourceID::Type lookup);
+	TileType * getTile(const ResourceID lookup);
 
 	int getCount() const;
 };

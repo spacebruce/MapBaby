@@ -1,6 +1,6 @@
 #include "TileType.h"
 
-TileType::TileType(const ResourceID::Type ID) : Resource(ID)
+TileType::TileType(const ResourceID ID) : Resource(ID)
 {}
 
 TileType::~TileType()

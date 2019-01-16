@@ -21,8 +21,8 @@ public:
 	}
 
 	Map(const int width, const int height);
-	Map(const ResourceID::Type ID);
-	Map(const ResourceID::Type ID, const int width, const int height);
+	Map(const ResourceID ID);
+	Map(const ResourceID ID, const int width, const int height);
 
 	void resize(const int width, const int height);
 

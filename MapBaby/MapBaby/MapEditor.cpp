@@ -40,6 +40,7 @@ void MapEditor::render(const int WindowWidth, const int WindowHeight)
 	const int WidthReal = Width * TileSize;
 	const int HeightReal = Height * TileSize;
 	
+	/*
 	Drawing::drawRectangleOutline(0, 0, WidthReal, HeightReal);
 	for (int i = 0; i < Width; ++i)
 	{
@@ -49,22 +50,26 @@ void MapEditor::render(const int WindowWidth, const int WindowHeight)
 	{
 		Drawing::drawLine(0.0f, i * TileSize, WidthReal, i * TileSize);
 	}
+	*/
 
-	//int clipLeft = (cameraBox.left >= 0) ? static_cast<int>(cameraBox.left) : 0;
-	//int clipTop = (cameraBox.top >= 0) ? static_cast<int>(cameraBox.top) : 0;
-	//int clipRight = (cameraBox.right < WidthReal) ? static_cast<int>(cameraBox.right) : static_cast<int>(WidthReal);
-	//int clipBottom = (cameraBox.bottom < HeightReal) ? static_cast<int>(cameraBox.bottom) : static_cast<int>(HeightReal);
+	int clipLeft = static_cast<int>((cameraBox.left >= 0) ? (cameraBox.left / TileSize) : 0);
+	int clipTop = static_cast<int>((cameraBox.top >= 0) ? (cameraBox.top / TileSize) : 0);
+	int clipRight = static_cast<int>((cameraBox.right < WidthReal) ? ceil(cameraBox.right / TileSize) : Width);
+	int clipBottom = static_cast<int>((cameraBox.bottom < HeightReal) ? ceil(cameraBox.bottom/ TileSize): Height);
 
-	for (int x = 0; x < Width; ++x)
+	for (int x = clipLeft; x < clipRight; ++x)
 	{
-		for (int y = 0; y < Height; ++y)
+		for (int y = clipTop; y < clipBottom; ++y)
 		{
+			Drawing::drawRectangleOutline(x * TileSize, y * TileSize, (x + 1) * TileSize, (y + 1)*TileSize);
+			/*
 			ResourceID::Type tileID = map->getTile(x, y)->tileID;
-			if(tileID != ResourceID::Invalid)
+			if(!tileID.invalid())
 			{
 				TileType * tile = tileManager->getTile(tileID);
 				tile->getTexture()->testRender(x * TileSize, y * TileSize);
 			}
+			*/
 		}
 	}
 

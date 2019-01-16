@@ -4,5 +4,5 @@
 
 struct MapTile
 {
-	ResourceID::Type tileID;
+	ResourceID tileID;
 };

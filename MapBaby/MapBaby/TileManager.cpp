@@ -48,7 +48,7 @@ TileType * TileManager::getTile(const int index)
 	return (this->tilePool[index].get());
 }
 
-TileType * TileManager::getTile(const ResourceID::Type lookup)
+TileType * TileManager::getTile(const ResourceID lookup)
 {
 	if (tileLookup.count(lookup) == 0)
 		return nullptr;

@@ -4,12 +4,12 @@
 class Resource
 {
 private:
-	ResourceID::Type ID = ResourceID::Invalid;
+	ResourceID ID = ResourceID();
 public:
-	ResourceID::Type getID() const;
+	ResourceID getID() const;
 
-	Resource();
-	Resource(ResourceID::Type ID);
+	Resource() = default;
+	Resource(ResourceID ID);
 
 	virtual ~Resource();
 };

@@ -11,7 +11,7 @@ private:
 	Texture texture;
 public:
 	TileType() = default;
-	TileType(const ResourceID::Type ID);
+	TileType(const ResourceID ID);
 	~TileType();
 
 	Texture * getTexture();

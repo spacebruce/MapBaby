@@ -5,11 +5,11 @@ Map::Map(const int width, const int height) : Resource()
 	this->resize(width, height);
 }
 
-Map::Map(const ResourceID::Type ID) : Resource(ID)
+Map::Map(const ResourceID ID) : Resource(ID)
 {
 }
 
-Map::Map(const ResourceID::Type ID, const int width, const int height) : Resource(ID)
+Map::Map(const ResourceID ID, const int width, const int height) : Resource(ID)
 {
 	this->resize(width, height);
 }

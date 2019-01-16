@@ -205,7 +205,7 @@ void UserInterface::updateWindows()
 
 		for (auto i = 0; i < mapManager->getCount(); ++i)
 		{
-			ImGui::PushID(static_cast<int>(mapManager->getMap(i)->getID()));
+			ImGui::PushID(static_cast<std::uint64_t>(mapManager->getMap(i)->getID()));
 
 			if (mapManager->isCurrent(i))
 			{

@@ -1,16 +1,31 @@
 #include "ResourceID.h"
 
-namespace ResourceID
+ResourceID::ResourceID()
 {
-	ResourceID::Type Count = 1;
+	auto time = std::chrono::high_resolution_clock::now();
+	auto duration = time.time_since_epoch();
+	auto ticks = duration.count();
+
+	this->value = static_cast<Type>(ticks);
 }
 
-ResourceID::Type ResourceID::Create(void)
+ResourceID::ResourceID(const Type value)
 {
-	std::time_t timeValue;
-	std::time_t time = std::time(&timeValue);
-	ResourceID::TypeHalf half = time;
-	ResourceID::Type result = (static_cast<Type>(half) << 24) + ResourceID::Count;
-	ResourceID::Count++;
-	return result;
+	this->value = value;
 }
+
+ResourceID::Type ResourceID::get() const
+{
+	return this->value;
+}
+
+ResourceID::operator Type() const
+{
+	return this->value;
+}
+
+bool ResourceID::isInvalid() const
+{
+	return(value == 0);
+}
+

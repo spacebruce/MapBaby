@@ -1,14 +1,53 @@
 #pragma once
+
 #include <cstdint>
-#include <ctime>
+#include <chrono>
 
-namespace ResourceID
+
+class ResourceID
 {
-	using Type = std::uint32_t;
-	using TypeHalf = std::uint16_t;
-	constexpr static Type Invalid = 0;
+private:
+	using Type = std::uint64_t;
+	Type value = 0;
 
-	extern Type Count;
+public:
+	ResourceID(const Type value);
+	ResourceID();
 
-	Type Create(void);
+	Type get() const;
+	bool isInvalid() const;
+
+	explicit operator Type() const;
+};
+
+inline bool operator==(const ResourceID &left, const ResourceID &right)
+{
+	return(left.get() == right.get());
 }
+
+inline bool operator!=(const ResourceID &left, const ResourceID &right)
+{
+	return(left.get() != right.get());
+}
+
+inline bool operator>(const ResourceID &left, const ResourceID &right)
+{
+	return(left.get() > right.get());
+}
+
+inline bool operator<(const ResourceID &left, const ResourceID &right)
+{
+	return(left.get() < right.get());
+}
+
+inline bool operator>=(const ResourceID &left, const ResourceID &right)
+{
+	return(left.get() >= right.get());
+}
+
+inline bool operator<=(const ResourceID &left, const ResourceID &right)
+{
+	return(left.get() <= right.get());
+}
+
+
