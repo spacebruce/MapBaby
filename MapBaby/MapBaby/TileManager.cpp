@@ -41,6 +41,31 @@ void TileManager::createTile()
 	tileLookup.emplace(std::make_pair(newTile.get()->getID(), &newTile));
 }
 
+int TileManager::getSelectedIndex() const
+{
+	for (int i = 0; i < this->tilePool.size(); ++i)
+	{
+		if (this->tilePool[i].get()->getID() == this->selectedTile)
+			return i;
+	}
+	return -1;
+}
+
+ResourceID TileManager::getSelectedID() const
+{
+	return selectedTile;
+}
+
+void TileManager::setSelected(const int index)
+{
+	this->selectedTile = this->tilePool[index].get()->getID();
+}
+
+void TileManager::setSelected(const ResourceID id)
+{
+	this->selectedTile = id;
+}
+
 TileType * TileManager::getTile(const int index)
 {
 	if ((index < 0) || (index > this->getCount()))

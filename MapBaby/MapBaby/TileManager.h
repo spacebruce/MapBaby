@@ -11,6 +11,8 @@ class TileManager
 public:
 	using SharedTile = std::shared_ptr<TileType>;
 private:
+	ResourceID selectedTile = ResourceID(0);
+
 	std::vector<SharedTile> tilePool;
 	std::map<ResourceID, SharedTile*> tileLookup;
 public:
@@ -18,6 +20,11 @@ public:
 	~TileManager();
 
 	void createTile();
+
+	int getSelectedIndex() const;
+	ResourceID getSelectedID() const;
+	void setSelected(const int index);
+	void setSelected(const ResourceID id);
 
 	TileType * getTile(const int index);
 	TileType * getTile(const ResourceID lookup);
