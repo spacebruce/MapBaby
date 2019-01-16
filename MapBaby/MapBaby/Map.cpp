@@ -38,11 +38,11 @@ MapTile * Map::getTile(const int x, const int y)
 	return &tiles[x][y];
 }
 
-void Map::setTile(const int x, const int y, MapTile * tile)
+void Map::setTile(const int x, const int y, MapTile tile)
 {
 	if (!isValidPosition(x, y))
 		return;
-	tiles[x][y] = *tile;
+	tiles[x][y] = tile;
 }
 
 int Map::getWidth() const

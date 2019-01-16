@@ -29,7 +29,7 @@ public:
 	bool isValidPosition(const int x, const int y) const;
 
 	MapTile * getTile(const int x, const int y);
-	void setTile(const int x, const int y, MapTile * tile);
+	void setTile(const int x, const int y, MapTile tile);
 
 	int getWidth() const;
 	int getHeight() const;
