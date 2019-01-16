@@ -60,7 +60,6 @@ void MapEditor::render(const int WindowWidth, const int WindowHeight)
 	{
 		for (int y = clipTop; y < clipBottom; ++y)
 		{
-			Drawing::drawRectangleOutline(x * TileSize, y * TileSize, (x + 1) * TileSize, (y + 1)*TileSize);
 			
 			ResourceID resource = map->getTile(x, y)->tileID;
 			if (!resource.isInvalid())
@@ -89,4 +88,16 @@ void MapEditor::render(const int WindowWidth, const int WindowHeight)
 void MapEditor::changeMap(Map * map)
 {
 	this->map = map;
+}
+
+void MapEditor::click()
+{
+	ResourceID tileID = tileManager->getSelectedID();
+	if (tileID.isInvalid())
+		return;
+	if (!camera.isMouseTileValid())
+		return;
+
+	MapTile tile = MapTile(tileID);
+	map->setTile(camera.getMouseTileX(), camera.getMouseTileY(), tile);
 }
