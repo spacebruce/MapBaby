@@ -4,5 +4,5 @@
 
 struct MapTile
 {
-	ResourceID tileID;
+	ResourceID tileID = ResourceID(0);
 };
