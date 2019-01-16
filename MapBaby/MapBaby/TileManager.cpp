@@ -20,17 +20,17 @@ void TileManager::createTile()
 	for (int i = 0; i < (width * height); ++i)
 	{
 		GLubyte* colour = (GLubyte*)&pixels[i];
-		if (i & 1)
+		if ((i & 1) != 0)
 		{
 			colour[0] = 0xff;
-			colour[1] = 0x00;
-			colour[2] = 0x00;
+			colour[1] = 0xff;
+			colour[2] = 0xff;
 			colour[3] = 0xff;
 		}
 		else
 		{
 			colour[0] = 0x00;
-			colour[1] = 0xff;
+			colour[1] = 0x00;
 			colour[2] = 0x00;
 			colour[3] = 0xff;
 		}
