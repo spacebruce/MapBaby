@@ -1,6 +1,8 @@
 #pragma once
+#include <vector>
 #include "MathsHelpers.h"
 
+#include "MapTile.h"
 #include "ResourceID.h"
 #include "Resource.h"
 
@@ -10,6 +12,7 @@ private:
 	int Width = 12;
 	int Height = 12;
 	int TileSize = 16;
+	std::vector<std::vector<MapTile>> tiles;
 public:
 	Map() = default;
 	Map(const int width, const int height);
