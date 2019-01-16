@@ -20,5 +20,7 @@ public:
 	void createTile();
 
 	TileType * getTile(const int index);
+	TileType * getTile(const ResourceID::Type lookup);
+
 	int getCount() const;
 };
