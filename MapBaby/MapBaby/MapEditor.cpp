@@ -67,6 +67,10 @@ void MapEditor::render(const int WindowWidth, const int WindowHeight)
 				TileManager::SharedTile tile = tileManager->getTile(resource);
 				tile->getTexture()->testRender(x * TileSize, y * TileSize);
 			}
+			else
+			{
+				Drawing::drawRectangleOutline(x * TileSize, y * TileSize, (x + 1) * TileSize, (y + 1)*TileSize);
+			}
 		}
 	}
 
