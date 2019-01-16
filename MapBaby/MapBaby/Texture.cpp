@@ -89,4 +89,6 @@ void Texture::testRender(int x, int y)
 	glTexCoord2f(1.f, 1.f); glVertex2f(Width, Height);
 	glTexCoord2f(0.f, 1.f); glVertex2f(0.f, Height);
 	glEnd();
+
+	glLoadIdentity();
 }
