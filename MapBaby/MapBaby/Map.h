@@ -15,7 +15,11 @@ private:
 	int height = 12;
 	int tileSize = 16;
 public:
-	Map() = default;
+	Map(void) : Resource()
+	{
+		this->resize(width, height);
+	}
+
 	Map(const int width, const int height);
 	Map(const ResourceID::Type ID);
 	Map(const ResourceID::Type ID, const int width, const int height);
