@@ -14,7 +14,7 @@ private:
 	ResourceID selectedTile = ResourceID(0);
 
 	std::vector<SharedTile> tilePool;
-	std::map<ResourceID, SharedTile*> tileLookup;
+	std::map<ResourceID, SharedTile> tileLookup;
 public:
 	TileManager();
 	~TileManager();
@@ -26,8 +26,8 @@ public:
 	void setSelected(const int index);
 	void setSelected(const ResourceID id);
 
-	TileType * getTile(const int index);
-	TileType * getTile(const ResourceID lookup);
+	SharedTile getTile(const int index);
+	SharedTile getTile(const ResourceID lookup);
 
 	int getCount() const;
 };

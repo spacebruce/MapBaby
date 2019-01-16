@@ -270,12 +270,12 @@ void UserInterface::updateWindows()
 		{
 			if (tileManager->getTile(i)->getTexture()->isLoaded())
 			{
-				TileType * tile = tileManager->getTile(i);
-				bool selected = (tileManager->getSelectedID() == tile->getID());
+				TileManager::SharedTile tile = tileManager->getTile(i);
+				bool selected = (tileManager->getSelectedID() == tile.get()->getID());
 
-				if (ImGui::ImageButton((void*)tile->getTexture()->get(), ImVec2(32, 32)))
+				if (ImGui::ImageButton((void*)tile.get()->getTexture()->get(), ImVec2(32, 32)))
 				{
-					tileManager->setSelected(tile->getID());
+					tileManager->setSelected(tile.get()->getID());
 				};
 				if (ImGui::IsItemHovered())
 				{

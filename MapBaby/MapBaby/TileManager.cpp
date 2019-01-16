@@ -38,7 +38,7 @@ void TileManager::createTile()
 	tex->createFromArray(width, height, pixels);
 
 	tilePool.emplace_back(newTile);
-	tileLookup.emplace(std::make_pair(newTile.get()->getID(), &newTile));
+	tileLookup.emplace(std::make_pair(newTile.get()->getID(), newTile));
 }
 
 int TileManager::getSelectedIndex() const
@@ -66,18 +66,18 @@ void TileManager::setSelected(const ResourceID id)
 	this->selectedTile = id;
 }
 
-TileType * TileManager::getTile(const int index)
+TileManager::SharedTile TileManager::getTile(const int index)
 {
 	if ((index < 0) || (index > this->getCount()))
 		return nullptr;
-	return (this->tilePool[index].get());
+	return (this->tilePool[index]);
 }
 
-TileType * TileManager::getTile(const ResourceID lookup)
+TileManager::SharedTile TileManager::getTile(const ResourceID lookup)
 {
 	if (tileLookup.count(lookup) == 0)
 		return nullptr;
-	return (this->tileLookup[lookup]->get());
+	return (this->tileLookup[lookup]);
 }
 
 int TileManager::getCount() const

@@ -64,7 +64,7 @@ void MapEditor::render(const int WindowWidth, const int WindowHeight)
 			ResourceID resource = map->getTile(x, y)->tileID;
 			if (!resource.isInvalid())
 			{
-				TileType * tile = tileManager->getTile(resource);
+				TileManager::SharedTile tile = tileManager->getTile(resource);
 				tile->getTexture()->testRender(x * TileSize, y * TileSize);
 			}
 		}
