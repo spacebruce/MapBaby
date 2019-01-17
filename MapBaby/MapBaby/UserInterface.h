@@ -33,6 +33,7 @@ private:
 	bool ShowViewWindow = true;
 	bool ShowTabsWindow = true;
 	bool ShowMapStatsWindow = true;
+	bool ShowPaletteWindow = true;
 public:
 	UserInterface(MapManager& mapManager, TileManager& tileManager, PaletteManager& paletteManager, MapEditor& mapEditor);
 	~UserInterface();
