@@ -12,11 +12,16 @@ public:
 	PaletteManager();
 	~PaletteManager() = default;
 
-	Palette & getCurrent();
+	std::size_t getCurrentIndex();
+	Palette * getCurrentPalette();
+	Palette * getPalette(std::size_t index);
+
 	void setCurrent(std::size_t index);
 
-	std::size_t getCurrentIndex();
-	Palette & getPalette(std::size_t index);
+	void addPalette(Palette & palette);
+	void deletePalette(const std::size_t index);
+
+	bool empty();
 
 	std::size_t getCount();
 };
