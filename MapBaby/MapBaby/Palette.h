@@ -12,13 +12,13 @@ public:
 	Palette();
 	~Palette();
 
-	PaletteEntry getEntry(int index);
+	PaletteEntry getEntry(std::size_t index);
 	int getSize(void);
 
-	void setSize(int size);
+	void setSize(std::size_t size);
 
 	void add(PaletteEntry entry);
-	void remove(int index);
+	void remove(std::size_t index);
 
 	std::string Name;
 };

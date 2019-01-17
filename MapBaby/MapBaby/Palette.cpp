@@ -8,7 +8,7 @@ Palette::~Palette()
 {
 }
 
-PaletteEntry Palette::getEntry(int index)
+PaletteEntry Palette::getEntry(std::size_t index)
 {
 	if (index > this->palette.size())
 	{
@@ -22,7 +22,7 @@ int Palette::getSize(void)
 	return this->maxSize;
 }
 
-void Palette::setSize(int size)
+void Palette::setSize(std::size_t size)
 {
 	this->maxSize = size;
 	this->palette.resize(size);
@@ -36,7 +36,7 @@ void Palette::add(PaletteEntry entry)
 	}
 }
 
-void Palette::remove(int index)
+void Palette::remove(std::size_t index)
 {
 	palette.erase(palette.begin() + index);
 }
