@@ -7,8 +7,7 @@ struct PaletteEntry
 	GLubyte r;
 	GLubyte g;
 	GLubyte b;
-	std::uint8_t out;
 
 	PaletteEntry() = default;
-	PaletteEntry(GLubyte r, GLubyte g, GLubyte b, std::uint8_t out) : r(r), g(g), b(b), out(out) {};
+	PaletteEntry(GLubyte r, GLubyte g, GLubyte b) : r(r), g(g), b(b) {};
 };
