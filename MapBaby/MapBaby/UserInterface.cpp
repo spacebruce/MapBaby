@@ -273,14 +273,32 @@ void UserInterface::updateWindows()
 	//Tile picker
 	if (ShowTilePickWindow)
 	{
-		ImGui::Begin("Tiles", &ShowTilePickWindow);
+		ImGui::Begin("Tiles", &ShowTilePickWindow, ImGuiWindowFlags_AlwaysAutoResize);
 
 		if (ImGui::Button("new"))
 		{
 			tileManager->createTile();
 		}
 
-		ImGui::BeginChild("TilePickerScroll", ImVec2(0,0), true, 0);
+		ImGui::SameLine();
+
+		//Palette picker
+		std::size_t currentPalette = paletteManager->getCurrentIndex();
+		if (ImGui::BeginCombo("##PalettePicker", paletteManager->getCurrent().name.c_str()))
+		{
+			for (int i = 0; i < paletteManager->getCount(); ++i)
+			{
+				bool selected = (i == currentPalette);
+				if (ImGui::Selectable(paletteManager->getPalette(i).name.c_str(), selected))
+					currentPalette = i;
+				if (selected)
+					ImGui::SetItemDefaultFocus();
+			}
+			paletteManager->setCurrent(currentPalette);
+			ImGui::EndCombo();
+		}
+
+		ImGui::BeginChild("TilePickerScroll", ImVec2(300,300), true, 0);
 		for (int i = 0; i < tileManager->getCount(); ++i)
 		{
 			if (tileManager->getTile(i)->getTexture()->isLoaded())

@@ -1,5 +1,6 @@
 #pragma once
 #include <stdio.h>
+#include <string>
 #include <SDL.h>
 #include <SDL/SDL_opengl.h>
 #include "imgui/imgui.h"
