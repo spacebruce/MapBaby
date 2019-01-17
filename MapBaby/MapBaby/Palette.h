@@ -7,9 +7,11 @@ class Palette
 {
 private:
 	std::vector<PaletteEntry> palette;
-	int maxSize = 2;
+	std::size_t maxSize = 2;
 public:
-	Palette();
+	Palette() = default;
+	Palette(std::size_t maxSize);
+	Palette(std::string name, std::size_t maxSize);
 	~Palette();
 
 	PaletteEntry getEntry(std::size_t index);
@@ -20,5 +22,5 @@ public:
 	void add(PaletteEntry entry);
 	void remove(std::size_t index);
 
-	std::string Name;
+	std::string name;
 };

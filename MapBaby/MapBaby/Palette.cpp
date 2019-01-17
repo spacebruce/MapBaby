@@ -1,8 +1,10 @@
 #include "Palette.h"
 
-Palette::Palette()
-{
-}
+Palette::Palette(std::size_t maxSize) : maxSize(maxSize)
+{}
+
+Palette::Palette(std::string name, std::size_t maxSize) : name(name), maxSize(maxSize)
+{}
 
 Palette::~Palette()
 {
@@ -12,7 +14,7 @@ PaletteEntry Palette::getEntry(std::size_t index)
 {
 	if (index > this->palette.size())
 	{
-		return PaletteEntry(0x00, 0x00, 0x00, index);
+		return PaletteEntry(0x00, 0x00, 0x00);
 	}
 	return this->palette[index];
 }
