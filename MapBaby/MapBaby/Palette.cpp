@@ -30,6 +30,11 @@ void Palette::setSize(std::size_t size)
 	this->palette.resize(size);
 }
 
+void Palette::set(std::size_t index, PaletteEntry entry)
+{
+	palette[index] = entry;
+}
+
 void Palette::add(PaletteEntry entry)
 {
 	if (this->palette.size() < this->maxSize)

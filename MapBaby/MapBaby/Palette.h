@@ -19,6 +19,7 @@ public:
 
 	void setSize(std::size_t size);
 
+	void set(std::size_t index, PaletteEntry entry);
 	void add(PaletteEntry entry);
 	void remove(std::size_t index);
 
