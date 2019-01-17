@@ -87,6 +87,9 @@
     <ClCompile Include="TileType.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="paletteManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Include\SDL\begin_code.h">
@@ -399,6 +402,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PaletteEntry.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="paletteManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
