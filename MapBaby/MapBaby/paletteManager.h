@@ -1,15 +1,22 @@
 #pragma once
 
+#include <vector>
 #include "Palette.h"
 
-/*
-expand this later
-*/
 class PaletteManager
 {
+private:
+	std::vector<Palette> palettes;
+	std::size_t current = 0;
 public:
-	PaletteManager() = default;
+	PaletteManager();
 	~PaletteManager() = default;
 
-	Palette palette;
+	Palette & getCurrent();
+	void setCurrent(std::size_t index);
+
+	std::size_t getCurrentIndex();
+	Palette & getPalette(std::size_t index);
+
+	std::size_t getCount();
 };
