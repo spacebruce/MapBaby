@@ -8,6 +8,7 @@
 
 #include "TileManager.h"
 #include "MapManager.h"
+#include "PaletteManager.h"
 #include "MapEditor.h"
 
 class UserInterface
@@ -20,6 +21,7 @@ private:
 	void render();
 	void updateWindows();
 
+	PaletteManager* paletteManager;
 	MapEditor* mapEditor;
 	TileManager * tileManager;
 	MapManager * mapManager;
@@ -31,7 +33,7 @@ private:
 	bool ShowTabsWindow = true;
 	bool ShowMapStatsWindow = true;
 public:
-	UserInterface(MapManager& mapManager, TileManager& tileManager, MapEditor& mapEditor);
+	UserInterface(MapManager& mapManager, TileManager& tileManager, PaletteManager& paletteManager, MapEditor& mapEditor);
 	~UserInterface();
 
 	void start();

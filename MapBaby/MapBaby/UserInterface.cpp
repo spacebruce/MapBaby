@@ -1,11 +1,12 @@
 #include "UserInterface.h"
 
 
-UserInterface::UserInterface(MapManager& mapManager, TileManager& tileManager, MapEditor& mapEditor)
+UserInterface::UserInterface(MapManager& mapManager, TileManager& tileManager, PaletteManager& paletteManager, MapEditor& mapEditor)
 {
 	this->mapManager = &mapManager;
 	this->tileManager = &tileManager;
 	this->mapEditor = &mapEditor;
+	this->paletteManager = &paletteManager;
 }
 
 UserInterface::~UserInterface()
