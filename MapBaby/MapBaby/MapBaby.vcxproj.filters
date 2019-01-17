@@ -87,7 +87,10 @@
     <ClCompile Include="TileType.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="paletteManager.cpp">
+    <ClCompile Include="PaletteManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Palette.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -404,7 +407,10 @@
     <ClInclude Include="PaletteEntry.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="paletteManager.h">
+    <ClInclude Include="PaletteManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Palette.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

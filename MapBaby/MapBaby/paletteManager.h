@@ -1,8 +1,15 @@
 #pragma once
 
-class paletteManager
+#include "Palette.h"
+
+/*
+expand this later
+*/
+class PaletteManager
 {
 public:
-	paletteManager();
-	~paletteManager();
+	PaletteManager() = default;
+	~PaletteManager() = default;
+
+	Palette palette;
 };
