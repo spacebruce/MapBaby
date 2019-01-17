@@ -10,9 +10,9 @@ Palette::~Palette()
 {
 }
 
-PaletteEntry Palette::getEntry(std::size_t index)
+PaletteEntry & Palette::getEntry(std::size_t index)
 {
-	if (index > this->palette.size())
+	if (index >= this->palette.size())
 	{
 		return PaletteEntry(0x00, 0x00, 0x00);
 	}
