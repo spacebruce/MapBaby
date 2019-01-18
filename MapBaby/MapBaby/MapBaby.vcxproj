@@ -164,7 +164,9 @@
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TileType.cpp" />
     <ClCompile Include="TileManager.cpp" />
+    <ClCompile Include="UIPaletteWindow.cpp" />
     <ClCompile Include="UserInterface.cpp" />
+    <ClCompile Include="WindowBase.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DrawingHelpers.h" />
@@ -272,7 +274,9 @@
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TileType.h" />
     <ClInclude Include="TileManager.h" />
+    <ClInclude Include="UIPaletteWindow.h" />
     <ClInclude Include="UserInterface.h" />
+    <ClInclude Include="WindowBase.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Lib\x64\SDL2.dll" />

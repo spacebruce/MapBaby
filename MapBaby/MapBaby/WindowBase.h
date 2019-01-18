@@ -7,7 +7,7 @@
 
 class WindowBase
 {
-private:
+protected:
 	MapManager* mapManager;
 	PaletteManager* paletteManager;
 	TileManager* tileManager;
@@ -16,4 +16,6 @@ public:
 	bool visible = true;
 	WindowBase(MapManager &mapManager, PaletteManager &paletteManager, TileManager &tileManager, MapEditor &mapEditor);
 	virtual ~WindowBase();
+
+	virtual void update() = 0;
 };
