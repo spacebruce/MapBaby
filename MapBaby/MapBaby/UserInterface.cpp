@@ -10,6 +10,7 @@ UserInterface::UserInterface(MapManager& mapManager, TileManager& tileManager, P
 	paletteWindow = UIPaletteWindow(&mapManager, &paletteManager, &tileManager, &mapEditor);
 	mapWindow = UIMapWindow(&mapManager, &paletteManager, &tileManager, &mapEditor);
 	viewWindow = UIViewWindow(&mapManager, &paletteManager, &tileManager, &mapEditor);
+	tilePickerWindow = UITilePickerWindow(&mapManager, &paletteManager, &tileManager, &mapEditor);
 }
 
 UserInterface::~UserInterface()
@@ -151,7 +152,7 @@ void UserInterface::updateWindows()
 		{
 			if (ImGui::MenuItem("Tabs", nullptr, ShowTabsWindow))	{ ShowTabsWindow = !ShowTabsWindow;	}
 			if (ImGui::MenuItem("Tiles", nullptr, ShowTilePickWindow)) { ShowTilePickWindow = !ShowTilePickWindow; }
-			if (ImGui::MenuItem("Palette", nullptr, &paletteWindow.visible)) { paletteWindow.visible = !paletteWindow.visible; }
+			if (ImGui::MenuItem("Palette", nullptr, paletteWindow.visible)) { paletteWindow.visible = !paletteWindow.visible; }
 			if (ImGui::MenuItem("Map Stats", nullptr, paletteWindow.visible))	{	mapWindow.visible = !mapWindow.visible;	}
 			if (ImGui::MenuItem("View", nullptr, ShowViewWindow)) {	ShowViewWindow = !ShowViewWindow; }
 			ImGui::EndMenu();
@@ -210,50 +211,8 @@ void UserInterface::updateWindows()
 		ImGui::End();
 	}
 
-	//Map stats
+	//Windows
 	mapWindow.update();
-
-	//Tile picker
-	if (ShowTilePickWindow)
-	{
-		ImGui::Begin("Tiles", &ShowTilePickWindow, ImGuiWindowFlags_AlwaysAutoResize);
-
-		if (ImGui::Button("new"))
-		{
-			tileManager->createTile(paletteManager->getCurrentPalette());
-		}
-
-		ImGui::BeginChild("TilePickerScroll", ImVec2(300,300), true, 0);
-		for (std::size_t i = 0; i < tileManager->getCount(); ++i)
-		{
-			if (tileManager->getTile(i)->getTexture()->isLoaded())
-			{
-				TileManager::SharedTile tile = tileManager->getTile(i);
-				bool selected = (tileManager->getSelectedID() == tile.get()->getID());
-
-				if (ImGui::ImageButton((void*)tile.get()->getTexture()->get(), ImVec2(32, 32)))
-				{
-					tileManager->setSelected(tile.get()->getID());
-				};
-				if (ImGui::IsItemHovered())
-				{
-					ImGui::BeginTooltip();
-					ImGui::Image((void*)tile->getTexture()->get(), ImVec2(128, 128));
-					ImGui::EndTooltip();
-				}
-				ImGui::SameLine();
-				ImGui::Text("ID : %i", tile->getID());
-				if (selected)
-				{
-					ImGui::SameLine();
-					ImGui::Text("SELECTED");
-				}
-			}
-		}
-		ImGui::EndChild();
-		ImGui::End();
-	}
-
-	//Palette window
+	tilePickerWindow.update();
 	paletteWindow.update();
 }

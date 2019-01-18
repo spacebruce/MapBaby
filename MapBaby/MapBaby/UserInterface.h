@@ -15,6 +15,7 @@
 #include "UIPaletteWindow.h"
 #include "UIMapWindow.h"
 #include "UIViewWindow.h"
+#include "UITilePickerWindow.h"
 
 class UserInterface
 {
@@ -37,6 +38,7 @@ private:
 	UIPaletteWindow paletteWindow;
 	UIMapWindow mapWindow;
 	UIViewWindow viewWindow;
+	UITilePickerWindow tilePickerWindow;
 
 	bool ShowTilePickWindow = true;
 	bool ShowViewWindow = true;
