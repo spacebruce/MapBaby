@@ -8,6 +8,7 @@ UserInterface::UserInterface(MapManager& mapManager, TileManager& tileManager, P
 	this->mapEditor = &mapEditor;
 	this->paletteManager = &paletteManager;
 	paletteWindow = UIPaletteWindow(&mapManager, &paletteManager, &tileManager, &mapEditor);
+	mapWindow = UIMapWindow(&mapManager, &paletteManager, &tileManager, &mapEditor);
 }
 
 UserInterface::~UserInterface()
@@ -149,8 +150,8 @@ void UserInterface::updateWindows()
 		{
 			if (ImGui::MenuItem("Tabs", nullptr, ShowTabsWindow))	{ ShowTabsWindow = !ShowTabsWindow;	}
 			if (ImGui::MenuItem("Tiles", nullptr, ShowTilePickWindow)) { ShowTilePickWindow = !ShowTilePickWindow; }
-			if (ImGui::MenuItem("Palette", nullptr, &paletteWindow.visible)) { ShowPaletteWindow = !ShowPaletteWindow; }
-			if (ImGui::MenuItem("Map Stats", nullptr, ShowMapStatsWindow))	{	ShowMapStatsWindow = !ShowMapStatsWindow;	}
+			if (ImGui::MenuItem("Palette", nullptr, &paletteWindow.visible)) { paletteWindow.visible = !paletteWindow.visible; }
+			if (ImGui::MenuItem("Map Stats", nullptr, paletteWindow.visible))	{	mapWindow.visible = !mapWindow.visible;	}
 			if (ImGui::MenuItem("View", nullptr, ShowViewWindow)) {	ShowViewWindow = !ShowViewWindow; }
 			ImGui::EndMenu();
 		}
@@ -255,22 +256,7 @@ void UserInterface::updateWindows()
 	}
 
 	//Map stats
-	if (ShowMapStatsWindow)
-	{
-		ImGui::Begin("Stats", &ShowMapStatsWindow);
-		Map * map = mapManager->getCurrentMap();
-		if (map == nullptr)
-		{
-			ImGui::Text("no map open");
-		}
-		else
-		{
-			ImGui::Text("test (%i)", map->getID());
-			ImGui::Separator();
-			ImGui::Text("Size : %i x %i", map->getWidth(), map->getHeight());
-		}
-		ImGui::End();
-	}
+	mapWindow.update();
 
 	//Tile picker
 	if (ShowTilePickWindow)

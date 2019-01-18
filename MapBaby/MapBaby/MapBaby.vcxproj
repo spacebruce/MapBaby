@@ -164,6 +164,7 @@
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TileType.cpp" />
     <ClCompile Include="TileManager.cpp" />
+    <ClCompile Include="UIMapWindow.cpp" />
     <ClCompile Include="UIPaletteWindow.cpp" />
     <ClCompile Include="UserInterface.cpp" />
     <ClCompile Include="WindowBase.cpp" />
@@ -274,6 +275,7 @@
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TileType.h" />
     <ClInclude Include="TileManager.h" />
+    <ClInclude Include="UIMapWindow.h" />
     <ClInclude Include="UIPaletteWindow.h" />
     <ClInclude Include="UserInterface.h" />
     <ClInclude Include="WindowBase.h" />

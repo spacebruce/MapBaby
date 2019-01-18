@@ -13,6 +13,7 @@
 #include "MapEditor.h"
 
 #include "UIPaletteWindow.h"
+#include "UIMapWindow.h"
 
 class UserInterface
 {
@@ -31,12 +32,13 @@ private:
 	TileManager* tileManager;
 	MapEditor* mapEditor;
 
+	//Windows
 	UIPaletteWindow paletteWindow;
+	UIMapWindow mapWindow;
+
 	bool ShowTilePickWindow = true;
 	bool ShowViewWindow = true;
 	bool ShowTabsWindow = true;
-	bool ShowMapStatsWindow = true;
-	bool ShowPaletteWindow = true;
 
 public:
 	UserInterface(MapManager& mapManager, TileManager& tileManager, PaletteManager& paletteManager, MapEditor& mapEditor);
