@@ -5,6 +5,9 @@
 #include <SDL.h>
 #include <SDL/SDL_opengl.h>
 
+#include "Palette.h"
+#include "PaletteEntry.h"
+
 class Texture
 {
 private:
@@ -16,6 +19,9 @@ public:
 	~Texture();
 
 	void createFromArray(GLuint Width, GLuint Height, GLuint * pixels);
+
+	void createFromBitmap(GLuint Width, GLuint Height, std::uint8_t * bitmap, Palette * palette);
+
 	void freeTexture();
 
 	GLuint get() const;

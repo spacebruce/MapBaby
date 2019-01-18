@@ -87,6 +87,12 @@
     <ClCompile Include="TileType.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PaletteManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Palette.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Include\SDL\begin_code.h">
@@ -395,10 +401,16 @@
     <ClInclude Include="Texture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TextureMode.h">
-      <Filter>Header Files\Include</Filter>
-    </ClInclude>
     <ClInclude Include="TileType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PaletteEntry.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PaletteManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Palette.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

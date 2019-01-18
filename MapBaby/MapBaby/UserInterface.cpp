@@ -1,11 +1,12 @@
 #include "UserInterface.h"
 
 
-UserInterface::UserInterface(MapManager& mapManager, TileManager& tileManager, MapEditor& mapEditor)
+UserInterface::UserInterface(MapManager& mapManager, TileManager& tileManager, PaletteManager& paletteManager, MapEditor& mapEditor)
 {
 	this->mapManager = &mapManager;
 	this->tileManager = &tileManager;
 	this->mapEditor = &mapEditor;
+	this->paletteManager = &paletteManager;
 }
 
 UserInterface::~UserInterface()
@@ -147,6 +148,7 @@ void UserInterface::updateWindows()
 		{
 			if (ImGui::MenuItem("Tabs", nullptr, ShowTabsWindow))	{ ShowTabsWindow = !ShowTabsWindow;	}
 			if (ImGui::MenuItem("Tiles", nullptr, ShowTilePickWindow)) { ShowTilePickWindow = !ShowTilePickWindow; }
+			if (ImGui::MenuItem("Palette", nullptr, ShowPaletteWindow)) { ShowPaletteWindow = !ShowPaletteWindow; }
 			if (ImGui::MenuItem("Map Stats", nullptr, ShowMapStatsWindow))	{	ShowMapStatsWindow = !ShowMapStatsWindow;	}
 			if (ImGui::MenuItem("View", nullptr, ShowViewWindow)) {	ShowViewWindow = !ShowViewWindow; }
 			ImGui::EndMenu();
@@ -272,15 +274,15 @@ void UserInterface::updateWindows()
 	//Tile picker
 	if (ShowTilePickWindow)
 	{
-		ImGui::Begin("Tiles", &ShowTilePickWindow);
+		ImGui::Begin("Tiles", &ShowTilePickWindow, ImGuiWindowFlags_AlwaysAutoResize);
 
 		if (ImGui::Button("new"))
 		{
-			tileManager->createTile();
+			tileManager->createTile(paletteManager->getCurrentPalette());
 		}
 
-		ImGui::BeginChild("TilePickerScroll", ImVec2(0,0), true, 0);
-		for (int i = 0; i < tileManager->getCount(); ++i)
+		ImGui::BeginChild("TilePickerScroll", ImVec2(300,300), true, 0);
+		for (std::size_t i = 0; i < tileManager->getCount(); ++i)
 		{
 			if (tileManager->getTile(i)->getTexture()->isLoaded())
 			{
@@ -307,6 +309,97 @@ void UserInterface::updateWindows()
 			}
 		}
 		ImGui::EndChild();
+		ImGui::End();
+	}
+
+	//Palette window
+	if (ShowPaletteWindow)
+	{
+		if (ImGui::Begin("Palette", &ShowPaletteWindow))
+		{
+			//Palette picker
+			std::size_t currentPalette = paletteManager->getCurrentIndex();
+
+			if (ImGui::BeginCombo("##PalettePicker", paletteManager->getCurrentPalette()->name.c_str()))
+			{
+				for (int i = 0; i < paletteManager->getCount(); ++i)
+				{
+					bool selected = (i == currentPalette);
+					if (ImGui::Selectable(paletteManager->getPalette(i)->name.c_str(), selected))
+						currentPalette = i;
+					if (selected)
+						ImGui::SetItemDefaultFocus();
+				}
+				paletteManager->setCurrent(currentPalette);
+				ImGui::EndCombo();
+			}
+
+			//New palette
+			ImGui::SameLine();
+			if (ImGui::Button("+##newpal"))
+			{
+				paletteManager->addPalette(Palette());
+			}
+
+			Palette * palette = paletteManager->getCurrentPalette();
+
+			if (ImGui::CollapsingHeader("Palette settings"))
+			{
+				//Name editor
+				const std::size_t stringMax = 16;
+				if (ImGui::InputText("name", const_cast<char*>(palette->name.c_str()), stringMax))
+				{
+					if (palette->name.length() > stringMax)
+					{
+						palette->name = palette->name.substr(0, stringMax);
+					}
+				}
+
+				//Size
+				std::uint32_t size = palette->getSize();
+				if (ImGui::InputScalar("size", ImGuiDataType_U32, &size))
+				{
+					palette->setSize(size);
+				}
+
+				if (ImGui::Button("delete"))
+				{
+					paletteManager->deletePalette(paletteManager->getCurrentIndex());
+					if (paletteManager->getCount() == 0)
+					{
+						paletteManager->addPalette(Palette());
+					}
+				}
+			}
+
+			ImGui::BeginChild("PaletteScroll", ImVec2(270, 500), true, 0);
+				
+			for (std::size_t i = 0; i < palette->getSize(); ++i)
+			{
+				ImGui::Text("No. %i", i);
+				ImGui::SameLine();
+
+				PaletteEntry colour = palette->getEntry(i);
+
+				const float colScale = 255.0f;
+				float tempColours[] = { colour.r / colScale, colour.g / colScale, colour.b / colScale };
+
+				ImGui::PushID(i);
+
+				if (ImGui::ColorEdit3("##picker", tempColours, ImGuiColorEditFlags_RGB))
+				{
+					colour.r = static_cast<GLubyte>(tempColours[0] * colScale);
+					colour.g = static_cast<GLubyte>(tempColours[1] * colScale);
+					colour.b = static_cast<GLubyte>(tempColours[2] * colScale);
+					palette->set(i, colour);
+				}
+
+				ImGui::PopID();
+			}
+
+			ImGui::EndChild();
+
+		}
 		ImGui::End();
 	}
 }

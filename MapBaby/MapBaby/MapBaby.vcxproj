@@ -157,6 +157,8 @@
     <ClCompile Include="MapCamera.cpp" />
     <ClCompile Include="MapEditor.cpp" />
     <ClCompile Include="MapManager.cpp" />
+    <ClCompile Include="Palette.cpp" />
+    <ClCompile Include="PaletteManager.cpp" />
     <ClCompile Include="Resource.cpp" />
     <ClCompile Include="ResourceID.cpp" />
     <ClCompile Include="Texture.cpp" />
@@ -262,10 +264,12 @@
     <ClInclude Include="MapEditor.h" />
     <ClInclude Include="MapManager.h" />
     <ClInclude Include="MathsHelpers.h" />
+    <ClInclude Include="Palette.h" />
+    <ClInclude Include="PaletteEntry.h" />
+    <ClInclude Include="PaletteManager.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="ResourceID.h" />
     <ClInclude Include="Texture.h" />
-    <ClInclude Include="TextureMode.h" />
     <ClInclude Include="TileType.h" />
     <ClInclude Include="TileManager.h" />
     <ClInclude Include="UserInterface.h" />
