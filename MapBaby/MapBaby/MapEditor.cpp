@@ -80,6 +80,13 @@ void MapEditor::render(const int WindowWidth, const int WindowHeight)
 		float my = camera.getMouseTileY() * TileSize;
 		Drawing::drawLine(mx, my, mx + TileSize, my + TileSize);
 		Drawing::drawLine(mx + TileSize, my, mx, my + TileSize);
+
+		ResourceID tileID = tileManager->getSelectedID();
+		if (!tileID.isInvalid())
+		{
+			TileManager::SharedTile tile = tileManager->getTile(tileID);
+			tile->getTexture()->testRender(mx, my);
+		}
 	}
 	
 	//Unproject!
