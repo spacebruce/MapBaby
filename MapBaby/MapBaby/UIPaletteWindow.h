@@ -10,7 +10,8 @@ class UIPaletteWindow :	public WindowBase
 {
 public:
 	~UIPaletteWindow(); 
-	UIPaletteWindow::UIPaletteWindow(MapManager & mapManager, PaletteManager & paletteManager, TileManager & tileManager, MapEditor & mapEditor);
+	UIPaletteWindow::UIPaletteWindow();
+	UIPaletteWindow::UIPaletteWindow(MapManager *mapManager, PaletteManager *paletteManager, TileManager *tileManager, MapEditor *mapEditor);
 
 	void update();
 };

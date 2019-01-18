@@ -1,6 +1,10 @@
 #include "UIPaletteWindow.h"
 
-UIPaletteWindow::UIPaletteWindow(MapManager & mapManager, PaletteManager & paletteManager, TileManager & tileManager, MapEditor & mapEditor) : WindowBase(mapManager, paletteManager, tileManager, mapEditor)
+UIPaletteWindow::UIPaletteWindow() : WindowBase()
+{
+}
+
+UIPaletteWindow::UIPaletteWindow(MapManager *mapManager, PaletteManager *paletteManager, TileManager *tileManager, MapEditor *mapEditor) : WindowBase(mapManager, paletteManager, tileManager, mapEditor)
 {
 }
 

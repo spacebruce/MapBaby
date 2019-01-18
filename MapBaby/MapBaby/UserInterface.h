@@ -12,6 +12,8 @@
 #include "PaletteManager.h"
 #include "MapEditor.h"
 
+#include "UIPaletteWindow.h"
+
 class UserInterface
 {
 private:
@@ -22,18 +24,20 @@ private:
 	void render();
 	void updateWindows();
 
-	PaletteManager* paletteManager;
-	MapEditor* mapEditor;
-	TileManager * tileManager;
-	MapManager * mapManager;
-
 	void selectMap(int index);
 
+	MapManager* mapManager;
+	PaletteManager* paletteManager;
+	TileManager* tileManager;
+	MapEditor* mapEditor;
+
+	UIPaletteWindow paletteWindow;
 	bool ShowTilePickWindow = true;
 	bool ShowViewWindow = true;
 	bool ShowTabsWindow = true;
 	bool ShowMapStatsWindow = true;
 	bool ShowPaletteWindow = true;
+
 public:
 	UserInterface(MapManager& mapManager, TileManager& tileManager, PaletteManager& paletteManager, MapEditor& mapEditor);
 	~UserInterface();
