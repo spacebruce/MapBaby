@@ -11,6 +11,7 @@ UserInterface::UserInterface(MapManager& mapManager, TileManager& tileManager, P
 	mapWindow = UIMapWindow(&mapManager, &paletteManager, &tileManager, &mapEditor);
 	viewWindow = UIViewWindow(&mapManager, &paletteManager, &tileManager, &mapEditor);
 	tilePickerWindow = UITilePickerWindow(&mapManager, &paletteManager, &tileManager, &mapEditor);
+	fileTabWindow = UIFileTabWindow(&mapManager, &paletteManager, &tileManager, &mapEditor);
 }
 
 UserInterface::~UserInterface()
@@ -161,57 +162,10 @@ void UserInterface::updateWindows()
 	}
 
 	//View window
-	viewWindow.update();
-
-	//File window
-	if(ShowTabsWindow)
-	{
-		ImGui::Begin("Tabs", &ShowTabsWindow, ImGuiWindowFlags_AlwaysAutoResize);
-
-		ImGui::Text("Current : %i", mapManager->getCurrent());
-
-		if (ImGui::Button("-"))
-		{
-			mapManager->deselect();
-			mapEditor->changeMap(nullptr);
-		}
-		ImGui::SameLine();
-
-		for (auto i = 0; i < mapManager->getCount(); ++i)
-		{
-			ImGui::PushID(static_cast<std::uint64_t>(mapManager->getMap(i)->getID()));
-
-			if (mapManager->isCurrent(i))
-			{
-				ImGui::Text("test");
-			}
-			else if (ImGui::Button("test"))
-			{
-				mapManager->setCurrent(i);
-				mapEditor->changeMap(mapManager->getMap(i));
-			}
-			ImGui::SameLine(); 
-			if (ImGui::Button("x"))
-			{
-				if (mapManager->isCurrent(i))
-				{
-					mapEditor->changeMap(nullptr);
-				}
-				mapManager->closeMap(i);
-			}
-			ImGui::SameLine();
-
-			ImGui::PopID();
-		}
-		if(ImGui::Button("+"))
-		{
-			mapManager->newMap();
-			selectMap(mapManager->getCount() - 1);
-		}
-		ImGui::End();
-	}
 
 	//Windows
+	fileTabWindow.update();
+	viewWindow.update();
 	mapWindow.update();
 	tilePickerWindow.update();
 	paletteWindow.update();

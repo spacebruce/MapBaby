@@ -16,6 +16,7 @@
 #include "UIMapWindow.h"
 #include "UIViewWindow.h"
 #include "UITilePickerWindow.h"
+#include "UIFileTabWindow.h"
 
 class UserInterface
 {
@@ -39,6 +40,7 @@ private:
 	UIMapWindow mapWindow;
 	UIViewWindow viewWindow;
 	UITilePickerWindow tilePickerWindow;
+	UIFileTabWindow fileTabWindow;
 
 	bool ShowTilePickWindow = true;
 	bool ShowViewWindow = true;
