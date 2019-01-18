@@ -46,10 +46,7 @@ public:
 	UserInterface(MapManager& mapManager, TileManager& tileManager, PaletteManager& paletteManager, MapEditor& mapEditor);
 	~UserInterface();
 
-	void start();
-	void end();
 	void update();
-
 
 	bool finished = false;
 };
