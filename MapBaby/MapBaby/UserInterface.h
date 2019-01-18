@@ -42,10 +42,6 @@ private:
 	UITilePickerWindow tilePickerWindow;
 	UIFileTabWindow fileTabWindow;
 
-	bool ShowTilePickWindow = true;
-	bool ShowViewWindow = true;
-	bool ShowTabsWindow = true;
-
 public:
 	UserInterface(MapManager& mapManager, TileManager& tileManager, PaletteManager& paletteManager, MapEditor& mapEditor);
 	~UserInterface();
