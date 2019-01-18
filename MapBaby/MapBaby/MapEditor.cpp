@@ -56,9 +56,9 @@ void MapEditor::render(const int WindowWidth, const int WindowHeight)
 	int clipRight = static_cast<int>((cameraBox.right < WidthReal) ? ceil(cameraBox.right / TileSize) : Width);
 	int clipBottom = static_cast<int>((cameraBox.bottom < HeightReal) ? ceil(cameraBox.bottom/ TileSize): Height);
 
-	for (int x = clipLeft; x < clipRight; ++x)
+	for (int y = clipTop; y < clipBottom; ++y)
 	{
-		for (int y = clipTop; y < clipBottom; ++y)
+		for (int x = clipLeft; x < clipRight; ++x)
 		{
 			
 			ResourceID resource = map->getTile(x, y)->tileID;
