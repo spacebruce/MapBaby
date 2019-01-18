@@ -106,6 +106,9 @@
       <Filter>Source Files\UI</Filter>
     </ClCompile>
     <ClCompile Include="UIMapWindow.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UIViewWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -435,6 +438,9 @@
       <Filter>Header Files\UI</Filter>
     </ClInclude>
     <ClInclude Include="UIMapWindow.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UIViewWindow.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

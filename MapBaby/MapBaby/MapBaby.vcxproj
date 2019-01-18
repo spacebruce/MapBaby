@@ -166,6 +166,7 @@
     <ClCompile Include="TileManager.cpp" />
     <ClCompile Include="UIMapWindow.cpp" />
     <ClCompile Include="UIPaletteWindow.cpp" />
+    <ClCompile Include="UIViewWindow.cpp" />
     <ClCompile Include="UserInterface.cpp" />
     <ClCompile Include="WindowBase.cpp" />
   </ItemGroup>
@@ -277,6 +278,7 @@
     <ClInclude Include="TileManager.h" />
     <ClInclude Include="UIMapWindow.h" />
     <ClInclude Include="UIPaletteWindow.h" />
+    <ClInclude Include="UIViewWindow.h" />
     <ClInclude Include="UserInterface.h" />
     <ClInclude Include="WindowBase.h" />
   </ItemGroup>
