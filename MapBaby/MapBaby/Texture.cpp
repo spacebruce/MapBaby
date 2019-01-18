@@ -45,13 +45,12 @@ void Texture::createFromArray(GLuint Width, GLuint Height, GLuint *pixels)
 
 void Texture::createFromBitmap(GLuint Width, GLuint Height, std::uint8_t * bitmap, Palette * palette)
 {
-	std::size_t length = (Width * Height);
+	const std::size_t length = (Width * Height);
 	GLuint * pixels = new GLuint[length];
 
 	for (std::size_t i = 0; i < length; ++i)
 	{
-		std::uint8_t index = bitmap[i];
-		PaletteEntry colour = palette->getEntry(index);
+		PaletteEntry colour = palette->getEntry(bitmap[i]);
 
 		GLubyte* pixel = (GLubyte*)&pixels[i];
 		pixel[0] = colour.r;
