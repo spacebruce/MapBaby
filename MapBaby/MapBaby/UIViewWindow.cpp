@@ -12,7 +12,7 @@ UIViewWindow::~UIViewWindow()
 {
 }
 
-void UIViewWindow::update()
+void UIViewWindow::updateContents()
 {
 	ImGui::Begin("View", &visible, ImGuiWindowFlags_AlwaysAutoResize);
 

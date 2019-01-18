@@ -8,10 +8,10 @@
 
 class UIPaletteWindow :	public WindowBase
 {
+protected:
+	void updateContents();
 public:
 	~UIPaletteWindow(); 
 	UIPaletteWindow::UIPaletteWindow();
 	UIPaletteWindow::UIPaletteWindow(MapManager *mapManager, PaletteManager *paletteManager, TileManager *tileManager, MapEditor *mapEditor);
-
-	void update();
 };

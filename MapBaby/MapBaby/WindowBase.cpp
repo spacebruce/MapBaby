@@ -7,3 +7,9 @@ WindowBase::WindowBase(MapManager *mapManager, PaletteManager *paletteManager, T
 WindowBase::~WindowBase()
 {
 }
+
+void WindowBase::update()
+{
+	if(visible)
+		this->updateContents();
+}

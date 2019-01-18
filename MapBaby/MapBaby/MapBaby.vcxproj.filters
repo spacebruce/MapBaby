@@ -108,14 +108,14 @@
     <ClCompile Include="UIMapWindow.cpp">
       <Filter>Source Files\UI</Filter>
     </ClCompile>
-    <ClCompile Include="UIViewWindow.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="UIFileTabWindow.cpp">
+      <Filter>Source Files\UI</Filter>
     </ClCompile>
     <ClCompile Include="UITilePickerWindow.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\UI</Filter>
     </ClCompile>
-    <ClCompile Include="UIFileTabWindow.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="UIViewWindow.cpp">
+      <Filter>Source Files\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -446,14 +446,14 @@
     <ClInclude Include="UIMapWindow.h">
       <Filter>Header Files\UI</Filter>
     </ClInclude>
-    <ClInclude Include="UIViewWindow.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="UIFileTabWindow.h">
+      <Filter>Header Files\UI</Filter>
     </ClInclude>
     <ClInclude Include="UITilePickerWindow.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\UI</Filter>
     </ClInclude>
-    <ClInclude Include="UIFileTabWindow.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="UIViewWindow.h">
+      <Filter>Header Files\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

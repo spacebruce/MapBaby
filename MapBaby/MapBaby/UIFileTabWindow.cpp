@@ -13,7 +13,7 @@ UIFileTabWindow::~UIFileTabWindow()
 {
 }
 
-void UIFileTabWindow::update()
+void UIFileTabWindow::updateContents()
 {
 	ImGui::Begin("Tabs", &visible, ImGuiWindowFlags_AlwaysAutoResize);
 

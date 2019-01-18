@@ -12,7 +12,7 @@ UIMapWindow::~UIMapWindow()
 {
 }
 
-void UIMapWindow::update()
+void UIMapWindow::updateContents()
 {
 	ImGui::Begin("Stats", &visible);
 	Map * map = mapManager->getCurrentMap();

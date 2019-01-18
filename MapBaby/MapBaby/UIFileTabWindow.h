@@ -8,10 +8,11 @@
 
 class UIFileTabWindow :	public WindowBase
 {
+protected:
+	void updateContents();
 public:
 	UIFileTabWindow();
 	UIFileTabWindow(MapManager *mapManager, PaletteManager *paletteManager, TileManager *tileManager, MapEditor *mapEditor);
 	~UIFileTabWindow();
-	void update();
 };
 

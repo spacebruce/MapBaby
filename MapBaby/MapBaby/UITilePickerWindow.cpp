@@ -13,7 +13,7 @@ UITilePickerWindow::~UITilePickerWindow()
 {
 }
 
-void UITilePickerWindow::update()
+void UITilePickerWindow::updateContents()
 {
 	ImGui::Begin("Tiles", &visible, ImGuiWindowFlags_AlwaysAutoResize);
 

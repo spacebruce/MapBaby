@@ -12,7 +12,7 @@ UIPaletteWindow::~UIPaletteWindow()
 {
 }
 
-void UIPaletteWindow::update()
+void UIPaletteWindow::updateContents()
 {
 	if (ImGui::Begin("Palette", &visible))
 	{

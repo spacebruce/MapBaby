@@ -8,10 +8,11 @@
 
 class UITilePickerWindow : public WindowBase
 {
+protected:
+	void updateContents();
 public:
 	UITilePickerWindow();
 	UITilePickerWindow(MapManager *mapManager, PaletteManager *paletteManager, TileManager *tileManager, MapEditor *mapEditor);
 	~UITilePickerWindow();
-	void update();
 };
 

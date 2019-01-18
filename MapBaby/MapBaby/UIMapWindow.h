@@ -8,10 +8,11 @@
 
 class UIMapWindow :	public WindowBase
 {
+protected:
+	void updateContents();
 public:
 	UIMapWindow();
 	UIMapWindow(MapManager *mapManager, PaletteManager *paletteManager, TileManager *tileManager, MapEditor *mapEditor);
 	~UIMapWindow();
-	void update();
 };
 

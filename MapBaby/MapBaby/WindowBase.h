@@ -12,11 +12,13 @@ protected:
 	PaletteManager* paletteManager;
 	TileManager* tileManager;
 	MapEditor* mapEditor;
+
+	virtual void updateContents() = 0;
 public:
 	bool visible = true;
 	WindowBase() = default;
 	WindowBase(MapManager *mapManager, PaletteManager *paletteManager, TileManager *tileManager, MapEditor *mapEditor);
 	virtual ~WindowBase();
 
-	virtual void update() = 0;
+	void update();
 };
