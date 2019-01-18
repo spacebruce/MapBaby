@@ -1,12 +1,17 @@
 #include "MapEditor.h"
 #include "MapManager.h"
+#include "TileManager.h"
+#include "PaletteManager.h"
 #include "UserInterface.h"
 
 int main(int argCount, char * args[])
 {
-	MapEditor mapEditor;
 	MapManager mapManager;
-	UserInterface ui(mapManager, mapEditor);
+	PaletteManager paletteManager;
+	TileManager tileManager;
+	
+	MapEditor mapEditor(tileManager);
+	UserInterface ui(mapManager, tileManager, paletteManager, mapEditor);
 
 	ui.start();
 

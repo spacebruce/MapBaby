@@ -157,7 +157,20 @@
     <ClCompile Include="MapCamera.cpp" />
     <ClCompile Include="MapEditor.cpp" />
     <ClCompile Include="MapManager.cpp" />
+    <ClCompile Include="Palette.cpp" />
+    <ClCompile Include="PaletteManager.cpp" />
+    <ClCompile Include="Resource.cpp" />
+    <ClCompile Include="ResourceID.cpp" />
+    <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="TileType.cpp" />
+    <ClCompile Include="TileManager.cpp" />
+    <ClCompile Include="UIFileTabWindow.cpp" />
+    <ClCompile Include="UIMapWindow.cpp" />
+    <ClCompile Include="UIPaletteWindow.cpp" />
+    <ClCompile Include="UITilePickerWindow.cpp" />
+    <ClCompile Include="UIViewWindow.cpp" />
     <ClCompile Include="UserInterface.cpp" />
+    <ClCompile Include="WindowBase.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DrawingHelpers.h" />
@@ -257,7 +270,21 @@
     <ClInclude Include="MapEditor.h" />
     <ClInclude Include="MapManager.h" />
     <ClInclude Include="MathsHelpers.h" />
+    <ClInclude Include="Palette.h" />
+    <ClInclude Include="PaletteEntry.h" />
+    <ClInclude Include="PaletteManager.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="ResourceID.h" />
+    <ClInclude Include="Texture.h" />
+    <ClInclude Include="TileType.h" />
+    <ClInclude Include="TileManager.h" />
+    <ClInclude Include="UIFileTabWindow.h" />
+    <ClInclude Include="UIMapWindow.h" />
+    <ClInclude Include="UIPaletteWindow.h" />
+    <ClInclude Include="UITilePickerWindow.h" />
+    <ClInclude Include="UIViewWindow.h" />
     <ClInclude Include="UserInterface.h" />
+    <ClInclude Include="WindowBase.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Lib\x64\SDL2.dll" />

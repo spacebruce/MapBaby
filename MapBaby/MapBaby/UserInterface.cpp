@@ -1,10 +1,17 @@
 #include "UserInterface.h"
 
 
-UserInterface::UserInterface(MapManager& mapManager, MapEditor& mapEditor)
+UserInterface::UserInterface(MapManager& mapManager, TileManager& tileManager, PaletteManager& paletteManager, MapEditor& mapEditor)
 {
 	this->mapManager = &mapManager;
+	this->tileManager = &tileManager;
 	this->mapEditor = &mapEditor;
+	this->paletteManager = &paletteManager;
+	paletteWindow = UIPaletteWindow(&mapManager, &paletteManager, &tileManager, &mapEditor);
+	mapWindow = UIMapWindow(&mapManager, &paletteManager, &tileManager, &mapEditor);
+	viewWindow = UIViewWindow(&mapManager, &paletteManager, &tileManager, &mapEditor);
+	tilePickerWindow = UITilePickerWindow(&mapManager, &paletteManager, &tileManager, &mapEditor);
+	fileTabWindow = UIFileTabWindow(&mapManager, &paletteManager, &tileManager, &mapEditor);
 }
 
 UserInterface::~UserInterface()
@@ -27,8 +34,8 @@ void UserInterface::start()
 	SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 8);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
-	SDL_DisplayMode current;
-	SDL_GetCurrentDisplayMode(0, &current);
+	//SDL_DisplayMode current;
+	//SDL_GetCurrentDisplayMode(0, &current);
 	this->window = SDL_CreateWindow("MapBaby", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1280, 720, SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE);
 	this->gl_context = SDL_GL_CreateContext(this->window);
 	//SDL_GL_SetSwapInterval(1); // Enable vsync
@@ -65,18 +72,33 @@ void UserInterface::render()
 
 void UserInterface::update()
 {
+	bool sendClick = false;
+
 	SDL_Event event;
 	while (SDL_PollEvent(&event))
 	{
 		ImGui_ImplSDL2_ProcessEvent(&event);
-		if (event.type == SDL_QUIT)
+		switch(event.type)
 		{
+		case SDL_QUIT:
 			finished = true;
 			return;
+		break;
+		case SDL_MOUSEBUTTONDOWN:
+			sendClick = true;
+		break;
 		}
 	}
 
-	mapEditor->update(this->io->DisplaySize.x, this->io->DisplaySize.y);
+	bool updateMouse = (!this->io->WantCaptureMouse);
+	mapEditor->update(this->io->DisplaySize.x, this->io->DisplaySize.y, updateMouse);
+
+	if (updateMouse)
+	{
+		if(sendClick)
+			mapEditor->click();
+	}
+
 
 	ImGui_ImplOpenGL2_NewFrame();
 	ImGui_ImplSDL2_NewFrame(this->window);
@@ -115,146 +137,36 @@ void UserInterface::updateWindows()
 			ImGui::EndMenu();
 		}
 
-		if (mapManager->getCount() > 0)
+		if (ImGui::BeginMenu("Tabs", (mapManager->getCount() != 0)))
 		{
-			if (ImGui::BeginMenu("Tabs"))
+			for (auto i = 0; i < mapManager->getCount(); ++i)
 			{
-				for (auto i = 0; i < mapManager->getCount(); ++i)
+				if (ImGui::MenuItem("test", nullptr, mapManager->isCurrent(i)))
 				{
-					if (ImGui::MenuItem("test", nullptr, mapManager->isCurrent(i)))
-					{
-						selectMap(i);
-					}
+					selectMap(i);
 				}
-				ImGui::EndMenu();
 			}
+			ImGui::EndMenu();
 		}
 
 		if (ImGui::BeginMenu("Windows"))
 		{
-			if (ImGui::MenuItem("Tabs", nullptr, ShowTabsWindow))	{ ShowTabsWindow = !ShowTabsWindow;	}
-			if (ImGui::MenuItem("Map Stats", nullptr, ShowMapStatsWindow))	{	ShowMapStatsWindow = !ShowMapStatsWindow;	}
-			if (ImGui::MenuItem("View", nullptr, ShowViewWindow)) {	ShowViewWindow = !ShowViewWindow; }
+			if (ImGui::MenuItem("Tabs", nullptr, fileTabWindow.visible))	{ fileTabWindow.visible = !fileTabWindow.visible;	}
+			if (ImGui::MenuItem("Tiles", nullptr, tilePickerWindow.visible)) { tilePickerWindow.visible = !tilePickerWindow.visible; }
+			if (ImGui::MenuItem("Palette", nullptr, paletteWindow.visible)) { paletteWindow.visible = !paletteWindow.visible; }
+			if (ImGui::MenuItem("Map Stats", nullptr, mapWindow.visible))	{	mapWindow.visible = !mapWindow.visible;	}
+			if (ImGui::MenuItem("View", nullptr, viewWindow.visible)) { viewWindow.visible = !viewWindow.visible; }
 			ImGui::EndMenu();
 		}
 		ImGui::EndMainMenuBar();
 	}
 
 	//View window
-	if (ShowViewWindow)
-	{
-		ImGui::Begin("View", &ShowViewWindow, ImGuiWindowFlags_AlwaysAutoResize);
 
-
-		if (ImGui::CollapsingHeader("Debug"))
-		{
-			ImGui::Text("mouse x : %f", mapEditor->camera.getMouseX());
-			ImGui::Text("mouse y : %f", mapEditor->camera.getMouseY());
-
-			auto cameraBox = mapEditor->camera.getBox();
-			ImGui::Text("cam l %f", cameraBox.left);
-			ImGui::Text("cam r %f", cameraBox.right);
-			ImGui::Text("cam t %f", cameraBox.top);
-			ImGui::Text("cam b %f", cameraBox.bottom);
-		}
-
-		//Position
-		if (ImGui::CollapsingHeader("Position"))
-		{
-			ImGui::DragInt("x", &(mapEditor->camera.x));
-			ImGui::DragInt("y", &(mapEditor->camera.y));
-		}
-
-		//Zoom
-		if (ImGui::CollapsingHeader("Zoom"))
-		{
-			ImGui::SliderFloat("###Zoom", &(mapEditor->camera.zoom), 1.0f, 1000.0f, "%.1f", 2.0f);
-			ImGui::SameLine();
-			if (ImGui::Button("-"))
-			{
-				mapEditor->camera.zoom -= 50.0f;
-			}
-			ImGui::SameLine();
-			if (ImGui::Button("+"))
-			{
-				mapEditor->camera.zoom += 50.0f;
-			}
-			ImGui::SameLine();
-			if (ImGui::Button("100%"))
-			{
-				mapEditor->camera.zoom = 100.0f;
-			}
-		}
-
-		ImGui::End();
-	}
-
-	//File window
-	if(ShowTabsWindow)
-	{
-		ImGui::Begin("Tabs", &ShowTabsWindow, ImGuiWindowFlags_AlwaysAutoResize);
-
-		ImGui::Text("Current : %i", mapManager->getCurrent());
-
-		if (ImGui::Button("-"))
-		{
-			mapManager->deselect();
-			mapEditor->changeMap(nullptr);
-		}
-		ImGui::SameLine();
-
-		for (auto i = 0; i < mapManager->getCount(); ++i)
-		{
-			ImGui::PushID(reinterpret_cast<int>(mapManager->getMap(i)));
-
-			if (mapManager->isCurrent(i))
-			{
-				ImGui::Text("test");
-			}
-			else if (ImGui::Button("test"))
-			{
-				mapManager->setCurrent(i);
-				mapEditor->changeMap(mapManager->getMap(i));
-			}
-			ImGui::SameLine(); 
-			if (ImGui::Button("x"))
-			{
-				if (mapManager->getCurrent() == i)
-				{
-					mapEditor->changeMap(nullptr);
-				}
-				mapManager->closeMap(i);
-			}
-			ImGui::SameLine();
-
-			ImGui::PopID();
-		}
-		if(ImGui::Button("+"))
-		{
-			mapManager->newMap(Map(0,0));
-			selectMap(mapManager->getCount() - 1);
-		}
-		ImGui::End();
-	}
-
-	//Map stats
-	if (ShowMapStatsWindow)
-	{
-		ImGui::Begin("Stats", &ShowMapStatsWindow);
-		if (mapManager->getCurrent() == -1)
-		{
-			ImGui::Text("no map open");
-		}
-		else
-		{
-			Map * map = mapManager->getCurrentMap();
-			ImGui::Text("test");
-			ImGui::Separator();
-			ImGui::Text("Size : %i x %i", map->getWidth(), map->getHeight());
-		}
-		ImGui::End();
-	}
-
-	ImGui::Render();
-
+	//Windows
+	fileTabWindow.update();
+	viewWindow.update();
+	mapWindow.update();
+	tilePickerWindow.update();
+	paletteWindow.update();
 }

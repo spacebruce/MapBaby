@@ -1,40 +1,35 @@
 #include "MapEditor.h"
 
-MapEditor::MapEditor()
+MapEditor::MapEditor(TileManager& tileManager)
 {
-}
-
-MapEditor::MapEditor(Map * map)
-{
-	this->map = map;
+	this->tileManager = &tileManager;
 }
 
 MapEditor::~MapEditor()
 {
 }
 
-void MapEditor::update(const int WindowWidth, const int WindowHeight)
+void MapEditor::update(const int WindowWidth, const int WindowHeight, const bool CheckInput)
 {
-	camera.update(WindowWidth, WindowHeight, map);
+	camera.update(WindowWidth, WindowHeight, map, CheckInput);
 }
 
 void MapEditor::render(const int WindowWidth, const int WindowHeight)
 {
-	//Set the viewport
-	glViewport( 0, 0, WindowWidth, WindowHeight);
-	glMatrixMode(GL_PROJECTION); 
-	glLoadIdentity(); 
-	
-	auto cameraBox = camera.getBox();
-	glOrtho(cameraBox.left, cameraBox.right, cameraBox.bottom, cameraBox.top, 1.0f, -1.0f);
-	glMatrixMode(GL_MODELVIEW); 
-	glLoadIdentity(); 
-
-	glTranslatef(0.0f, 0.0f, 0.0f);
-	glPushMatrix();
-
 	if (map == nullptr)
 		return;
+
+	//Project!
+	auto cameraBox = camera.getBox();
+	glViewport(0, 0, (GLsizei)WindowWidth, (GLsizei)WindowHeight);
+	glMatrixMode(GL_PROJECTION);
+	glPushMatrix();
+	glLoadIdentity();
+
+	glOrtho(cameraBox.left, cameraBox.right, cameraBox.bottom, cameraBox.top, -1.0f, +1.0f);
+	glMatrixMode(GL_MODELVIEW);
+	glPushMatrix();
+	glLoadIdentity();
 
 	//Draw stuff
 	const int Width = map->getWidth();
@@ -44,6 +39,7 @@ void MapEditor::render(const int WindowWidth, const int WindowHeight)
 	const int WidthReal = Width * TileSize;
 	const int HeightReal = Height * TileSize;
 	
+	/*
 	Drawing::drawRectangleOutline(0, 0, WidthReal, HeightReal);
 	for (int i = 0; i < Width; ++i)
 	{
@@ -53,6 +49,30 @@ void MapEditor::render(const int WindowWidth, const int WindowHeight)
 	{
 		Drawing::drawLine(0.0f, i * TileSize, WidthReal, i * TileSize);
 	}
+	*/
+
+	int clipLeft = static_cast<int>((cameraBox.left >= 0) ? (cameraBox.left / TileSize) : 0);
+	int clipTop = static_cast<int>((cameraBox.top >= 0) ? (cameraBox.top / TileSize) : 0);
+	int clipRight = static_cast<int>((cameraBox.right < WidthReal) ? ceil(cameraBox.right / TileSize) : Width);
+	int clipBottom = static_cast<int>((cameraBox.bottom < HeightReal) ? ceil(cameraBox.bottom/ TileSize): Height);
+
+	for (int x = clipLeft; x < clipRight; ++x)
+	{
+		for (int y = clipTop; y < clipBottom; ++y)
+		{
+			
+			ResourceID resource = map->getTile(x, y)->tileID;
+			if (!resource.isInvalid())
+			{
+				TileManager::SharedTile tile = tileManager->getTile(resource);
+				tile->getTexture()->testRender(x * TileSize, y * TileSize);
+			}
+			else
+			{
+				Drawing::drawRectangleOutline(x * TileSize, y * TileSize, (x + 1) * TileSize, (y + 1)*TileSize);
+			}
+		}
+	}
 
 	if (camera.isMouseTileValid())
 	{
@@ -61,9 +81,27 @@ void MapEditor::render(const int WindowWidth, const int WindowHeight)
 		Drawing::drawLine(mx, my, mx + TileSize, my + TileSize);
 		Drawing::drawLine(mx + TileSize, my, mx, my + TileSize);
 	}
+	
+	//Unproject!
+	glMatrixMode(GL_MODELVIEW);
+	glPopMatrix();
+	glMatrixMode(GL_PROJECTION);
+	glPopMatrix();
 }
 
 void MapEditor::changeMap(Map * map)
 {
 	this->map = map;
+}
+
+void MapEditor::click()
+{
+	ResourceID tileID = tileManager->getSelectedID();
+	if (tileID.isInvalid())
+		return;
+	if (!camera.isMouseTileValid())
+		return;
+
+	MapTile tile = MapTile(tileID);
+	map->setTile(camera.getMouseTileX(), camera.getMouseTileY(), tile);
 }
