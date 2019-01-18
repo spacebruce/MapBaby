@@ -55,7 +55,7 @@ void UIFileTabWindow::updateContents()
 	if (ImGui::Button("+"))
 	{
 		mapManager->newMap();
-		//selectMap(mapManager->getCount() - 1);
+		selectMap(mapManager->getCount() - 1);
 	}
 	ImGui::End();
 }

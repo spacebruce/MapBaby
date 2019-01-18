@@ -14,6 +14,9 @@ protected:
 	MapEditor* mapEditor;
 
 	virtual void updateContents() = 0;
+
+	//helper functions
+	void selectMap(int index);
 public:
 	bool visible = true;
 	WindowBase() = default;

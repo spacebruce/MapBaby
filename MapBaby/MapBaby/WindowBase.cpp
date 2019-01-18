@@ -8,6 +8,12 @@ WindowBase::~WindowBase()
 {
 }
 
+void WindowBase::selectMap(int index)
+{
+	mapManager->setCurrent(index);
+	mapEditor->changeMap(mapManager->getMap(index));
+}
+
 void WindowBase::update()
 {
 	if(visible)
