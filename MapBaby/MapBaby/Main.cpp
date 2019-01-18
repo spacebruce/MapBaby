@@ -7,8 +7,8 @@
 int main(int argCount, char * args[])
 {
 	MapManager mapManager;
-	TileManager tileManager;
 	PaletteManager paletteManager;
+	TileManager tileManager;
 	
 	MapEditor mapEditor(tileManager);
 	UserInterface ui(mapManager, tileManager, paletteManager, mapEditor);
