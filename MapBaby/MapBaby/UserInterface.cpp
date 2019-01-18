@@ -151,11 +151,11 @@ void UserInterface::updateWindows()
 
 		if (ImGui::BeginMenu("Windows"))
 		{
-			if (ImGui::MenuItem("Tabs", nullptr, ShowTabsWindow))	{ ShowTabsWindow = !ShowTabsWindow;	}
-			if (ImGui::MenuItem("Tiles", nullptr, ShowTilePickWindow)) { ShowTilePickWindow = !ShowTilePickWindow; }
+			if (ImGui::MenuItem("Tabs", nullptr, fileTabWindow.visible))	{ fileTabWindow.visible = !fileTabWindow.visible;	}
+			if (ImGui::MenuItem("Tiles", nullptr, tilePickerWindow.visible)) { tilePickerWindow.visible = !tilePickerWindow.visible; }
 			if (ImGui::MenuItem("Palette", nullptr, paletteWindow.visible)) { paletteWindow.visible = !paletteWindow.visible; }
-			if (ImGui::MenuItem("Map Stats", nullptr, paletteWindow.visible))	{	mapWindow.visible = !mapWindow.visible;	}
-			if (ImGui::MenuItem("View", nullptr, ShowViewWindow)) {	ShowViewWindow = !ShowViewWindow; }
+			if (ImGui::MenuItem("Map Stats", nullptr, mapWindow.visible))	{	mapWindow.visible = !mapWindow.visible;	}
+			if (ImGui::MenuItem("View", nullptr, viewWindow.visible)) { viewWindow.visible = !viewWindow.visible; }
 			ImGui::EndMenu();
 		}
 		ImGui::EndMainMenuBar();
