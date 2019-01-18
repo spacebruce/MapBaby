@@ -14,7 +14,8 @@ protected:
 	MapEditor* mapEditor;
 public:
 	bool visible = true;
-	WindowBase(MapManager &mapManager, PaletteManager &paletteManager, TileManager &tileManager, MapEditor &mapEditor);
+	WindowBase() = default;
+	WindowBase(MapManager *mapManager, PaletteManager *paletteManager, TileManager *tileManager, MapEditor *mapEditor);
 	virtual ~WindowBase();
 
 	virtual void update() = 0;
