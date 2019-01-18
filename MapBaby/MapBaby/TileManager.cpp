@@ -8,7 +8,7 @@ TileManager::~TileManager()
 {
 }
 
-void TileManager::createTile()
+void TileManager::createTile(Palette * palette)
 {
 	SharedTile newTile = std::make_shared<TileType>();
 	Texture * tex = newTile.get()->getTexture();
@@ -16,26 +16,13 @@ void TileManager::createTile()
 	//dummy texture
 	constexpr static int width = 16;
 	constexpr static int height = 16;
-	GLuint pixels[width * height];
+	std::uint8_t bitmap[width * height];
+
 	for (int i = 0; i < (width * height); ++i)
 	{
-		GLubyte* colour = (GLubyte*)&pixels[i];
-		if ((i & 1) != 0)
-		{
-			colour[0] = 0xff;
-			colour[1] = 0xff;
-			colour[2] = 0xff;
-			colour[3] = 0xff;
-		}
-		else
-		{
-			colour[0] = 0x00;
-			colour[1] = 0x00;
-			colour[2] = 0x00;
-			colour[3] = 0xff;
-		}
+		bitmap[i] = i % (palette->getSize() + 1);
 	}
-	tex->createFromArray(width, height, pixels);
+	tex->createFromBitmap(width, height, bitmap, palette);
 
 	tilePool.emplace_back(newTile);
 	tileLookup.emplace(std::make_pair(newTile.get()->getID(), newTile));
