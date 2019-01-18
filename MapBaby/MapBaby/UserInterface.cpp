@@ -278,7 +278,7 @@ void UserInterface::updateWindows()
 
 		if (ImGui::Button("new"))
 		{
-			tileManager->createTile();
+			tileManager->createTile(paletteManager->getCurrentPalette());
 		}
 
 		ImGui::BeginChild("TilePickerScroll", ImVec2(300,300), true, 0);
@@ -372,7 +372,7 @@ void UserInterface::updateWindows()
 				}
 			}
 
-			ImGui::BeginChild("PaletteScroll", ImVec2(270, 300), true, 0);
+			ImGui::BeginChild("PaletteScroll", ImVec2(270, 500), true, 0);
 				
 			for (std::size_t i = 0; i < palette->getSize(); ++i)
 			{
