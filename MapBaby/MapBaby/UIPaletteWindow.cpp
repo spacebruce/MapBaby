@@ -14,7 +14,7 @@ UIPaletteWindow::~UIPaletteWindow()
 
 void UIPaletteWindow::updateContents()
 {
-	if (ImGui::Begin("Palette", &visible))
+	if (ImGui::Begin("Palette", &visible, ImGuiWindowFlags_AlwaysAutoResize))
 	{
 		//Palette picker
 		std::size_t currentPalette = paletteManager->getCurrentIndex();
@@ -42,7 +42,7 @@ void UIPaletteWindow::updateContents()
 
 		Palette * palette = paletteManager->getCurrentPalette();
 
-		if (ImGui::CollapsingHeader("Palette settings"))
+		if (ImGui::CollapsingHeader("Settings"))
 		{
 			//Name editor
 			const std::size_t stringMax = 16;
@@ -71,32 +71,33 @@ void UIPaletteWindow::updateContents()
 			}
 		}
 
-		ImGui::BeginChild("PaletteScroll", ImVec2(270, 500), true, 0);
-
-		for (std::size_t i = 0; i < palette->getSize(); ++i)
+		if (ImGui::CollapsingHeader("Palette"))
 		{
-			ImGui::Text("No. %i", i);
-			ImGui::SameLine();
-
-			PaletteEntry colour = palette->getEntry(i);
-
-			const float colScale = 255.0f;
-			float tempColours[] = { colour.r / colScale, colour.g / colScale, colour.b / colScale };
-
-			ImGui::PushID(i);
-
-			if (ImGui::ColorEdit3("##picker", tempColours, ImGuiColorEditFlags_RGB))
+			ImGui::BeginChild("PaletteScroll", ImVec2(240, 300), true, 0);
+			for (std::size_t i = 0; i < palette->getSize(); ++i)
 			{
-				colour.r = static_cast<GLubyte>(tempColours[0] * colScale);
-				colour.g = static_cast<GLubyte>(tempColours[1] * colScale);
-				colour.b = static_cast<GLubyte>(tempColours[2] * colScale);
-				palette->set(i, colour);
+				ImGui::Text("%03i", i);
+				ImGui::SameLine();
+
+				PaletteEntry colour = palette->getEntry(i);
+
+				const float colScale = 255.0f;
+				float tempColours[] = { colour.r / colScale, colour.g / colScale, colour.b / colScale };
+
+				ImGui::PushID(i);
+
+				if (ImGui::ColorEdit3("##picker", tempColours, ImGuiColorEditFlags_RGB))
+				{
+					colour.r = static_cast<GLubyte>(tempColours[0] * colScale);
+					colour.g = static_cast<GLubyte>(tempColours[1] * colScale);
+					colour.b = static_cast<GLubyte>(tempColours[2] * colScale);
+					palette->set(i, colour);
+				}
+
+				ImGui::PopID();
 			}
-
-			ImGui::PopID();
+			ImGui::EndChild();
 		}
-
-		ImGui::EndChild();
 
 	}
 	ImGui::End();
