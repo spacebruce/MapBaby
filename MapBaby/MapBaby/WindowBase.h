@@ -23,5 +23,5 @@ public:
 	WindowBase(MapManager *mapManager, PaletteManager *paletteManager, TileManager *tileManager, MapEditor *mapEditor);
 	virtual ~WindowBase();
 
-	void update();
+	virtual void update();
 };

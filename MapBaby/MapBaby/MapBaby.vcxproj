@@ -167,7 +167,9 @@
     <ClCompile Include="TileManager.cpp" />
     <ClCompile Include="UIFileTabWindow.cpp" />
     <ClCompile Include="UIMapWindow.cpp" />
+    <ClCompile Include="UINewFileDialogue.cpp" />
     <ClCompile Include="UIPaletteWindow.cpp" />
+    <ClCompile Include="UIPopupBase.cpp" />
     <ClCompile Include="UITilePickerWindow.cpp" />
     <ClCompile Include="UIViewWindow.cpp" />
     <ClCompile Include="UserInterface.cpp" />
@@ -282,7 +284,9 @@
     <ClInclude Include="TileManager.h" />
     <ClInclude Include="UIFileTabWindow.h" />
     <ClInclude Include="UIMapWindow.h" />
+    <ClInclude Include="UINewFileDialogue.h" />
     <ClInclude Include="UIPaletteWindow.h" />
+    <ClInclude Include="UIPopupBase.h" />
     <ClInclude Include="UITilePickerWindow.h" />
     <ClInclude Include="UIViewWindow.h" />
     <ClInclude Include="UserInterface.h" />
