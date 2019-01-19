@@ -6,10 +6,14 @@
 #include "PaletteManager.h"
 #include "UIWindowBase.h"
 
+#include "UICreateTilePopup.h"
+
 class UITilePickerWindow : public UIWindowBase
 {
 protected:
 	void updateContents();
+
+	UICreateTilePopup createTilePopup;
 public:
 	UITilePickerWindow();
 	UITilePickerWindow(MapManager *mapManager, PaletteManager *paletteManager, TileManager *tileManager, MapEditor *mapEditor);

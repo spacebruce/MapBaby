@@ -7,6 +7,7 @@ UITilePickerWindow::UITilePickerWindow() : UIWindowBase()
 
 UITilePickerWindow::UITilePickerWindow(MapManager *mapManager, PaletteManager *paletteManager, TileManager *tileManager, MapEditor *mapEditor) : UIWindowBase(mapManager, paletteManager, tileManager, mapEditor)
 {
+	this->createTilePopup = UICreateTilePopup(mapManager, paletteManager, tileManager, mapEditor);
 }
 
 UITilePickerWindow::~UITilePickerWindow()
@@ -19,7 +20,7 @@ void UITilePickerWindow::updateContents()
 
 	if (ImGui::Button("new"))
 	{
-		tileManager->createTile(paletteManager->getCurrentPalette());
+		createTilePopup.open();
 	}
 
 	ImGui::BeginChild("TilePickerScroll", ImVec2(300, 300), true, 0);
@@ -51,4 +52,6 @@ void UITilePickerWindow::updateContents()
 	}
 	ImGui::EndChild();
 	ImGui::End();
+
+	createTilePopup.update();
 }

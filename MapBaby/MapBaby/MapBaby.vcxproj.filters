@@ -126,6 +126,9 @@
     <ClCompile Include="UIWindowBase.cpp">
       <Filter>Source Files\UI</Filter>
     </ClCompile>
+    <ClCompile Include="UICreateTilePopup.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Include\SDL\begin_code.h">
@@ -471,6 +474,9 @@
       <Filter>Header Files\UI</Filter>
     </ClInclude>
     <ClInclude Include="UIWindowBase.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UICreateTilePopup.h">
       <Filter>Header Files\UI</Filter>
     </ClInclude>
   </ItemGroup>
