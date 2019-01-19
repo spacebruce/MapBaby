@@ -146,6 +146,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="DrawingHelpers.cpp" />
+    <ClCompile Include="imgui_stdlib.cpp" />
     <ClCompile Include="Include\Imgui\imgui.cpp" />
     <ClCompile Include="Include\Imgui\imgui_demo.cpp" />
     <ClCompile Include="Include\Imgui\imgui_draw.cpp" />
@@ -174,6 +175,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DrawingHelpers.h" />
+    <ClInclude Include="imgui_stdlib.h" />
     <ClInclude Include="Include\Imgui\imconfig.h" />
     <ClInclude Include="Include\Imgui\imgui.h" />
     <ClInclude Include="Include\Imgui\imgui_impl_opengl2.h" />
