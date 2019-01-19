@@ -56,9 +56,9 @@ void MapEditor::render(const int WindowWidth, const int WindowHeight)
 	int clipRight = static_cast<int>((cameraBox.right < WidthReal) ? ceil(cameraBox.right / TileSize) : Width);
 	int clipBottom = static_cast<int>((cameraBox.bottom < HeightReal) ? ceil(cameraBox.bottom/ TileSize): Height);
 
-	for (int x = clipLeft; x < clipRight; ++x)
+	for (int y = clipTop; y < clipBottom; ++y)
 	{
-		for (int y = clipTop; y < clipBottom; ++y)
+		for (int x = clipLeft; x < clipRight; ++x)
 		{
 			
 			ResourceID resource = map->getTile(x, y)->tileID;
@@ -80,6 +80,13 @@ void MapEditor::render(const int WindowWidth, const int WindowHeight)
 		float my = camera.getMouseTileY() * TileSize;
 		Drawing::drawLine(mx, my, mx + TileSize, my + TileSize);
 		Drawing::drawLine(mx + TileSize, my, mx, my + TileSize);
+
+		ResourceID tileID = tileManager->getSelectedID();
+		if (!tileID.isInvalid())
+		{
+			TileManager::SharedTile tile = tileManager->getTile(tileID);
+			tile->getTexture()->testRender(mx, my);
+		}
 	}
 	
 	//Unproject!

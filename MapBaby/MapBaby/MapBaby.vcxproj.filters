@@ -117,6 +117,9 @@
     <ClCompile Include="UIViewWindow.cpp">
       <Filter>Source Files\UI</Filter>
     </ClCompile>
+    <ClCompile Include="Include\Imgui\imgui_stdlib.cpp">
+      <Filter>Header Files\Include\imgui</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Include\SDL\begin_code.h">
@@ -425,9 +428,6 @@
     <ClInclude Include="TileType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PaletteEntry.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="PaletteManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -454,6 +454,12 @@
     </ClInclude>
     <ClInclude Include="UIViewWindow.h">
       <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Colours.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Imgui\imgui_stdlib.h">
+      <Filter>Header Files\Include\imgui</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

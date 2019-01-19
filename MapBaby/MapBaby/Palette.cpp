@@ -10,11 +10,11 @@ Palette::~Palette()
 {
 }
 
-PaletteEntry & Palette::getEntry(std::size_t index)
+ColourRGB & Palette::getEntry(std::size_t index)
 {
 	if (index >= this->palette.size())
 	{
-		return PaletteEntry(0x00, 0x00, 0x00);
+		return ColourRGB(0x00, 0x00, 0x00);
 	}
 	return this->palette[index];
 }
@@ -30,12 +30,12 @@ void Palette::setSize(std::size_t size)
 	this->palette.resize(size);
 }
 
-void Palette::set(std::size_t index, PaletteEntry entry)
+void Palette::set(std::size_t index, ColourRGB entry)
 {
 	palette[index] = entry;
 }
 
-void Palette::add(PaletteEntry entry)
+void Palette::add(ColourRGB entry)
 {
 	if (this->palette.size() < this->maxSize)
 	{

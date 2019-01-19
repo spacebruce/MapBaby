@@ -8,7 +8,7 @@ TileManager::~TileManager()
 {
 }
 
-void TileManager::createTile(Palette * palette)
+void TileManager::createTile(Palette &palette)
 {
 	SharedTile newTile = std::make_shared<TileType>();
 	Texture * tex = newTile.get()->getTexture();
@@ -20,7 +20,7 @@ void TileManager::createTile(Palette * palette)
 
 	for (int i = 0; i < (width * height); ++i)
 	{
-		bitmap[i] = i % (palette->getSize() + 1);
+		bitmap[i] = i % palette.getSize();
 	}
 	tex->createFromBitmap(width, height, bitmap, palette);
 

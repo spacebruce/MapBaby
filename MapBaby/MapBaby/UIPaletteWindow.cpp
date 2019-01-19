@@ -14,17 +14,17 @@ UIPaletteWindow::~UIPaletteWindow()
 
 void UIPaletteWindow::updateContents()
 {
-	if (ImGui::Begin("Palette", &visible))
+	if (ImGui::Begin("Palette", &visible, ImGuiWindowFlags_AlwaysAutoResize))
 	{
 		//Palette picker
 		std::size_t currentPalette = paletteManager->getCurrentIndex();
 
-		if (ImGui::BeginCombo("##PalettePicker", paletteManager->getCurrentPalette()->name.c_str()))
+		if (ImGui::BeginCombo("##PalettePicker", paletteManager->getCurrentPalette().name.c_str()))
 		{
 			for (int i = 0; i < paletteManager->getCount(); ++i)
 			{
 				bool selected = (i == currentPalette);
-				if (ImGui::Selectable(paletteManager->getPalette(i)->name.c_str(), selected))
+				if (ImGui::Selectable(paletteManager->getPalette(i).name.c_str(), selected))
 					currentPalette = i;
 				if (selected)
 					ImGui::SetItemDefaultFocus();
@@ -40,25 +40,18 @@ void UIPaletteWindow::updateContents()
 			paletteManager->addPalette(Palette());
 		}
 
-		Palette * palette = paletteManager->getCurrentPalette();
+		Palette& palette = paletteManager->getCurrentPalette();
 
-		if (ImGui::CollapsingHeader("Palette settings"))
+		if (ImGui::CollapsingHeader("Settings"))
 		{
 			//Name editor
-			const std::size_t stringMax = 16;
-			if (ImGui::InputText("name", const_cast<char*>(palette->name.c_str()), stringMax))
-			{
-				if (palette->name.length() > stringMax)
-				{
-					palette->name = palette->name.substr(0, stringMax);
-				}
-			}
+			ImGui::InputText("name", &palette.name);
 
 			//Size
-			std::uint32_t size = palette->getSize();
+			std::uint32_t size = palette.getSize();
 			if (ImGui::InputScalar("size", ImGuiDataType_U32, &size))
 			{
-				palette->setSize(size);
+				palette.setSize(size);
 			}
 
 			if (ImGui::Button("delete"))
@@ -71,32 +64,33 @@ void UIPaletteWindow::updateContents()
 			}
 		}
 
-		ImGui::BeginChild("PaletteScroll", ImVec2(270, 500), true, 0);
-
-		for (std::size_t i = 0; i < palette->getSize(); ++i)
+		if (ImGui::CollapsingHeader("Palette"))
 		{
-			ImGui::Text("No. %i", i);
-			ImGui::SameLine();
-
-			PaletteEntry colour = palette->getEntry(i);
-
-			const float colScale = 255.0f;
-			float tempColours[] = { colour.r / colScale, colour.g / colScale, colour.b / colScale };
-
-			ImGui::PushID(i);
-
-			if (ImGui::ColorEdit3("##picker", tempColours, ImGuiColorEditFlags_RGB))
+			ImGui::BeginChild("PaletteScroll", ImVec2(240, 300), true, 0);
+			for (std::size_t i = 0; i < palette.getSize(); ++i)
 			{
-				colour.r = static_cast<GLubyte>(tempColours[0] * colScale);
-				colour.g = static_cast<GLubyte>(tempColours[1] * colScale);
-				colour.b = static_cast<GLubyte>(tempColours[2] * colScale);
-				palette->set(i, colour);
+				ImGui::Text("%03i", i);
+				ImGui::SameLine();
+
+				ColourRGB colour = palette.getEntry(i);
+
+				const float colScale = 255.0f;
+				float tempColours[] = { colour.r / colScale, colour.g / colScale, colour.b / colScale };
+
+				ImGui::PushID(i);
+
+				if (ImGui::ColorEdit3("##picker", tempColours, ImGuiColorEditFlags_RGB))
+				{
+					colour.r = static_cast<GLubyte>(tempColours[0] * colScale);
+					colour.g = static_cast<GLubyte>(tempColours[1] * colScale);
+					colour.b = static_cast<GLubyte>(tempColours[2] * colScale);
+					palette.set(i, colour);
+				}
+
+				ImGui::PopID();
 			}
-
-			ImGui::PopID();
+			ImGui::EndChild();
 		}
-
-		ImGui::EndChild();
 
 	}
 	ImGui::End();

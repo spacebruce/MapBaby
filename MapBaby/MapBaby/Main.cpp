@@ -13,13 +13,10 @@ int main(int argCount, char * args[])
 	MapEditor mapEditor(tileManager);
 	UserInterface ui(mapManager, tileManager, paletteManager, mapEditor);
 
-	ui.start();
-
 	while (!ui.finished)
 	{
 		ui.update();
 	}
 
-	ui.end();
 	return 0;
 }

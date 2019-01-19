@@ -12,14 +12,7 @@ UserInterface::UserInterface(MapManager& mapManager, TileManager& tileManager, P
 	viewWindow = UIViewWindow(&mapManager, &paletteManager, &tileManager, &mapEditor);
 	tilePickerWindow = UITilePickerWindow(&mapManager, &paletteManager, &tileManager, &mapEditor);
 	fileTabWindow = UIFileTabWindow(&mapManager, &paletteManager, &tileManager, &mapEditor);
-}
 
-UserInterface::~UserInterface()
-{
-}
-
-void UserInterface::start()
-{
 	// Setup SDL
 	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER) != 0)
 	{
@@ -48,12 +41,13 @@ void UserInterface::start()
 	this->io = &ImGui::GetIO();
 }
 
-void UserInterface::end()
+UserInterface::~UserInterface()
 {
 	SDL_GL_DeleteContext(this->gl_context);
 	SDL_DestroyWindow(this->window);
 	SDL_Quit();
 }
+
 
 void UserInterface::render()
 {
@@ -95,10 +89,11 @@ void UserInterface::update()
 
 	if (updateMouse)
 	{
-		if(sendClick)
+		if (sendClick)
+		{
 			mapEditor->click();
+		}
 	}
-
 
 	ImGui_ImplOpenGL2_NewFrame();
 	ImGui_ImplSDL2_NewFrame(this->window);
@@ -117,7 +112,7 @@ void UserInterface::selectMap(int index)
 
 void UserInterface::updateWindows()
 {
-	//main bar
+	//Menu bar
 	if (ImGui::BeginMainMenuBar())
 	{
 		if (ImGui::BeginMenu("File"))
@@ -160,8 +155,6 @@ void UserInterface::updateWindows()
 		}
 		ImGui::EndMainMenuBar();
 	}
-
-	//View window
 
 	//Windows
 	fileTabWindow.update();
