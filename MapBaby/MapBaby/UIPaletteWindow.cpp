@@ -45,14 +45,7 @@ void UIPaletteWindow::updateContents()
 		if (ImGui::CollapsingHeader("Settings"))
 		{
 			//Name editor
-			const std::size_t stringMax = 16;
-			if (ImGui::InputText("name", const_cast<char*>(palette.name.c_str()), stringMax))
-			{
-				if (palette.name.length() > stringMax)
-				{
-					palette.name = palette.name.substr(0, stringMax);
-				}
-			}
+			ImGui::InputText("name", &palette.name);
 
 			//Size
 			std::uint32_t size = palette.getSize();
