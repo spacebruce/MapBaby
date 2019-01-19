@@ -12,6 +12,6 @@ protected:
 	void updateContents();
 public:
 	UINewFileDialogue();
-	~UINewFileDialogue();
 	UINewFileDialogue(MapManager * mapManager, PaletteManager * paletteManager, TileManager * tileManager, MapEditor * mapEditor);
+	~UINewFileDialogue();
 };

@@ -14,7 +14,7 @@ UINewFileDialogue::~UINewFileDialogue()
 
 void UINewFileDialogue::updateContents()
 {
-	if (ImGui::BeginPopupModal("New map"))
+	if (ImGui::BeginPopupModal(this->identifier))
 	{
 		if (ImGui::Button("new"))
 		{

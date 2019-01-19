@@ -7,10 +7,10 @@
 class UIPopupBase : public WindowBase
 {
 protected:
-	std::string identifier = "";
+	char * identifier;
 	bool popOpen = false;
 public:
-	UIPopupBase(std::string name, MapManager *mapManager, PaletteManager *paletteManager, TileManager *tileManager, MapEditor *mapEditor);
+	UIPopupBase(char * name, MapManager *mapManager, PaletteManager *paletteManager, TileManager *tileManager, MapEditor *mapEditor);
 	UIPopupBase();
 	virtual ~UIPopupBase();
 
