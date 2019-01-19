@@ -10,7 +10,7 @@ protected:
 	char * identifier;
 	bool popOpen = false;
 
-	virtual void reset() = 0;
+	virtual void reset() {};
 public:
 	UIPopupBase(char * name, MapManager *mapManager, PaletteManager *paletteManager, TileManager *tileManager, MapEditor *mapEditor);
 	UIPopupBase();
