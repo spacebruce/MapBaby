@@ -22,6 +22,7 @@ void UIPopupBase::update()
 {
 	if (this->popOpen)
 	{
+		this->reset();
 		ImGui::OpenPopup(identifier);
 		this->popOpen = false;
 	}

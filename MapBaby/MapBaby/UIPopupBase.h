@@ -9,6 +9,8 @@ class UIPopupBase : public UIWindowBase
 protected:
 	char * identifier;
 	bool popOpen = false;
+
+	virtual void reset() = 0;
 public:
 	UIPopupBase(char * name, MapManager *mapManager, PaletteManager *paletteManager, TileManager *tileManager, MapEditor *mapEditor);
 	UIPopupBase();
