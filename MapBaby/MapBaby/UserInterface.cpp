@@ -7,11 +7,16 @@ UserInterface::UserInterface(MapManager& mapManager, TileManager& tileManager, P
 	this->tileManager = &tileManager;
 	this->mapEditor = &mapEditor;
 	this->paletteManager = &paletteManager;
+
+	//Windows
 	paletteWindow = UIPaletteWindow(&mapManager, &paletteManager, &tileManager, &mapEditor);
 	mapWindow = UIMapWindow(&mapManager, &paletteManager, &tileManager, &mapEditor);
 	viewWindow = UIViewWindow(&mapManager, &paletteManager, &tileManager, &mapEditor);
 	tilePickerWindow = UITilePickerWindow(&mapManager, &paletteManager, &tileManager, &mapEditor);
 	fileTabWindow = UIFileTabWindow(&mapManager, &paletteManager, &tileManager, &mapEditor);
+
+	//Popups
+	newFilePopup = UINewFileDialogue(&mapManager, &paletteManager, &tileManager, &mapEditor);
 
 	// Setup SDL
 	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER) != 0)
@@ -119,8 +124,7 @@ void UserInterface::updateWindows()
 		{
 			if (ImGui::MenuItem("New map"))
 			{
-				mapManager->newMap();
-				selectMap(mapManager->getCount() - 1);
+				newFilePopup.open();
 			}
 			if (ImGui::MenuItem("Load map")) {};
 			if (ImGui::MenuItem("Save map")) {};
@@ -162,4 +166,7 @@ void UserInterface::updateWindows()
 	mapWindow.update();
 	tilePickerWindow.update();
 	paletteWindow.update();
+
+	//Popups
+	newFilePopup.update();
 }

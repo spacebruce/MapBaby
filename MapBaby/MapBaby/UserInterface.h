@@ -7,16 +7,20 @@
 #include "imgui/imgui_impl_sdl.h"
 #include "imgui/imgui_impl_opengl2.h"
 
+// Major components
 #include "TileManager.h"
 #include "MapManager.h"
 #include "PaletteManager.h"
 #include "MapEditor.h"
 
+// Windows & popups
 #include "UIPaletteWindow.h"
 #include "UIMapWindow.h"
 #include "UIViewWindow.h"
 #include "UITilePickerWindow.h"
 #include "UIFileTabWindow.h"
+#include "UINewFileDialogue.h"
+
 
 class UserInterface
 {
@@ -42,6 +46,8 @@ private:
 	UITilePickerWindow tilePickerWindow;
 	UIFileTabWindow fileTabWindow;
 
+	//Popups
+	UINewFileDialogue newFilePopup;
 public:
 	UserInterface(MapManager& mapManager, TileManager& tileManager, PaletteManager& paletteManager, MapEditor& mapEditor);
 	~UserInterface();

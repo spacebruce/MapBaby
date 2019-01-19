@@ -123,6 +123,9 @@
     <ClCompile Include="UIPopupBase.cpp">
       <Filter>Source Files\UI</Filter>
     </ClCompile>
+    <ClCompile Include="UINewFileDialogue.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Include\SDL\begin_code.h">
@@ -463,6 +466,9 @@
     </ClInclude>
     <ClInclude Include="Include\Imgui\imgui_stdlib.h">
       <Filter>Header Files\Include\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="UINewFileDialogue.h">
+      <Filter>Header Files\UI</Filter>
     </ClInclude>
     <ClInclude Include="UIPopupBase.h">
       <Filter>Header Files\UI</Filter>
