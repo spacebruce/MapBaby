@@ -13,8 +13,8 @@ public:
 	~PaletteManager() = default;
 
 	std::size_t getCurrentIndex();
-	Palette * getCurrentPalette();
-	Palette * getPalette(std::size_t index);
+	Palette& getCurrentPalette();
+	Palette& getPalette(std::size_t index);
 
 	void setCurrent(std::size_t index);
 

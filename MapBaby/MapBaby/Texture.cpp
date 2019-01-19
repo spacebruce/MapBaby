@@ -43,25 +43,18 @@ void Texture::createFromArray(GLuint Width, GLuint Height, GLuint *pixels)
 	glBindTexture(GL_TEXTURE_2D, NULL);
 }
 
-void Texture::createFromBitmap(GLuint Width, GLuint Height, std::uint8_t * bitmap, Palette * palette)
+void Texture::createFromBitmap(GLuint Width, GLuint Height, std::uint8_t * bitmap, Palette& palette)
 {
 	const std::size_t length = (Width * Height);
-	GLuint * pixels = new GLuint[length];
+	std::vector<GLuint> pixels = std::vector<GLuint>(length);
 
 	for (std::size_t i = 0; i < length; ++i)
 	{
-		ColourRGB colour = palette->getEntry(bitmap[i]);
-
-		GLubyte* pixel = (GLubyte*)&pixels[i];
-		pixel[0] = colour.r;
-		pixel[1] = colour.g;
-		pixel[2] = colour.b;
-		pixel[3] = 0xff;
+		ColourRGB colour = palette.getEntry(bitmap[i]);
+		pixels[i] = static_cast<GLuint>(colour);
 	}
 
-	this->createFromArray(Width, Height, pixels);
-
-	delete pixels;
+	this->createFromArray(Width, Height, pixels.data());
 }
 
 GLuint Texture::get() const

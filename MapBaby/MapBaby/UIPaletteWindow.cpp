@@ -19,12 +19,12 @@ void UIPaletteWindow::updateContents()
 		//Palette picker
 		std::size_t currentPalette = paletteManager->getCurrentIndex();
 
-		if (ImGui::BeginCombo("##PalettePicker", paletteManager->getCurrentPalette()->name.c_str()))
+		if (ImGui::BeginCombo("##PalettePicker", paletteManager->getCurrentPalette().name.c_str()))
 		{
 			for (int i = 0; i < paletteManager->getCount(); ++i)
 			{
 				bool selected = (i == currentPalette);
-				if (ImGui::Selectable(paletteManager->getPalette(i)->name.c_str(), selected))
+				if (ImGui::Selectable(paletteManager->getPalette(i).name.c_str(), selected))
 					currentPalette = i;
 				if (selected)
 					ImGui::SetItemDefaultFocus();
@@ -40,25 +40,25 @@ void UIPaletteWindow::updateContents()
 			paletteManager->addPalette(Palette());
 		}
 
-		Palette * palette = paletteManager->getCurrentPalette();
+		Palette& palette = paletteManager->getCurrentPalette();
 
 		if (ImGui::CollapsingHeader("Settings"))
 		{
 			//Name editor
 			const std::size_t stringMax = 16;
-			if (ImGui::InputText("name", const_cast<char*>(palette->name.c_str()), stringMax))
+			if (ImGui::InputText("name", const_cast<char*>(palette.name.c_str()), stringMax))
 			{
-				if (palette->name.length() > stringMax)
+				if (palette.name.length() > stringMax)
 				{
-					palette->name = palette->name.substr(0, stringMax);
+					palette.name = palette.name.substr(0, stringMax);
 				}
 			}
 
 			//Size
-			std::uint32_t size = palette->getSize();
+			std::uint32_t size = palette.getSize();
 			if (ImGui::InputScalar("size", ImGuiDataType_U32, &size))
 			{
-				palette->setSize(size);
+				palette.setSize(size);
 			}
 
 			if (ImGui::Button("delete"))
@@ -74,12 +74,12 @@ void UIPaletteWindow::updateContents()
 		if (ImGui::CollapsingHeader("Palette"))
 		{
 			ImGui::BeginChild("PaletteScroll", ImVec2(240, 300), true, 0);
-			for (std::size_t i = 0; i < palette->getSize(); ++i)
+			for (std::size_t i = 0; i < palette.getSize(); ++i)
 			{
 				ImGui::Text("%03i", i);
 				ImGui::SameLine();
 
-				ColourRGB colour = palette->getEntry(i);
+				ColourRGB colour = palette.getEntry(i);
 
 				const float colScale = 255.0f;
 				float tempColours[] = { colour.r / colScale, colour.g / colScale, colour.b / colScale };
@@ -91,7 +91,7 @@ void UIPaletteWindow::updateContents()
 					colour.r = static_cast<GLubyte>(tempColours[0] * colScale);
 					colour.g = static_cast<GLubyte>(tempColours[1] * colScale);
 					colour.b = static_cast<GLubyte>(tempColours[2] * colScale);
-					palette->set(i, colour);
+					palette.set(i, colour);
 				}
 
 				ImGui::PopID();

@@ -19,7 +19,7 @@ public:
 	TileManager();
 	~TileManager();
 
-	void createTile(Palette * palette);
+	void createTile(Palette& palette);
 
 	int getSelectedIndex() const;
 	ResourceID getSelectedID() const;

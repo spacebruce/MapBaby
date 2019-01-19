@@ -39,11 +39,9 @@ PaletteManager::PaletteManager()
 	this->addPalette(amstrad);
 }
 
-Palette * PaletteManager::getCurrentPalette()
+Palette& PaletteManager::getCurrentPalette()
 {
-	if (this->empty())
-		return nullptr;
-	return &(this->palettes[this->current]);
+	return getPalette(this->current);
 }
 
 void PaletteManager::setCurrent(std::size_t index)
@@ -56,11 +54,11 @@ std::size_t PaletteManager::getCurrentIndex()
 	return this->current;
 }
 
-Palette * PaletteManager::getPalette(std::size_t index)
+Palette& PaletteManager::getPalette(std::size_t index)
 {
 	if (index > this->getCount())
-		return nullptr;
-	return &palettes[index];
+		return Palette();
+	return palettes[index];
 }
 
 void PaletteManager::addPalette(Palette & palette)
