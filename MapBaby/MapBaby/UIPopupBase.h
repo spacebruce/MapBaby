@@ -2,9 +2,9 @@
 #include <string>
 #include "Include/Imgui/imgui.h"
 
-#include "WindowBase.h"
+#include "UIWindowBase.h"
 
-class UIPopupBase : public WindowBase
+class UIPopupBase : public UIWindowBase
 {
 protected:
 	char * identifier;

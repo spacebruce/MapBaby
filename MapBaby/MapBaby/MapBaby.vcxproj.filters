@@ -96,9 +96,6 @@
     <ClCompile Include="Palette.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="WindowBase.cpp">
-      <Filter>Source Files\UI</Filter>
-    </ClCompile>
     <ClCompile Include="UserInterface.cpp">
       <Filter>Source Files\UI</Filter>
     </ClCompile>
@@ -124,6 +121,9 @@
       <Filter>Source Files\UI</Filter>
     </ClCompile>
     <ClCompile Include="UINewFileDialogue.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UIWindowBase.cpp">
       <Filter>Source Files\UI</Filter>
     </ClCompile>
   </ItemGroup>
@@ -440,9 +440,6 @@
     <ClInclude Include="Palette.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="WindowBase.h">
-      <Filter>Header Files\UI</Filter>
-    </ClInclude>
     <ClInclude Include="UserInterface.h">
       <Filter>Header Files\UI</Filter>
     </ClInclude>
@@ -471,6 +468,9 @@
       <Filter>Header Files\UI</Filter>
     </ClInclude>
     <ClInclude Include="UIPopupBase.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UIWindowBase.h">
       <Filter>Header Files\UI</Filter>
     </ClInclude>
   </ItemGroup>

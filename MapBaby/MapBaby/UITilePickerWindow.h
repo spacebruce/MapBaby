@@ -4,9 +4,9 @@
 #include "MapManager.h"
 #include "TileManager.h"
 #include "PaletteManager.h"
-#include "WindowBase.h"
+#include "UIWindowBase.h"
 
-class UITilePickerWindow : public WindowBase
+class UITilePickerWindow : public UIWindowBase
 {
 protected:
 	void updateContents();

@@ -1,8 +1,6 @@
 #include "UIPopupBase.h"
 
-
-
-UIPopupBase::UIPopupBase(char * name, MapManager * mapManager, PaletteManager * paletteManager, TileManager * tileManager, MapEditor * mapEditor) : identifier(name), WindowBase(mapManager, paletteManager, tileManager, mapEditor)
+UIPopupBase::UIPopupBase(char * name, MapManager * mapManager, PaletteManager * paletteManager, TileManager * tileManager, MapEditor * mapEditor) : identifier(name), UIWindowBase(mapManager, paletteManager, tileManager, mapEditor)
 {
 }
 

@@ -1,11 +1,11 @@
 #include "UITilePickerWindow.h"
 
 
-UITilePickerWindow::UITilePickerWindow() : WindowBase()
+UITilePickerWindow::UITilePickerWindow() : UIWindowBase()
 {
 }
 
-UITilePickerWindow::UITilePickerWindow(MapManager *mapManager, PaletteManager *paletteManager, TileManager *tileManager, MapEditor *mapEditor) : WindowBase(mapManager, paletteManager, tileManager, mapEditor)
+UITilePickerWindow::UITilePickerWindow(MapManager *mapManager, PaletteManager *paletteManager, TileManager *tileManager, MapEditor *mapEditor) : UIWindowBase(mapManager, paletteManager, tileManager, mapEditor)
 {
 }
 

@@ -4,9 +4,9 @@
 #include "MapManager.h"
 #include "TileManager.h"
 #include "PaletteManager.h"
-#include "WindowBase.h"
+#include "UIWindowBase.h"
 
-class UIMapWindow :	public WindowBase
+class UIMapWindow :	public UIWindowBase
 {
 protected:
 	void updateContents();

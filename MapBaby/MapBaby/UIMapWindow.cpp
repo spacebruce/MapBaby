@@ -1,10 +1,10 @@
 #include "UIMapWindow.h"
 
-UIMapWindow::UIMapWindow() : WindowBase()
+UIMapWindow::UIMapWindow() : UIWindowBase()
 {
 }
 
-UIMapWindow::UIMapWindow(MapManager *mapManager, PaletteManager *paletteManager, TileManager *tileManager, MapEditor *mapEditor) : WindowBase(mapManager, paletteManager, tileManager, mapEditor)
+UIMapWindow::UIMapWindow(MapManager *mapManager, PaletteManager *paletteManager, TileManager *tileManager, MapEditor *mapEditor) : UIWindowBase(mapManager, paletteManager, tileManager, mapEditor)
 {
 }
 

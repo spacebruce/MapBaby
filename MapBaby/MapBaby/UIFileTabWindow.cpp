@@ -1,11 +1,11 @@
 #include "UIFileTabWindow.h"
 
 
-UIFileTabWindow::UIFileTabWindow() : WindowBase()
+UIFileTabWindow::UIFileTabWindow() : UIWindowBase()
 {
 }
 
-UIFileTabWindow::UIFileTabWindow(MapManager *mapManager, PaletteManager *paletteManager, TileManager *tileManager, MapEditor *mapEditor) : WindowBase(mapManager, paletteManager, tileManager, mapEditor)
+UIFileTabWindow::UIFileTabWindow(MapManager *mapManager, PaletteManager *paletteManager, TileManager *tileManager, MapEditor *mapEditor) : UIWindowBase(mapManager, paletteManager, tileManager, mapEditor)
 {
 }
 
