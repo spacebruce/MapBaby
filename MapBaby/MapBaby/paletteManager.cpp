@@ -56,8 +56,8 @@ std::size_t PaletteManager::getCurrentIndex()
 
 Palette& PaletteManager::getPalette(std::size_t index)
 {
-	if (index > this->getCount())
-		return Palette();
+	if (index >= this->getCount())
+		throw std::out_of_range("getPalette out of range");
 	return palettes[index];
 }
 
