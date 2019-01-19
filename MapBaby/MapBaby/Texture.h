@@ -6,7 +6,7 @@
 #include <SDL/SDL_opengl.h>
 
 #include "Palette.h"
-#include "PaletteEntry.h"
+#include "Colours.h"
 
 class Texture
 {

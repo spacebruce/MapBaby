@@ -79,7 +79,7 @@ void UIPaletteWindow::updateContents()
 				ImGui::Text("%03i", i);
 				ImGui::SameLine();
 
-				PaletteEntry colour = palette->getEntry(i);
+				ColourRGB colour = palette->getEntry(i);
 
 				const float colScale = 255.0f;
 				float tempColours[] = { colour.r / colScale, colour.g / colScale, colour.b / colScale };

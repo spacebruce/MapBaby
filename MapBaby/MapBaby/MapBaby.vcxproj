@@ -271,7 +271,7 @@
     <ClInclude Include="MapManager.h" />
     <ClInclude Include="MathsHelpers.h" />
     <ClInclude Include="Palette.h" />
-    <ClInclude Include="PaletteEntry.h" />
+    <ClInclude Include="Colours.h" />
     <ClInclude Include="PaletteManager.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="ResourceID.h" />

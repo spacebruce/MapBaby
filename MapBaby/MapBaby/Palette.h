@@ -1,12 +1,12 @@
 #pragma once
 #include <string>
 #include <vector>
-#include "PaletteEntry.h"
+#include "Colours.h"
 
 class Palette
 {
 private:
-	std::vector<PaletteEntry> palette;
+	std::vector<ColourRGB> palette;
 	std::size_t maxSize = 0;
 public:
 	Palette() = default;
@@ -14,13 +14,13 @@ public:
 	Palette(std::string name, std::size_t maxSize);
 	~Palette();
 
-	PaletteEntry & getEntry(std::size_t index);
+	ColourRGB & getEntry(std::size_t index);
 	int getSize(void);
 
 	void setSize(std::size_t size);
 
-	void set(std::size_t index, PaletteEntry entry);
-	void add(PaletteEntry entry);
+	void set(std::size_t index, ColourRGB entry);
+	void add(ColourRGB entry);
 	void remove(std::size_t index);
 
 	std::string name;

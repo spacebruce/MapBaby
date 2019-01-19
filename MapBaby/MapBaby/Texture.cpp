@@ -50,7 +50,7 @@ void Texture::createFromBitmap(GLuint Width, GLuint Height, std::uint8_t * bitma
 
 	for (std::size_t i = 0; i < length; ++i)
 	{
-		PaletteEntry colour = palette->getEntry(bitmap[i]);
+		ColourRGB colour = palette->getEntry(bitmap[i]);
 
 		GLubyte* pixel = (GLubyte*)&pixels[i];
 		pixel[0] = colour.r;

@@ -425,9 +425,6 @@
     <ClInclude Include="TileType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PaletteEntry.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="PaletteManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -454,6 +451,9 @@
     </ClInclude>
     <ClInclude Include="UIViewWindow.h">
       <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Colours.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
