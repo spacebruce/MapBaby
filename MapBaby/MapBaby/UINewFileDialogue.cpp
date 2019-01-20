@@ -29,9 +29,9 @@ void UINewFileDialogue::updateContents()
 
 		ImGui::Separator();
 
-		if (ImGui::Button("create"))
+		if (ImGui::Button("create") && (name.length() > 0))
 		{
-			mapManager->newMap(Map(width, height));
+			mapManager->newMap(Map(name, width, height));
 			selectMap(mapManager->getCount() - 1);
 			ImGui::CloseCurrentPopup();
 		}
