@@ -13,13 +13,15 @@
 #include "PaletteManager.h"
 #include "MapEditor.h"
 
-// Windows & popups
+// Windows
 #include "UIPaletteWindow.h"
 #include "UIMapWindow.h"
 #include "UIViewWindow.h"
 #include "UITilePickerWindow.h"
 #include "UIFileTabWindow.h"
+// Popups
 #include "UINewFileDialogue.h"
+#include "UIAboutPopup.h"
 
 
 class UserInterface
@@ -48,6 +50,7 @@ private:
 
 	//Popups
 	UINewFileDialogue newFilePopup;
+	UIAboutPopup aboutPopup;
 public:
 	UserInterface(MapManager& mapManager, TileManager& tileManager, PaletteManager& paletteManager, MapEditor& mapEditor);
 	~UserInterface();

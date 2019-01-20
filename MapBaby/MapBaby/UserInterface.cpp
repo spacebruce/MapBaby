@@ -17,6 +17,7 @@ UserInterface::UserInterface(MapManager& mapManager, TileManager& tileManager, P
 
 	//Popups
 	newFilePopup = UINewFileDialogue(&mapManager, &paletteManager, &tileManager, &mapEditor);
+	aboutPopup = UIAboutPopup();
 
 	// Setup SDL
 	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER) != 0)
@@ -120,6 +121,7 @@ void UserInterface::updateWindows()
 	//Menu bar
 	if (ImGui::BeginMainMenuBar())
 	{
+		//Files
 		if (ImGui::BeginMenu("File"))
 		{
 			if (ImGui::MenuItem("New map"))
@@ -135,7 +137,7 @@ void UserInterface::updateWindows()
 			}
 			ImGui::EndMenu();
 		}
-
+		//Tabs
 		if (ImGui::BeginMenu("Tabs", (mapManager->getCount() != 0)))
 		{
 			for (auto i = 0; i < mapManager->getCount(); ++i)
@@ -147,7 +149,7 @@ void UserInterface::updateWindows()
 			}
 			ImGui::EndMenu();
 		}
-
+		//Windows
 		if (ImGui::BeginMenu("Windows"))
 		{
 			if (ImGui::MenuItem("Tabs", nullptr, fileTabWindow.visible))	{ fileTabWindow.visible = !fileTabWindow.visible;	}
@@ -155,6 +157,15 @@ void UserInterface::updateWindows()
 			if (ImGui::MenuItem("Palette", nullptr, paletteWindow.visible)) { paletteWindow.visible = !paletteWindow.visible; }
 			if (ImGui::MenuItem("Map Stats", nullptr, mapWindow.visible))	{	mapWindow.visible = !mapWindow.visible;	}
 			if (ImGui::MenuItem("View", nullptr, viewWindow.visible)) { viewWindow.visible = !viewWindow.visible; }
+			ImGui::EndMenu();
+		}
+		//Help
+		if (ImGui::BeginMenu("Help"))
+		{
+			if (ImGui::MenuItem("About"))
+			{
+				aboutPopup.open();
+			}
 			ImGui::EndMenu();
 		}
 		ImGui::EndMainMenuBar();
@@ -169,4 +180,5 @@ void UserInterface::updateWindows()
 
 	//Popups
 	newFilePopup.update();
+	aboutPopup.update();
 }
