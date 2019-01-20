@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 #include <vector>
 #include <algorithm>
 #include "MathsHelpers.h"
@@ -15,6 +16,8 @@ private:
 	int height = 12;
 	int tileSize = 16;
 public:
+	std::string name;
+
 	Map(void) : Resource()
 	{
 		this->resize(width, height);
