@@ -7,6 +7,7 @@ UIFileTabWindow::UIFileTabWindow() : UIWindowBase()
 
 UIFileTabWindow::UIFileTabWindow(MapManager *mapManager, PaletteManager *paletteManager, TileManager *tileManager, MapEditor *mapEditor) : UIWindowBase(mapManager, paletteManager, tileManager, mapEditor)
 {
+	newFilePopup = UINewFileDialogue(mapManager, paletteManager, tileManager, mapEditor);
 }
 
 UIFileTabWindow::~UIFileTabWindow()
@@ -54,8 +55,11 @@ void UIFileTabWindow::updateContents()
 	}
 	if (ImGui::Button("+"))
 	{
-		mapManager->newMap();
-		selectMap(mapManager->getCount() - 1);
+		newFilePopup.open();
+		//mapManager->newMap();
+		//selectMap(mapManager->getCount() - 1);
 	}
 	ImGui::End();
+
+	newFilePopup.update();
 }
