@@ -142,7 +142,7 @@ void UserInterface::updateWindows()
 		{
 			for (auto i = 0; i < mapManager->getCount(); ++i)
 			{
-				if (ImGui::MenuItem("test", nullptr, mapManager->isCurrent(i)))
+				if (ImGui::MenuItem(mapManager->getMap(i)->name.c_str(), nullptr, mapManager->isCurrent(i)))
 				{
 					selectMap(i);
 				}

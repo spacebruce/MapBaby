@@ -22,7 +22,7 @@ void UIMapWindow::updateContents()
 	}
 	else
 	{
-		ImGui::Text("test (%i)", map->getID());
+		ImGui::Text("%s (%i)", map->name.c_str(), map->getID());
 		ImGui::Separator();
 		ImGui::Text("Size : %i x %i", map->getWidth(), map->getHeight());
 	}
