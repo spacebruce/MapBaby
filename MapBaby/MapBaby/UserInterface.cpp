@@ -91,7 +91,7 @@ void UserInterface::update()
 	}
 
 	bool updateMouse = (!this->io->WantCaptureMouse);
-	mapEditor->update(this->io->DisplaySize.x, this->io->DisplaySize.y, updateMouse);
+	mapEditor->update(static_cast<int>(this->io->DisplaySize.x), static_cast<int>(this->io->DisplaySize.y), updateMouse);
 
 	if (updateMouse)
 	{

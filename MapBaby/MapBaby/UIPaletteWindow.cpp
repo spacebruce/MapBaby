@@ -21,7 +21,7 @@ void UIPaletteWindow::updateContents()
 
 		if (ImGui::BeginCombo("##PalettePicker", paletteManager->getCurrentPalette().name.c_str()))
 		{
-			for (int i = 0; i < paletteManager->getCount(); ++i)
+			for (std::size_t i = 0; i < paletteManager->getCount(); ++i)
 			{
 				bool selected = (i == currentPalette);
 				if (ImGui::Selectable(paletteManager->getPalette(i).name.c_str(), selected))

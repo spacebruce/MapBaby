@@ -30,7 +30,7 @@ void TileManager::createTile(Palette &palette)
 
 int TileManager::getSelectedIndex() const
 {
-	for (int i = 0; i < this->tilePool.size(); ++i)
+	for (std::size_t i = 0; i < this->tilePool.size(); ++i)
 	{
 		if (this->tilePool[i].get()->getID() == this->selectedTile)
 			return i;
