@@ -23,6 +23,8 @@ void UIPopupBase::open()
 
 void UIPopupBase::update()
 {
+	ImGui::PushID(reinterpret_cast<std::uintptr_t>(this));
+
 	if (this->popOpen)
 	{
 		this->reset();
@@ -30,4 +32,6 @@ void UIPopupBase::update()
 		this->popOpen = false;
 	}
 	this->updateContents();
+
+	ImGui::PopID();
 }
