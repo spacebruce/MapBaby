@@ -19,6 +19,17 @@ void UIImportTilePopup::updateContents()
 	{
 		ImGui::BeginChild("space filler", ImVec2(256, 128));
 		ImGui::EndChild();
+
+		ImGui::Separator();
+		if (ImGui::Button("create"))
+		{
+			ImGui::CloseCurrentPopup();
+		}
+		ImGui::SameLine();
+		if (ImGui::Button("close"))
+		{
+			ImGui::CloseCurrentPopup();
+		}
 		ImGui::EndPopup();
 	}
 }
