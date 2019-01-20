@@ -23,7 +23,11 @@ void UICreateTilePopup::updateContents()
 {
 	if (ImGui::BeginPopupModal(this->identifier, nullptr, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoMove))
 	{
-		ImGui::Button("Load from file");
+		if (ImGui::Button("Load from file"))
+		{
+			importTilePopup.open();
+		}
+
 		ImGui::Separator();
 
 		ImGui::BeginChild("thing", ImVec2(300, 140));
@@ -70,6 +74,11 @@ void UICreateTilePopup::updateContents()
 		{
 			ImGui::CloseCurrentPopup();
 		}
+
+		//Run Importer (if opened)
+		importTilePopup.update();
+
 		ImGui::EndPopup();
 	}
+
 }
