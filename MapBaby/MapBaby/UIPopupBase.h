@@ -13,6 +13,7 @@ protected:
 	virtual void reset() {};
 public:
 	UIPopupBase(char * name, MapManager *mapManager, PaletteManager *paletteManager, TileManager *tileManager, MapEditor *mapEditor);
+	UIPopupBase(char * name);
 	UIPopupBase();
 	virtual ~UIPopupBase();
 

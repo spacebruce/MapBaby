@@ -4,18 +4,21 @@ UIPopupBase::UIPopupBase(char * name, MapManager * mapManager, PaletteManager * 
 {
 }
 
-void UIPopupBase::open()
-{
-	this->popOpen = true;
-}
-
 UIPopupBase::UIPopupBase()
 {
 }
 
+UIPopupBase::UIPopupBase(char * name) : identifier(name)
+{
+}
 
 UIPopupBase::~UIPopupBase()
 {
+}
+
+void UIPopupBase::open()
+{
+	this->popOpen = true;
 }
 
 void UIPopupBase::update()
