@@ -33,9 +33,29 @@ void UICreateTilePopup::updateContents()
 
 		ImGui::NextColumn();
 
-		ImGui::Checkbox("Lock size", &LockSize);
+		ImGui::Checkbox("Lock to map size", &LockSize);
+
+		bool tooltip = false;
 		ImGui::InputScalar("Width", ImGuiDataType_U32, &Width);
+		tooltip = ImGui::IsItemHovered();
 		ImGui::InputScalar("Height", ImGuiDataType_U32, &Height);
+		tooltip = (tooltip || ImGui::IsItemHovered());
+
+		if (LockSize)
+		{
+			Map * map = mapManager->getCurrentMap();
+			if (map != nullptr)
+			{
+				Width = map->getTileSize();
+				Height = map->getTileSize();
+			}
+			if (tooltip)
+			{
+				ImGui::BeginTooltip();
+				ImGui::Text("Locked");
+				ImGui::EndTooltip();
+			}
+		}
 
 		ImGui::EndChild();
 
