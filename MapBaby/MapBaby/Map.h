@@ -23,6 +23,8 @@ public:
 		this->resize(width, height);
 	}
 
+	Map(const ResourceID ID, const std::string name, const int width, const int height);
+	Map(const std::string name, const int width, const int height);
 	Map(const int width, const int height);
 	Map(const ResourceID ID);
 	Map(const ResourceID ID, const int width, const int height);
