@@ -4,9 +4,9 @@ Bitmap::Bitmap()
 {
 }
 
-Bitmap::Bitmap(std::uint16_t width, std::uint16_t height)
+Bitmap::Bitmap(const std::uint16_t width, const std::uint16_t height)
 {
-	
+	this->resize(width, height);
 }
 
 Bitmap::Bitmap(const Bitmap & bitmap)
@@ -32,6 +32,19 @@ std::uint8_t Bitmap::getPixel(const std::uint16_t x, const std::uint16_t y) cons
 {
 	return pixels[(y * this->width) + x];
 }
+std::uint8_t Bitmap::getPixel(const std::uint16_t index) const
+{
+	return this->pixels[index];
+}
+void Bitmap::setPixel(const std::uint16_t x, const std::uint16_t y, const std::uint8_t entry)
+{
+	pixels[(y * this->width) + y] = entry;
+}
+void Bitmap::setPixel(const std::uint16_t index, const std::uint8_t entry)
+{
+	pixels[index] = entry;
+}
+
 std::vector<std::uint8_t> Bitmap::getData() const
 {
 	return pixels;
