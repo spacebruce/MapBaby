@@ -16,9 +16,11 @@ public:
 	TileType(const Bitmap bitmap);
 	TileType(const ResourceID ID);
 	TileType(const ResourceID ID, const Bitmap bitmap);
+	TileType(const ResourceID ID, const Bitmap bitmap);
 	~TileType();
 
 	//Convert to reference later
 	Texture * getTexture();
 	Bitmap & getBitmap();
+	void updateTexture(Palette& palette);
 };

@@ -25,3 +25,8 @@ Bitmap & TileType::getBitmap()
 {
 	return this->bitmap;
 }
+
+void TileType::updateTexture(Palette& palette)
+{
+	this->texture.createFromBitmap(this->bitmap, palette);
+}
