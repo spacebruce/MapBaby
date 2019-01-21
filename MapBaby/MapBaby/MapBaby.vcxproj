@@ -145,6 +145,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Bitmap.cpp" />
     <ClCompile Include="DrawingHelpers.cpp" />
     <ClCompile Include="Include\Imgui\imgui.cpp" />
     <ClCompile Include="Include\Imgui\imgui_demo.cpp" />
@@ -165,15 +166,21 @@
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TileType.cpp" />
     <ClCompile Include="TileManager.cpp" />
+    <ClCompile Include="UIAboutPopup.cpp" />
+    <ClCompile Include="UICreateTilePopup.cpp" />
     <ClCompile Include="UIFileTabWindow.cpp" />
+    <ClCompile Include="UIImportTilePopup.cpp" />
     <ClCompile Include="UIMapWindow.cpp" />
+    <ClCompile Include="UINewFileDialogue.cpp" />
     <ClCompile Include="UIPaletteWindow.cpp" />
+    <ClCompile Include="UIPopupBase.cpp" />
     <ClCompile Include="UITilePickerWindow.cpp" />
     <ClCompile Include="UIViewWindow.cpp" />
     <ClCompile Include="UserInterface.cpp" />
-    <ClCompile Include="WindowBase.cpp" />
+    <ClCompile Include="UIWindowBase.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bitmap.h" />
     <ClInclude Include="DrawingHelpers.h" />
     <ClInclude Include="Include\Imgui\imconfig.h" />
     <ClInclude Include="Include\Imgui\imgui.h" />
@@ -280,13 +287,18 @@
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TileType.h" />
     <ClInclude Include="TileManager.h" />
+    <ClInclude Include="UIAboutPopup.h" />
+    <ClInclude Include="UICreateTilePopup.h" />
     <ClInclude Include="UIFileTabWindow.h" />
+    <ClInclude Include="UIImportTilePopup.h" />
     <ClInclude Include="UIMapWindow.h" />
+    <ClInclude Include="UINewFileDialogue.h" />
     <ClInclude Include="UIPaletteWindow.h" />
+    <ClInclude Include="UIPopupBase.h" />
     <ClInclude Include="UITilePickerWindow.h" />
     <ClInclude Include="UIViewWindow.h" />
     <ClInclude Include="UserInterface.h" />
-    <ClInclude Include="WindowBase.h" />
+    <ClInclude Include="UIWindowBase.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Lib\x64\SDL2.dll" />

@@ -1,10 +1,10 @@
 #include "UIMapWindow.h"
 
-UIMapWindow::UIMapWindow() : WindowBase()
+UIMapWindow::UIMapWindow() : UIWindowBase()
 {
 }
 
-UIMapWindow::UIMapWindow(MapManager *mapManager, PaletteManager *paletteManager, TileManager *tileManager, MapEditor *mapEditor) : WindowBase(mapManager, paletteManager, tileManager, mapEditor)
+UIMapWindow::UIMapWindow(MapManager *mapManager, PaletteManager *paletteManager, TileManager *tileManager, MapEditor *mapEditor) : UIWindowBase(mapManager, paletteManager, tileManager, mapEditor)
 {
 }
 
@@ -22,7 +22,7 @@ void UIMapWindow::updateContents()
 	}
 	else
 	{
-		ImGui::Text("test (%i)", map->getID());
+		ImGui::Text("%s (%i)", map->name.c_str(), map->getID());
 		ImGui::Separator();
 		ImGui::Text("Size : %i x %i", map->getWidth(), map->getHeight());
 	}

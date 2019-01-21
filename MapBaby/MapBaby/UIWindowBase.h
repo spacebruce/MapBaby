@@ -5,7 +5,7 @@
 #include "TileManager.h"
 #include "PaletteManager.h"
 
-class WindowBase
+class UIWindowBase
 {
 protected:
 	MapManager* mapManager;
@@ -19,9 +19,9 @@ protected:
 	void selectMap(int index);
 public:
 	bool visible = true;
-	WindowBase() = default;
-	WindowBase(MapManager *mapManager, PaletteManager *paletteManager, TileManager *tileManager, MapEditor *mapEditor);
-	virtual ~WindowBase();
+	UIWindowBase() = default;
+	UIWindowBase(MapManager *mapManager, PaletteManager *paletteManager, TileManager *tileManager, MapEditor *mapEditor);
+	virtual ~UIWindowBase();
 
-	void update();
+	virtual void update();
 };

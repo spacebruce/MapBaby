@@ -7,11 +7,17 @@ UserInterface::UserInterface(MapManager& mapManager, TileManager& tileManager, P
 	this->tileManager = &tileManager;
 	this->mapEditor = &mapEditor;
 	this->paletteManager = &paletteManager;
+
+	//Windows
 	paletteWindow = UIPaletteWindow(&mapManager, &paletteManager, &tileManager, &mapEditor);
 	mapWindow = UIMapWindow(&mapManager, &paletteManager, &tileManager, &mapEditor);
 	viewWindow = UIViewWindow(&mapManager, &paletteManager, &tileManager, &mapEditor);
 	tilePickerWindow = UITilePickerWindow(&mapManager, &paletteManager, &tileManager, &mapEditor);
 	fileTabWindow = UIFileTabWindow(&mapManager, &paletteManager, &tileManager, &mapEditor);
+
+	//Popups
+	newFilePopup = UINewFileDialogue(&mapManager, &paletteManager, &tileManager, &mapEditor);
+	aboutPopup = UIAboutPopup();
 
 	// Setup SDL
 	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER) != 0)
@@ -85,7 +91,7 @@ void UserInterface::update()
 	}
 
 	bool updateMouse = (!this->io->WantCaptureMouse);
-	mapEditor->update(this->io->DisplaySize.x, this->io->DisplaySize.y, updateMouse);
+	mapEditor->update(static_cast<int>(this->io->DisplaySize.x), static_cast<int>(this->io->DisplaySize.y), updateMouse);
 
 	if (updateMouse)
 	{
@@ -115,12 +121,12 @@ void UserInterface::updateWindows()
 	//Menu bar
 	if (ImGui::BeginMainMenuBar())
 	{
+		//Files
 		if (ImGui::BeginMenu("File"))
 		{
 			if (ImGui::MenuItem("New map"))
 			{
-				mapManager->newMap();
-				selectMap(mapManager->getCount() - 1);
+				newFilePopup.open();
 			}
 			if (ImGui::MenuItem("Load map")) {};
 			if (ImGui::MenuItem("Save map")) {};
@@ -131,19 +137,19 @@ void UserInterface::updateWindows()
 			}
 			ImGui::EndMenu();
 		}
-
+		//Tabs
 		if (ImGui::BeginMenu("Tabs", (mapManager->getCount() != 0)))
 		{
 			for (auto i = 0; i < mapManager->getCount(); ++i)
 			{
-				if (ImGui::MenuItem("test", nullptr, mapManager->isCurrent(i)))
+				if (ImGui::MenuItem(mapManager->getMap(i)->name.c_str(), nullptr, mapManager->isCurrent(i)))
 				{
 					selectMap(i);
 				}
 			}
 			ImGui::EndMenu();
 		}
-
+		//Windows
 		if (ImGui::BeginMenu("Windows"))
 		{
 			if (ImGui::MenuItem("Tabs", nullptr, fileTabWindow.visible))	{ fileTabWindow.visible = !fileTabWindow.visible;	}
@@ -151,6 +157,15 @@ void UserInterface::updateWindows()
 			if (ImGui::MenuItem("Palette", nullptr, paletteWindow.visible)) { paletteWindow.visible = !paletteWindow.visible; }
 			if (ImGui::MenuItem("Map Stats", nullptr, mapWindow.visible))	{	mapWindow.visible = !mapWindow.visible;	}
 			if (ImGui::MenuItem("View", nullptr, viewWindow.visible)) { viewWindow.visible = !viewWindow.visible; }
+			ImGui::EndMenu();
+		}
+		//Help
+		if (ImGui::BeginMenu("Help"))
+		{
+			if (ImGui::MenuItem("About"))
+			{
+				aboutPopup.open();
+			}
 			ImGui::EndMenu();
 		}
 		ImGui::EndMainMenuBar();
@@ -162,4 +177,8 @@ void UserInterface::updateWindows()
 	mapWindow.update();
 	tilePickerWindow.update();
 	paletteWindow.update();
+
+	//Popups
+	newFilePopup.update();
+	aboutPopup.update();
 }

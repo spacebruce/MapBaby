@@ -1,12 +1,13 @@
 #include "UITilePickerWindow.h"
 
 
-UITilePickerWindow::UITilePickerWindow() : WindowBase()
+UITilePickerWindow::UITilePickerWindow() : UIWindowBase()
 {
 }
 
-UITilePickerWindow::UITilePickerWindow(MapManager *mapManager, PaletteManager *paletteManager, TileManager *tileManager, MapEditor *mapEditor) : WindowBase(mapManager, paletteManager, tileManager, mapEditor)
+UITilePickerWindow::UITilePickerWindow(MapManager *mapManager, PaletteManager *paletteManager, TileManager *tileManager, MapEditor *mapEditor) : UIWindowBase(mapManager, paletteManager, tileManager, mapEditor)
 {
+	this->createTilePopup = UICreateTilePopup(mapManager, paletteManager, tileManager, mapEditor);
 }
 
 UITilePickerWindow::~UITilePickerWindow()
@@ -15,14 +16,19 @@ UITilePickerWindow::~UITilePickerWindow()
 
 void UITilePickerWindow::updateContents()
 {
-	ImGui::Begin("Tiles", &visible, ImGuiWindowFlags_AlwaysAutoResize);
+	ImGui::Begin("Tiles", &visible, ImGuiWindowFlags_None);
 
-	if (ImGui::Button("new"))
+	if (ImGui::Button("New"))
 	{
-		tileManager->createTile(paletteManager->getCurrentPalette());
+		createTilePopup.open();
 	}
+	ImGui::SameLine();
+	if (ImGui::Button("Import"))
+	{
+		importTilePopup.open();
+	}
+	ImGui::BeginChild("TilePickerScroll", ImVec2(-1, 300), true, 0);
 
-	ImGui::BeginChild("TilePickerScroll", ImVec2(300, 300), true, 0);
 	for (std::size_t i = 0; i < tileManager->getCount(); ++i)
 	{
 		if (tileManager->getTile(i)->getTexture()->isLoaded())
@@ -49,6 +55,10 @@ void UITilePickerWindow::updateContents()
 			}
 		}
 	}
+
 	ImGui::EndChild();
 	ImGui::End();
+
+	createTilePopup.update();
+	importTilePopup.update();
 }

@@ -1,12 +1,13 @@
 #include "UIFileTabWindow.h"
 
 
-UIFileTabWindow::UIFileTabWindow() : WindowBase()
+UIFileTabWindow::UIFileTabWindow() : UIWindowBase()
 {
 }
 
-UIFileTabWindow::UIFileTabWindow(MapManager *mapManager, PaletteManager *paletteManager, TileManager *tileManager, MapEditor *mapEditor) : WindowBase(mapManager, paletteManager, tileManager, mapEditor)
+UIFileTabWindow::UIFileTabWindow(MapManager *mapManager, PaletteManager *paletteManager, TileManager *tileManager, MapEditor *mapEditor) : UIWindowBase(mapManager, paletteManager, tileManager, mapEditor)
 {
+	newFilePopup = UINewFileDialogue(mapManager, paletteManager, tileManager, mapEditor);
 }
 
 UIFileTabWindow::~UIFileTabWindow()
@@ -30,11 +31,13 @@ void UIFileTabWindow::updateContents()
 	{
 		ImGui::PushID(static_cast<std::uint64_t>(mapManager->getMap(i)->getID()));
 
+		const char* name = mapManager->getMap(i)->name.c_str();
+
 		if (mapManager->isCurrent(i))
 		{
-			ImGui::Text("test");
+			ImGui::Text(name);
 		}
-		else if (ImGui::Button("test"))
+		else if (ImGui::Button(name))
 		{
 			mapManager->setCurrent(i);
 			mapEditor->changeMap(mapManager->getMap(i));
@@ -54,8 +57,11 @@ void UIFileTabWindow::updateContents()
 	}
 	if (ImGui::Button("+"))
 	{
-		mapManager->newMap();
-		selectMap(mapManager->getCount() - 1);
+		newFilePopup.open();
+		//mapManager->newMap();
+		//selectMap(mapManager->getCount() - 1);
 	}
 	ImGui::End();
+
+	newFilePopup.update();
 }

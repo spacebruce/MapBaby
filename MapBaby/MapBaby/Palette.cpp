@@ -12,14 +12,10 @@ Palette::~Palette()
 
 ColourRGB & Palette::getEntry(std::size_t index)
 {
-	if (index >= this->palette.size())
-	{
-		return ColourRGB(0x00, 0x00, 0x00);
-	}
-	return this->palette[index];
+	return this->palette[std::min(index, this->palette.size())];
 }
 
-int Palette::getSize(void)
+std::size_t Palette::getSize(void)
 {
 	return this->maxSize;
 }

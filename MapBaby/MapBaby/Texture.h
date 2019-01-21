@@ -5,6 +5,7 @@
 #include <SDL.h>
 #include <SDL/SDL_opengl.h>
 
+#include "Bitmap.h"
 #include "Palette.h"
 #include "Colours.h"
 
@@ -19,8 +20,7 @@ public:
 	~Texture();
 
 	void createFromArray(GLuint Width, GLuint Height, GLuint * pixels);
-
-	void createFromBitmap(GLuint Width, GLuint Height, std::uint8_t * bitmap, Palette& palette);
+	void createFromBitmap(Bitmap& bitmap, Palette& palette);
 
 	void freeTexture();
 
@@ -32,6 +32,6 @@ public:
 	void bind();
 
 	//don't actually use this
-	void testRender(int x, int y);
+	void testRender(float x, float y);
 };
 

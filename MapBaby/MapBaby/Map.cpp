@@ -1,5 +1,15 @@
 #include "Map.h"
 
+Map::Map(const ResourceID ID, const std::string name, const int width, const int height) : Resource(ID), name(name)
+{
+	this->resize(width, height);
+}
+
+Map::Map(const std::string name, const int width, const int height) : name(name), Resource()
+{
+	this->resize(width, height);
+}
+
 Map::Map(const int width, const int height) : Resource()
 {
 	this->resize(width, height);

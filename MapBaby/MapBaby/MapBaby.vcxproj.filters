@@ -96,9 +96,6 @@
     <ClCompile Include="Palette.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="WindowBase.cpp">
-      <Filter>Source Files\UI</Filter>
-    </ClCompile>
     <ClCompile Include="UserInterface.cpp">
       <Filter>Source Files\UI</Filter>
     </ClCompile>
@@ -119,6 +116,27 @@
     </ClCompile>
     <ClCompile Include="Include\Imgui\imgui_stdlib.cpp">
       <Filter>Header Files\Include\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="UIPopupBase.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UINewFileDialogue.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UIWindowBase.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UICreateTilePopup.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UIAboutPopup.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UIImportTilePopup.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Bitmap.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -434,9 +452,6 @@
     <ClInclude Include="Palette.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="WindowBase.h">
-      <Filter>Header Files\UI</Filter>
-    </ClInclude>
     <ClInclude Include="UserInterface.h">
       <Filter>Header Files\UI</Filter>
     </ClInclude>
@@ -460,6 +475,27 @@
     </ClInclude>
     <ClInclude Include="Include\Imgui\imgui_stdlib.h">
       <Filter>Header Files\Include\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="UINewFileDialogue.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UIPopupBase.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UIWindowBase.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UICreateTilePopup.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UIAboutPopup.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UIImportTilePopup.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Bitmap.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
