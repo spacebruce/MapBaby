@@ -32,6 +32,6 @@ public:
 	void bind();
 
 	//don't actually use this
-	void testRender(int x, int y);
+	void testRender(float x, float y);
 };
 

@@ -82,7 +82,7 @@ void Texture::bind()
 	glBindTexture(GL_TEXTURE_2D, (this->TextureID));
 }
 
-void Texture::testRender(int x, int y)
+void Texture::testRender(float x, float y)
 {
 	if (!this->isLoaded())
 		return;

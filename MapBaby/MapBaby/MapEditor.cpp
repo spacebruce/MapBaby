@@ -76,8 +76,8 @@ void MapEditor::render(const int WindowWidth, const int WindowHeight)
 
 	if (camera.isMouseTileValid())
 	{
-		float mx = camera.getMouseTileX() * TileSize;
-		float my = camera.getMouseTileY() * TileSize;
+		float mx = static_cast<float>(camera.getMouseTileX() * TileSize);
+		float my = static_cast<float>(camera.getMouseTileY() * TileSize);
 		Drawing::drawLine(mx, my, mx + TileSize, my + TileSize);
 		Drawing::drawLine(mx + TileSize, my, mx, my + TileSize);
 
