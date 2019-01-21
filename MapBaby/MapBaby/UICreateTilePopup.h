@@ -14,6 +14,7 @@ private:
 	int Height;
 	bool LockSize;
 
+	void setTexturePattern();	//specify later
 	TileType tilePreview;
 public:
 	UICreateTilePopup();

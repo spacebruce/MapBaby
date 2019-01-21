@@ -18,6 +18,8 @@ void UICreateTilePopup::reset()
 	Width = 16;
 	Height = 16;
 	LockSize = true;
+
+	setTexturePattern();
 }
 
 void UICreateTilePopup::updateContents()
@@ -30,7 +32,7 @@ void UICreateTilePopup::updateContents()
 			int i = Number;
 			while (i > 0)
 			{
-				tileManager->createTile(paletteManager->getCurrentPalette());
+				tileManager->createTile(tilePreview);
 				--i;
 			}
 			ImGui::CloseCurrentPopup();
@@ -80,4 +82,22 @@ void UICreateTilePopup::updateContents()
 
 		ImGui::EndPopup();
 	}
+}
+
+void UICreateTilePopup::setTexturePattern()
+{
+	auto texture = tilePreview.getTexture();
+	auto palette = paletteManager->getCurrentPalette();
+
+	std::size_t length = Width * Height;
+	std::uint8_t * pixels = new std::uint8_t[length];
+
+	for (std::size_t i = 0; i < length; ++i)
+	{
+		pixels[i] = i % palette.getSize();
+	}
+
+	texture->createFromBitmap(Width, Height, pixels, palette);
+
+	delete pixels;
 }
