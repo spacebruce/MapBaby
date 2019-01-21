@@ -23,6 +23,20 @@ void UICreateTilePopup::updateContents()
 {
 	if (ImGui::BeginPopup(this->identifier, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoMove))
 	{
+		//Buttons
+		if (ImGui::Button("create"))
+		{
+			tileManager->createTile(paletteManager->getCurrentPalette());
+			ImGui::CloseCurrentPopup();
+		}
+		ImGui::SameLine();
+		if (ImGui::Button("close"))
+		{
+			ImGui::CloseCurrentPopup();
+		}
+		ImGui::Separator();
+
+		//Edit area
 		ImGui::BeginChild("thing", ImVec2(300, 140));
 
 		ImGui::Columns(2, nullptr, false);
@@ -55,18 +69,6 @@ void UICreateTilePopup::updateContents()
 		}
 
 		ImGui::EndChild();
-
-		ImGui::Separator();
-		if (ImGui::Button("create"))
-		{
-			tileManager->createTile(paletteManager->getCurrentPalette());
-			ImGui::CloseCurrentPopup();
-		}
-		ImGui::SameLine();
-		if (ImGui::Button("close"))
-		{
-			ImGui::CloseCurrentPopup();
-		}
 
 		ImGui::EndPopup();
 	}

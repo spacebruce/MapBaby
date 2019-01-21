@@ -17,10 +17,6 @@ void UIImportTilePopup::updateContents()
 {
 	if (ImGui::BeginPopup(this->identifier, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoMove))
 	{
-		ImGui::BeginChild("space filler", ImVec2(256, 128));
-		ImGui::EndChild();
-
-		ImGui::Separator();
 		if (ImGui::Button("create"))
 		{
 			ImGui::CloseCurrentPopup();
@@ -30,6 +26,12 @@ void UIImportTilePopup::updateContents()
 		{
 			ImGui::CloseCurrentPopup();
 		}
+
+		ImGui::Separator();
+
+		ImGui::BeginChild("space filler", ImVec2(256, 128));
+		ImGui::EndChild();
+
 		ImGui::EndPopup();
 	}
 }
