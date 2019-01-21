@@ -4,7 +4,16 @@ TileType::TileType(const ResourceID ID) : Resource(ID)
 {}
 
 TileType::~TileType()
+{}
+
+TileType::TileType(const ResourceID ID, const Bitmap bitmap) : Resource(ID)
 {
+	this->bitmap = bitmap;
+}
+
+TileType::TileType(const Bitmap bitmap) : Resource()
+{
+	this->bitmap = bitmap;
 }
 
 Texture * TileType::getTexture()
