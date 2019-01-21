@@ -90,14 +90,12 @@ void UICreateTilePopup::setTexturePattern()
 	auto palette = paletteManager->getCurrentPalette();
 
 	std::size_t length = Width * Height;
-	std::uint8_t * pixels = new std::uint8_t[length];
+	Bitmap bitmap = Bitmap(Width, Height);
 
 	for (std::size_t i = 0; i < length; ++i)
 	{
-		pixels[i] = i % palette.getSize();
+		bitmap.setPixel(i, i % palette.getSize());
 	}
 
-	texture->createFromBitmap(Width, Height, pixels, palette);
-
-	delete pixels;
+	texture->createFromBitmap(bitmap, palette);
 }

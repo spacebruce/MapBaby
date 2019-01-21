@@ -16,13 +16,13 @@ void TileManager::createTile(Palette &palette)
 	//dummy texture
 	constexpr static int width = 16;
 	constexpr static int height = 16;
-	std::uint8_t bitmap[width * height];
+	Bitmap bitmap = Bitmap(width, height);
 
 	for (int i = 0; i < (width * height); ++i)
 	{
-		bitmap[i] = i % palette.getSize();
+		bitmap.setPixel(i, i % palette.getSize());	//rotate through palette 
 	}
-	tex->createFromBitmap(width, height, bitmap, palette);
+	tex->createFromBitmap(bitmap, palette);
 
 	tilePool.emplace_back(newTile);
 	tileLookup.emplace(std::make_pair(newTile.get()->getID(), newTile));
