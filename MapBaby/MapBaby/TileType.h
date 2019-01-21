@@ -8,15 +8,16 @@
 
 class TileType : public Resource
 {
-private:
+public:
 	Bitmap bitmap;
 	Texture texture;
-public:
+
 	TileType() = default;
 	TileType(const Bitmap bitmap);
 	TileType(const ResourceID ID);
 	TileType(const ResourceID ID, const Bitmap bitmap);
-	TileType(const ResourceID ID, const Bitmap bitmap);
+	TileType(const TileType& tile);	//copy
+
 	~TileType();
 
 	//Convert to reference later

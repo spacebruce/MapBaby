@@ -11,6 +11,11 @@ TileType::TileType(const ResourceID ID, const Bitmap bitmap) : Resource(ID)
 	this->bitmap = bitmap;
 }
 
+TileType::TileType(const TileType & tile)
+{
+	this->bitmap = tile.bitmap;
+}
+
 TileType::TileType(const Bitmap bitmap) : Resource()
 {
 	this->bitmap = bitmap;
