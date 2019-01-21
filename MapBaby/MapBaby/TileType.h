@@ -19,4 +19,5 @@ public:
 	~TileType();
 
 	Texture * getTexture();
+	Bitmap & getBitmap();
 };

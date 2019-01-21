@@ -20,3 +20,8 @@ Texture * TileType::getTexture()
 {
 	return &this->texture;
 }
+
+Bitmap & TileType::getBitmap()
+{
+	return this->bitmap;
+}
