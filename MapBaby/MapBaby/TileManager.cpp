@@ -8,6 +8,18 @@ TileManager::~TileManager()
 {
 }
 
+void TileManager::createTile(Palette &palette, TileType& tile)
+{
+	SharedTile newTile = std::make_shared<TileType>();
+	Bitmap& bitmap = newTile.get()->getBitmap();
+
+	bitmap = tile.getBitmap();	//copy bitmap
+	newTile.get()->updateTexture(palette);	//build new texture from that bitmap
+
+	tilePool.emplace_back(newTile);
+	tileLookup.emplace(std::make_pair(newTile.get()->getID(), newTile));
+}
+
 void TileManager::createTile(Palette &palette)
 {
 	SharedTile newTile = std::make_shared<TileType>();
@@ -16,13 +28,13 @@ void TileManager::createTile(Palette &palette)
 	//dummy texture
 	constexpr static int width = 16;
 	constexpr static int height = 16;
-	Bitmap bitmap = Bitmap(width, height);
+	Bitmap& bitmap = newTile.get()->bitmap;
 
 	for (int i = 0; i < (width * height); ++i)
 	{
 		bitmap.setPixel(i, i % palette.getSize());	//rotate through palette 
 	}
-	tex->createFromBitmap(bitmap, palette);
+	newTile.get()->updateTexture(palette);
 
 	tilePool.emplace_back(newTile);
 	tileLookup.emplace(std::make_pair(newTile.get()->getID(), newTile));
