@@ -32,7 +32,7 @@ void UICreateTilePopup::updateContents()
 			int i = Number;
 			while (i > 0)
 			{
-				tileManager->createTile(paletteManager->getCurrentPalette());
+				tileManager->createTile(paletteManager->getCurrentPalette(), tilePreview);
 				--i;
 			}
 			ImGui::CloseCurrentPopup();
@@ -97,5 +97,6 @@ void UICreateTilePopup::setTexturePattern()
 		bitmap.setPixel(i, i % palette.getSize());
 	}
 
+	tilePreview.bitmap = bitmap;
 	texture->createFromBitmap(bitmap, palette);
 }
