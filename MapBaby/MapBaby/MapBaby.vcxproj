@@ -145,6 +145,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Bitmap.cpp" />
     <ClCompile Include="DrawingHelpers.cpp" />
     <ClCompile Include="Include\Imgui\imgui.cpp" />
     <ClCompile Include="Include\Imgui\imgui_demo.cpp" />
@@ -179,6 +180,7 @@
     <ClCompile Include="UIWindowBase.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bitmap.h" />
     <ClInclude Include="DrawingHelpers.h" />
     <ClInclude Include="Include\Imgui\imconfig.h" />
     <ClInclude Include="Include\Imgui\imgui.h" />
