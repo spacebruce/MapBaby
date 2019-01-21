@@ -18,9 +18,14 @@ void UITilePickerWindow::updateContents()
 {
 	ImGui::Begin("Tiles", &visible, ImGuiWindowFlags_AlwaysAutoResize);
 
-	if (ImGui::Button("new"))
+	if (ImGui::Button("New"))
 	{
 		createTilePopup.open();
+	}
+	ImGui::SameLine();
+	if (ImGui::Button("Import"))
+	{
+		importTilePopup.open();
 	}
 
 	ImGui::BeginChild("TilePickerScroll", ImVec2(300, 300), true, 0);
@@ -54,4 +59,5 @@ void UITilePickerWindow::updateContents()
 	ImGui::End();
 
 	createTilePopup.update();
+	importTilePopup.update();
 }

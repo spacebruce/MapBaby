@@ -7,6 +7,7 @@
 #include "UIWindowBase.h"
 
 #include "UICreateTilePopup.h"
+#include "UIImportTilePopup.h"
 
 class UITilePickerWindow : public UIWindowBase
 {
