@@ -7,6 +7,7 @@ protected:
 	void updateContents();
 	void reset();
 private:
+	int Number;
 	int Width;
 	int Height;
 	bool LockSize;

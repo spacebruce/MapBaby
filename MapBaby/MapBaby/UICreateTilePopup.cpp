@@ -14,6 +14,7 @@ UICreateTilePopup::~UICreateTilePopup()
 
 void UICreateTilePopup::reset()
 {
+	Number = 1;
 	Width = 16;
 	Height = 16;
 	LockSize = true;
@@ -26,7 +27,12 @@ void UICreateTilePopup::updateContents()
 		//Buttons
 		if (ImGui::Button("create"))
 		{
-			tileManager->createTile(paletteManager->getCurrentPalette());
+			int i = Number;
+			while (i > 0)
+			{
+				tileManager->createTile(paletteManager->getCurrentPalette());
+				--i;
+			}
 			ImGui::CloseCurrentPopup();
 		}
 		ImGui::SameLine();
@@ -43,6 +49,8 @@ void UICreateTilePopup::updateContents()
 		ImGui::ImageButton(0, ImVec2(128, 128));
 
 		ImGui::NextColumn();
+
+		ImGui::InputScalar("Number", ImGuiDataType_U32, &Number);
 
 		ImGui::Checkbox("Lock to map size", &LockSize);
 
