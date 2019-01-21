@@ -46,7 +46,7 @@ void UICreateTilePopup::updateContents()
 		ImGui::BeginChild("thing", ImVec2(300, 140));
 
 		ImGui::Columns(2, nullptr, false);
-		ImGui::ImageButton(0, ImVec2(128, 128));
+		ImGui::ImageButton((void*)tilePreview.getTexture()->get(), ImVec2(128, 128));
 
 		ImGui::NextColumn();
 
