@@ -28,7 +28,7 @@ void TileManager::createTile(Palette &palette)
 	tileLookup.emplace(std::make_pair(newTile.get()->getID(), newTile));
 }
 
-int TileManager::getSelectedIndex() const
+std::size_t TileManager::getSelectedIndex() const
 {
 	for (std::size_t i = 0; i < this->tilePool.size(); ++i)
 	{
@@ -43,7 +43,7 @@ ResourceID TileManager::getSelectedID() const
 	return selectedTile;
 }
 
-void TileManager::setSelected(const int index)
+void TileManager::setSelected(const std::size_t index)
 {
 	this->selectedTile = this->tilePool[index].get()->getID();
 }
@@ -53,7 +53,7 @@ void TileManager::setSelected(const ResourceID id)
 	this->selectedTile = id;
 }
 
-TileManager::SharedTile TileManager::getTile(const int index)
+TileManager::SharedTile TileManager::getTile(const std::size_t index)
 {
 	if ((index < 0) || (index > this->getCount()))
 		return nullptr;
@@ -67,7 +67,7 @@ TileManager::SharedTile TileManager::getTile(const ResourceID lookup)
 	return (this->tileLookup[lookup]);
 }
 
-int TileManager::getCount() const
+std::size_t TileManager::getCount() const
 {
 	return (this->tilePool.size());
 }

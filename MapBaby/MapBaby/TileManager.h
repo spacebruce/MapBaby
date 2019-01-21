@@ -21,13 +21,13 @@ public:
 
 	void createTile(Palette& palette);
 
-	int getSelectedIndex() const;
+	std::size_t getSelectedIndex() const;
 	ResourceID getSelectedID() const;
-	void setSelected(const int index);
+	void setSelected(const std::size_t index);
 	void setSelected(const ResourceID id);
 
-	SharedTile getTile(const int index);
+	SharedTile getTile(const std::size_t index);
 	SharedTile getTile(const ResourceID lookup);
 
-	int getCount() const;
+	std::size_t getCount() const;
 };

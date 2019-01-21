@@ -16,7 +16,7 @@ public:
 	~Palette();
 
 	ColourRGB & getEntry(std::size_t index);
-	int getSize(void);
+	std::size_t getSize(void);
 
 	void setSize(std::size_t size);
 

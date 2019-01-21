@@ -15,7 +15,7 @@ ColourRGB & Palette::getEntry(std::size_t index)
 	return this->palette[std::min(index, this->palette.size())];
 }
 
-int Palette::getSize(void)
+std::size_t Palette::getSize(void)
 {
 	return this->maxSize;
 }
