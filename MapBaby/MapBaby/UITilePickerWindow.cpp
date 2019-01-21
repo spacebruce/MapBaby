@@ -16,7 +16,7 @@ UITilePickerWindow::~UITilePickerWindow()
 
 void UITilePickerWindow::updateContents()
 {
-	ImGui::Begin("Tiles", &visible, ImGuiWindowFlags_AlwaysAutoResize);
+	ImGui::Begin("Tiles", &visible, ImGuiWindowFlags_None);
 
 	if (ImGui::Button("New"))
 	{
@@ -27,8 +27,8 @@ void UITilePickerWindow::updateContents()
 	{
 		importTilePopup.open();
 	}
+	ImGui::BeginChild("TilePickerScroll", ImVec2(-1, 300), true, 0);
 
-	ImGui::BeginChild("TilePickerScroll", ImVec2(300, 300), true, 0);
 	for (std::size_t i = 0; i < tileManager->getCount(); ++i)
 	{
 		if (tileManager->getTile(i)->getTexture()->isLoaded())
@@ -55,6 +55,7 @@ void UITilePickerWindow::updateContents()
 			}
 		}
 	}
+
 	ImGui::EndChild();
 	ImGui::End();
 

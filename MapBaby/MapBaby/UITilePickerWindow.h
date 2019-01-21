@@ -15,6 +15,9 @@ protected:
 	void updateContents();
 
 	UICreateTilePopup createTilePopup;
+	UIImportTilePopup importTilePopup;
+
+	bool ViewGrid = false;
 public:
 	UITilePickerWindow();
 	UITilePickerWindow(MapManager *mapManager, PaletteManager *paletteManager, TileManager *tileManager, MapEditor *mapEditor);
