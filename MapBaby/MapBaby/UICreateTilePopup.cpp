@@ -32,7 +32,7 @@ void UICreateTilePopup::updateContents()
 			int i = Number;
 			while (i > 0)
 			{
-				tileManager->createTile(tilePreview);
+				tileManager->createTile(paletteManager->getCurrentPalette());
 				--i;
 			}
 			ImGui::CloseCurrentPopup();
