@@ -18,6 +18,7 @@ public:
 	TileType(const ResourceID ID, const Bitmap bitmap);
 	~TileType();
 
+	//Convert to reference later
 	Texture * getTexture();
 	Bitmap & getBitmap();
 };
