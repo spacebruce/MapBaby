@@ -21,7 +21,7 @@ void UICreateTilePopup::reset()
 
 void UICreateTilePopup::updateContents()
 {
-	if (ImGui::BeginPopupModal(this->identifier, nullptr, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoMove))
+	if (ImGui::BeginPopup(this->identifier, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoMove))
 	{
 		ImGui::BeginChild("thing", ImVec2(300, 140));
 

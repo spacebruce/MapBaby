@@ -15,7 +15,7 @@ void UIImportTilePopup::reset()
 
 void UIImportTilePopup::updateContents()
 {
-	if (ImGui::BeginPopupModal(this->identifier, nullptr, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoMove))
+	if (ImGui::BeginPopup(this->identifier, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoMove))
 	{
 		ImGui::BeginChild("space filler", ImVec2(256, 128));
 		ImGui::EndChild();
