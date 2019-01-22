@@ -93,6 +93,9 @@ void UICreateTilePopup::updateContents()
 
 void UICreateTilePopup::setTexturePattern()
 {
+	if ((Width) < 1 && (Height < 1))
+		return;
+
 	auto texture = tilePreview.getTexture();
 	auto palette = paletteManager->getCurrentPalette();
 
