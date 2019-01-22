@@ -13,6 +13,7 @@ private:
 	int Width;
 	int Height;
 	bool LockSize;
+	bool Dirty = true;
 
 	void setTexturePattern();	//specify later
 	TileType tilePreview;

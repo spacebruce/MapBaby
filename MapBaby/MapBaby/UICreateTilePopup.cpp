@@ -44,26 +44,28 @@ void UICreateTilePopup::updateContents()
 		}
 		ImGui::Separator();
 
-		//Edit area
-		ImGui::BeginChild("thing", ImVec2(300, 140));
+		ImGui::BeginChild("body", ImVec2(300, 140));
 
 		ImGui::Columns(2, nullptr, false);
-		ImGui::ImageButton((void*)tilePreview.getTexture()->get(), ImVec2(128, 128));
 
+		//Preview area
+		ImGui::ImageButton((void*)tilePreview.getTexture()->get(), ImVec2(128, 128));
 		ImGui::NextColumn();
 
+		//Edit area
+		Dirty = false;
+		bool tooltip = false;
 		ImGui::InputScalar("Number", ImGuiDataType_U32, &Number);
-
 		ImGui::Checkbox("Lock to map size", &LockSize);
 
-		bool tooltip = false;
-		ImGui::InputScalar("Width", ImGuiDataType_U32, &Width);
+		Dirty = ImGui::InputScalar("Width", ImGuiDataType_U32, &Width);
 		tooltip = ImGui::IsItemHovered();
-		ImGui::InputScalar("Height", ImGuiDataType_U32, &Height);
+		Dirty = (Dirty || ImGui::InputScalar("Height", ImGuiDataType_U32, &Height));
 		tooltip = (tooltip || ImGui::IsItemHovered());
 
 		if (LockSize)
 		{
+			Dirty = false;
 			Map * map = mapManager->getCurrentMap();
 			if (map != nullptr)
 			{
@@ -79,6 +81,11 @@ void UICreateTilePopup::updateContents()
 		}
 
 		ImGui::EndChild();
+
+		if (Dirty)
+		{
+			setTexturePattern();
+		}
 
 		ImGui::EndPopup();
 	}
