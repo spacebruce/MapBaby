@@ -55,12 +55,12 @@ void UICreateTilePopup::updateContents()
 		//Edit area
 		Dirty = false;
 		bool tooltip = false;
-		ImGui::InputScalar("Number", ImGuiDataType_U32, &Number);
+		ImGui::InputInt("Number", &Number);
 		ImGui::Checkbox("Lock to map size", &LockSize);
 
-		Dirty = ImGui::InputScalar("Width", ImGuiDataType_U32, &Width);
+		Dirty = ImGui::InputInt("Width", &Width);
 		tooltip = ImGui::IsItemHovered();
-		Dirty = (Dirty || ImGui::InputScalar("Height", ImGuiDataType_U32, &Height));
+		Dirty = (Dirty || ImGui::InputInt("Height", &Height));
 		tooltip = (tooltip || ImGui::IsItemHovered());
 
 		if (LockSize)

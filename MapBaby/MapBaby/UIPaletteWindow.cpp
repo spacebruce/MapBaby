@@ -48,8 +48,8 @@ void UIPaletteWindow::updateContents()
 			ImGui::InputText("name", &palette.name);
 
 			//Size
-			std::uint32_t size = palette.getSize();
-			if (ImGui::InputScalar("size", ImGuiDataType_U32, &size))
+			int size = palette.getSize();
+			if (ImGui::InputInt("size", &size))
 			{
 				palette.setSize(size);
 			}
