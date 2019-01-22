@@ -95,7 +95,6 @@ void Texture::testRender(float x, float y)
 	//Move to rendering point
 	glTranslatef(x, y, 0.f);
 
-	glEnable(GL_TEXTURE_2D);
 	//Set texture ID
 	glBindTexture(GL_TEXTURE_2D, (this->TextureID));
 

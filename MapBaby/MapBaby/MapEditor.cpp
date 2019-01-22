@@ -57,6 +57,10 @@ void MapEditor::render(const int WindowWidth, const int WindowHeight)
 	int clipRight = static_cast<int>((cameraBox.right < WidthReal) ? ceil(cameraBox.right / TileWidth) : Width);
 	int clipBottom = static_cast<int>((cameraBox.bottom < HeightReal) ? ceil(cameraBox.bottom/ TileHeight): Height);
 
+
+	glEnable(GL_TEXTURE_2D);
+	glLoadIdentity();
+	glTranslatef(0.0f, 0.0f, 0.f);
 	for (int y = clipTop; y < clipBottom; ++y)
 	{
 		for (int x = clipLeft; x < clipRight; ++x)
@@ -66,7 +70,20 @@ void MapEditor::render(const int WindowWidth, const int WindowHeight)
 			if (!resource.isInvalid())
 			{
 				TileManager::SharedTile tile = tileManager->getTile(resource);
-				tile->getTexture()->testRender(x * TileWidth, y * TileHeight);
+				tile->getTexture()->bind();
+
+				float drawX = static_cast<float>(x * TileWidth);
+				float drawY = static_cast<float>(y * TileHeight);
+
+				glBegin(GL_TRIANGLES);
+				glTexCoord2f(0.f, 0.f); glVertex2f(drawX, drawY);
+				glTexCoord2f(1.f, 0.f); glVertex2f(drawX + TileWidth, drawY);
+				glTexCoord2f(0.f, 1.f); glVertex2f(drawX, drawY + TileHeight);
+
+				glTexCoord2f(1.f, 0.f); glVertex2f(drawX + TileWidth, drawY);
+				glTexCoord2f(0.f, 1.f); glVertex2f(drawX, drawY + TileHeight);
+				glTexCoord2f(1.f, 1.f); glVertex2f(drawX + TileWidth, drawY + TileHeight);
+				glEnd();
 			}
 			else
 			{
@@ -74,6 +91,7 @@ void MapEditor::render(const int WindowWidth, const int WindowHeight)
 			}
 		}
 	}
+	glLoadIdentity();
 
 	if (camera.isMouseTileValid())
 	{
