@@ -34,7 +34,7 @@ void MapEditor::render(const int WindowWidth, const int WindowHeight)
 	//Draw stuff
 	const int Width = map->getWidth();
 	const int Height = map->getHeight();
-	const int TileWidth = map->getTileWidth();
+	const int TileWidth = map->getTileWidth() * camera.aspectRatio;
 	const int TileHeight = map->getTileHeight();
 
 	const int WidthReal = Width * TileWidth;
