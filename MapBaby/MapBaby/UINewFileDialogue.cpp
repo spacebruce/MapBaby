@@ -17,8 +17,8 @@ void UINewFileDialogue::reset()
 	name = "unnamed";
 	width = 10;
 	height = 10;
-	TileWidth = 16;
-	TileHeight = 16;
+	tileWidth = 16;
+	tileHeight = 16;
 }
 
 void UINewFileDialogue::updateContents()
@@ -26,16 +26,18 @@ void UINewFileDialogue::updateContents()
 	if (ImGui::BeginPopupModal(this->identifier, nullptr, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoMove))
 	{
 		ImGui::InputText("Name", &name);
+		ImGui::Separator();
 
 		ImGui::InputInt("Width", &width);	
 		ImGui::SameLine();
-		ImGui::Text("(%i)", width * TileWidth);
+		ImGui::Text("(%i)", width * tileWidth);
 		ImGui::InputInt("Height", &height);
 		ImGui::SameLine();
-		ImGui::Text("(%i)", width * TileHeight);
+		ImGui::Text("(%i)", height * tileHeight);
 
-		ImGui::InputInt("Tile Width", &TileWidth);
-		ImGui::InputInt("Tile Height", &TileHeight);
+		ImGui::Separator();
+		ImGui::InputInt("Tile Width", &tileWidth);
+		ImGui::InputInt("Tile Height", &tileHeight);
 
 		ImGui::Separator();
 
@@ -43,7 +45,7 @@ void UINewFileDialogue::updateContents()
 		{
 			auto map = Map(name, width, height);
 
-			map.setTileSize(TileWidth, TileHeight);
+			map.setTileSize(tileWidth, tileHeight);
 
 			mapManager->newMap(map);
 			selectMap(mapManager->getCount() - 1);

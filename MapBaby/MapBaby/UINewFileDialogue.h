@@ -14,7 +14,7 @@ protected:
 	void updateContents();
 	void reset();
 private:
-	int TileWidth, TileHeight;
+	int tileWidth, tileHeight;
 	int width, height;
 	std::string name;
 public:
