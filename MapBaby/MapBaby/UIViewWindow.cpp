@@ -56,5 +56,11 @@ void UIViewWindow::updateContents()
 		}
 	}
 
+	//Other
+	if (ImGui::CollapsingHeader("Other"))
+	{
+		ImGui::SliderFloat("###Tile aspect ratio", &(mapEditor->camera.aspectRatio), 0.1f, 10.0f, "%.1f");
+	}
+
 	ImGui::End();
 }
