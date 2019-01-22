@@ -69,6 +69,10 @@ void UICreateTilePopup::updateContents()
 			Map * map = mapManager->getCurrentMap();
 			if (map != nullptr)
 			{
+				if ((Width != map->getTileWidth()) || (Height != map->getTileHeight()))
+				{
+					Dirty = true;
+				}
 				Width = map->getTileWidth();
 				Height = map->getTileHeight();
 			}
