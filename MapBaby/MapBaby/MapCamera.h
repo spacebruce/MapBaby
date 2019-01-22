@@ -10,6 +10,7 @@ private:
 	float mouseX = 0.0f;
 	float mouseY = 0.0f;
 
+
 	int mouseTileX = 0;
 	int mouseTileY = 0;
 	bool mouseTileValid = false;
@@ -22,6 +23,7 @@ public:
 	int x = 0;
 	int y = 0;
 	float zoom = 100.0;
+	float aspectRatio = 1.0f;
 
 	float getMouseX() const;
 	float getMouseY() const;
