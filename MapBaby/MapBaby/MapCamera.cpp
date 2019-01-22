@@ -74,8 +74,8 @@ void MapCamera::updateMouse(const int WindowWidth, const int WindowHeight, const
 	}
 	else
 	{
-		this->mouseTileX = static_cast<int>(this->mouseX / map->getTileSize());
-		this->mouseTileY = static_cast<int>(this->mouseY / map->getTileSize());
+		this->mouseTileX = static_cast<int>(this->mouseX / map->getTileWidth());
+		this->mouseTileY = static_cast<int>(this->mouseY / map->getTileHeight());
 	}
 
 	mouseTileValid = ((mouseTileX >= 0) && (mouseTileY >= 0) && (mouseTileX < map->getWidth()) && (mouseTileY < map->getHeight()));

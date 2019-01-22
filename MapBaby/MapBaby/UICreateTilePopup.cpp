@@ -69,8 +69,8 @@ void UICreateTilePopup::updateContents()
 			Map * map = mapManager->getCurrentMap();
 			if (map != nullptr)
 			{
-				Width = map->getTileSize();
-				Height = map->getTileSize();
+				Width = map->getTileWidth();
+				Height = map->getTileHeight();
 			}
 			if (tooltip)
 			{

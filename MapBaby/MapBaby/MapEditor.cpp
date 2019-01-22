@@ -34,10 +34,11 @@ void MapEditor::render(const int WindowWidth, const int WindowHeight)
 	//Draw stuff
 	const int Width = map->getWidth();
 	const int Height = map->getHeight();
-	const int TileSize = map->getTileSize();
+	const int TileWidth = map->getTileWidth();
+	const int TileHeight = map->getTileHeight();
 
-	const int WidthReal = Width * TileSize;
-	const int HeightReal = Height * TileSize;
+	const int WidthReal = Width * TileWidth;
+	const int HeightReal = Height * TileHeight;
 	
 	/*
 	Drawing::drawRectangleOutline(0, 0, WidthReal, HeightReal);
@@ -51,10 +52,10 @@ void MapEditor::render(const int WindowWidth, const int WindowHeight)
 	}
 	*/
 
-	int clipLeft = static_cast<int>((cameraBox.left >= 0) ? (cameraBox.left / TileSize) : 0);
-	int clipTop = static_cast<int>((cameraBox.top >= 0) ? (cameraBox.top / TileSize) : 0);
-	int clipRight = static_cast<int>((cameraBox.right < WidthReal) ? ceil(cameraBox.right / TileSize) : Width);
-	int clipBottom = static_cast<int>((cameraBox.bottom < HeightReal) ? ceil(cameraBox.bottom/ TileSize): Height);
+	int clipLeft = static_cast<int>((cameraBox.left >= 0) ? (cameraBox.left / TileWidth) : 0);
+	int clipTop = static_cast<int>((cameraBox.top >= 0) ? (cameraBox.top / TileHeight) : 0);
+	int clipRight = static_cast<int>((cameraBox.right < WidthReal) ? ceil(cameraBox.right / TileWidth) : Width);
+	int clipBottom = static_cast<int>((cameraBox.bottom < HeightReal) ? ceil(cameraBox.bottom/ TileHeight): Height);
 
 	for (int y = clipTop; y < clipBottom; ++y)
 	{
@@ -65,21 +66,21 @@ void MapEditor::render(const int WindowWidth, const int WindowHeight)
 			if (!resource.isInvalid())
 			{
 				TileManager::SharedTile tile = tileManager->getTile(resource);
-				tile->getTexture()->testRender(x * TileSize, y * TileSize);
+				tile->getTexture()->testRender(x * TileWidth, y * TileHeight);
 			}
 			else
 			{
-				Drawing::drawRectangleOutline(x * TileSize, y * TileSize, (x + 1) * TileSize, (y + 1)*TileSize);
+				Drawing::drawRectangleOutline(x * TileWidth, y * TileHeight, (x + 1) * TileWidth, (y + 1) * TileHeight);
 			}
 		}
 	}
 
 	if (camera.isMouseTileValid())
 	{
-		float mx = static_cast<float>(camera.getMouseTileX() * TileSize);
-		float my = static_cast<float>(camera.getMouseTileY() * TileSize);
-		Drawing::drawLine(mx, my, mx + TileSize, my + TileSize);
-		Drawing::drawLine(mx + TileSize, my, mx, my + TileSize);
+		float mx = static_cast<float>(camera.getMouseTileX() * TileWidth);
+		float my = static_cast<float>(camera.getMouseTileY() * TileHeight);
+		Drawing::drawLine(mx, my, mx + TileWidth, my + TileHeight);
+		Drawing::drawLine(mx + TileWidth, my, mx, my + TileHeight);
 
 		ResourceID tileID = tileManager->getSelectedID();
 		if (!tileID.isInvalid())
