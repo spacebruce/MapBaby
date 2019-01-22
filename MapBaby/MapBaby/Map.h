@@ -14,7 +14,8 @@ private:
 	std::vector<std::vector<MapTile>> tiles;
 	int width = 12;
 	int height = 12;
-	int tileSize = 16;
+	int tileWidth = 16;
+	int tileHeight = 16;
 public:
 	std::string name;
 
@@ -29,6 +30,8 @@ public:
 	Map(const ResourceID ID);
 	Map(const ResourceID ID, const int width, const int height);
 
+	void setTileSize(const int width, const int height);
+
 	void resize(const int width, const int height);
 
 	bool isValidPosition(const int x, const int y) const;
@@ -38,7 +41,8 @@ public:
 
 	int getWidth() const;
 	int getHeight() const;
-	int getTileSize() const;
+	int getTileWidth() const;
+	int getTileHeight() const;
 
 	bool isResizeSafe(const int newWidth, const int newHeight) const;
 };

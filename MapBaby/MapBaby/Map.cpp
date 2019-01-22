@@ -24,6 +24,12 @@ Map::Map(const ResourceID ID, const int width, const int height) : Resource(ID)
 	this->resize(width, height);
 }
 
+void Map::setTileSize(const int width, const int height)
+{
+	this->tileWidth = width;
+	this->tileHeight = height;
+}
+
 void Map::resize(const int width, const int height) 
 {
 	this->width = std::max(width, 1);
@@ -64,9 +70,13 @@ int Map::getHeight() const
 	return this->height;
 }
 
-int Map::getTileSize() const
+int Map::getTileWidth() const
 {
-	return this->tileSize;
+	return this->tileWidth;
+}
+int Map::getTileHeight() const
+{
+	return this->tileHeight;
 }
 
 bool Map::isResizeSafe(const int newWidth, const int newHeight) const
