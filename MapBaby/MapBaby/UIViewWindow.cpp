@@ -38,6 +38,7 @@ void UIViewWindow::updateContents()
 	//Zoom
 	if (ImGui::CollapsingHeader("Zoom"))
 	{
+		ImGui::PushItemWidth(0.5f * ImGui::GetWindowWidth());
 		ImGui::SliderFloat("###Zoom", &(mapEditor->camera.zoom), 1.0f, 1000.0f, "%.1f", 2.0f);
 		ImGui::SameLine();
 		if (ImGui::Button("-"))
@@ -59,7 +60,8 @@ void UIViewWindow::updateContents()
 	//Other
 	if (ImGui::CollapsingHeader("Other"))
 	{
-		ImGui::SliderFloat("###Tile aspect ratio", &(mapEditor->camera.aspectRatio), 0.1f, 10.0f, "%.1f");
+		ImGui::PushItemWidth(0.5f * ImGui::GetWindowWidth());
+		ImGui::InputFloat("Tile aspect ratio", &(mapEditor->camera.aspectRatio), 0.1f, 10.0f, "%.1f");
 	}
 
 	ImGui::End();
