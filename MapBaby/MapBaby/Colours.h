@@ -11,6 +11,18 @@ struct ColourRGB
 
 	ColourRGB() = default;
 	ColourRGB(GLubyte r, GLubyte g, GLubyte b) : r(r), g(g), b(b) {};
+	ColourRGB(float r, float g, float b)
+	{
+		this->r = static_cast<GLubyte>(r);
+		this->g = static_cast<GLubyte>(g);
+		this->b = static_cast<GLubyte>(b);
+	};
+	ColourRGB(int r, int g, int b)
+	{
+		this->r = static_cast<GLubyte>(r);
+		this->g = static_cast<GLubyte>(g);
+		this->b = static_cast<GLubyte>(b);
+	};
 
 	explicit operator GLuint() const
 	{
@@ -27,6 +39,20 @@ struct ColourRGBA
 
 	ColourRGBA() = default;
 	ColourRGBA(GLubyte r, GLubyte g, GLubyte b, GLubyte a) : r(r), g(g), b(b), a(a) {};
+	ColourRGBA(float r, float g, float b, float a)
+	{
+		this->r = static_cast<GLubyte>(r);
+		this->g = static_cast<GLubyte>(g);
+		this->b = static_cast<GLubyte>(b);
+		this->a = static_cast<GLubyte>(a);
+	};
+	ColourRGBA(int r, int g, int b, int a)
+	{
+		this->r = static_cast<GLubyte>(r);
+		this->g = static_cast<GLubyte>(g);
+		this->b = static_cast<GLubyte>(b);
+		this->a = static_cast<GLubyte>(a);
+	};
 
 	explicit operator GLuint() const
 	{
