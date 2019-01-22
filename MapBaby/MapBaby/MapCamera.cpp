@@ -74,7 +74,7 @@ void MapCamera::updateMouse(const int WindowWidth, const int WindowHeight, const
 	}
 	else
 	{
-		this->mouseTileX = static_cast<int>(this->mouseX / map->getTileWidth());
+		this->mouseTileX = static_cast<int>(this->mouseX / (map->getTileWidth()* this->aspectRatio));
 		this->mouseTileY = static_cast<int>(this->mouseY / map->getTileHeight());
 	}
 
