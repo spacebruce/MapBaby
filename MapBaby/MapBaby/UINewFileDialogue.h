@@ -14,7 +14,8 @@ protected:
 	void updateContents();
 	void reset();
 private:
-	std::uint32_t width, height;
+	int TileWidth, TileHeight;
+	int width, height;
 	std::string name;
 public:
 	UINewFileDialogue();
