@@ -24,6 +24,8 @@ public:
 	//Convert to reference later
 	Texture * getTexture();
 	Bitmap & getBitmap();
+
 	void changePalette(Palette & palette);
 	void updateTexture(Palette& palette);
+	void updateTexture();
 };

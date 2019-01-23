@@ -39,5 +39,10 @@ void TileType::changePalette(Palette& palette)
 void TileType::updateTexture(Palette& palette)
 {
 	this->changePalette(palette);
-	this->texture.createFromBitmap(this->bitmap, palette);
+	this->texture.createFromBitmap(this->bitmap, this->palette);
+}
+
+void TileType::updateTexture()
+{
+	this->texture.createFromBitmap(this->bitmap, this->palette);
 }
