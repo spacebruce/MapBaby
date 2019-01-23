@@ -26,6 +26,8 @@ void UICreateTilePopup::updateContents()
 {
 	if (ImGui::BeginPopup(this->identifier, ImGuiWindowFlags_NoMove))
 	{
+		Map * map = mapManager->getCurrentMap();
+
 		//Buttons
 		if (ImGui::Button("create"))
 		{
@@ -42,6 +44,14 @@ void UICreateTilePopup::updateContents()
 		{
 			ImGui::CloseCurrentPopup();
 		}
+
+		ImGui::SameLine(162.0f);
+		ImGui::PushItemWidth(100.0f);
+		if (ImGui::InputInt("Number", &Number))
+		{
+			if (Number < 1)	Number = 1;
+		}
+
 		ImGui::Separator();
 
 		ImGui::BeginChild("body", ImVec2(300, 140));
@@ -55,7 +65,7 @@ void UICreateTilePopup::updateContents()
 		//Edit area
 		Dirty = false;
 		bool tooltip = false;
-		ImGui::InputInt("Number", &Number);
+
 		ImGui::Checkbox("Lock to map size", &LockSize);
 
 		Dirty = ImGui::InputInt("Width", &Width);
@@ -66,7 +76,6 @@ void UICreateTilePopup::updateContents()
 		if (LockSize)
 		{
 			Dirty = false;
-			Map * map = mapManager->getCurrentMap();
 			if (map != nullptr)
 			{
 				if ((Width != map->getTileWidth()) || (Height != map->getTileHeight()))
