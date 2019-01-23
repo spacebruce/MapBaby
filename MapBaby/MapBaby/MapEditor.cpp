@@ -70,20 +70,11 @@ void MapEditor::render(const int WindowWidth, const int WindowHeight)
 			if (!resource.isInvalid())
 			{
 				TileManager::SharedTile tile = tileManager->getTile(resource);
-				tile->texture.bind();
 
 				float drawX = static_cast<float>(x * TileWidth);
 				float drawY = static_cast<float>(y * TileHeight);
 
-				glBegin(GL_TRIANGLES);
-				glTexCoord2f(0.f, 0.f); glVertex2f(drawX, drawY);
-				glTexCoord2f(1.f, 0.f); glVertex2f(drawX + TileWidth, drawY);
-				glTexCoord2f(0.f, 1.f); glVertex2f(drawX, drawY + TileHeight);
-
-				glTexCoord2f(1.f, 0.f); glVertex2f(drawX + TileWidth, drawY);
-				glTexCoord2f(0.f, 1.f); glVertex2f(drawX, drawY + TileHeight);
-				glTexCoord2f(1.f, 1.f); glVertex2f(drawX + TileWidth, drawY + TileHeight);
-				glEnd();
+				tile->texture.testRender(drawX, drawY);
 			}
 			else
 			{
