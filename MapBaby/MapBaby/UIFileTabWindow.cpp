@@ -33,11 +33,7 @@ void UIFileTabWindow::updateContents()
 
 		const char* name = mapManager->getMap(i)->name.c_str();
 
-		if (mapManager->isCurrent(i))
-		{
-			ImGui::Text(name);
-		}
-		else if (ImGui::Button(name))
+		if (ImGui::ButtonDisable(name, !mapManager->isCurrent(i)))
 		{
 			mapManager->setCurrent(i);
 			mapEditor->changeMap(mapManager->getMap(i));
