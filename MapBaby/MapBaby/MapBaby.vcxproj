@@ -184,6 +184,7 @@
     <ClInclude Include="DrawingHelpers.h" />
     <ClInclude Include="Include\Imgui\imconfig.h" />
     <ClInclude Include="Include\Imgui\imgui.h" />
+    <ClInclude Include="Include\Imgui\imgui_extra.h" />
     <ClInclude Include="Include\Imgui\imgui_impl_opengl2.h" />
     <ClInclude Include="Include\Imgui\imgui_impl_sdl.h" />
     <ClInclude Include="Include\Imgui\imgui_internal.h" />
