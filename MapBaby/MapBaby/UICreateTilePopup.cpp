@@ -24,7 +24,7 @@ void UICreateTilePopup::reset()
 
 void UICreateTilePopup::updateContents()
 {
-	if (ImGui::BeginPopup(this->identifier, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoMove))
+	if (ImGui::BeginPopup(this->identifier, ImGuiWindowFlags_NoMove))
 	{
 		//Buttons
 		if (ImGui::Button("create"))
