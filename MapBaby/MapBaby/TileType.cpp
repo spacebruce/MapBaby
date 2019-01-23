@@ -26,11 +26,6 @@ Texture * TileType::getTexture()
 	return &this->texture;
 }
 
-Bitmap & TileType::getBitmap()
-{
-	return this->bitmap;
-}
-
 void TileType::changePalette(Palette& palette)
 {
 	this->palette = palette;

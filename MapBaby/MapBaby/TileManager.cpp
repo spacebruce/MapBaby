@@ -11,9 +11,9 @@ TileManager::~TileManager()
 void TileManager::createTile(Palette &palette, TileType& tile)
 {
 	SharedTile newTile = std::make_shared<TileType>();
-	Bitmap& bitmap = newTile.get()->getBitmap();
+	Bitmap& bitmap = newTile.get()->bitmap;
 
-	bitmap = tile.getBitmap();	//copy bitmap
+	bitmap = tile.bitmap;	//copy bitmap
 	newTile.get()->updateTexture(palette);	//build new texture from that bitmap
 
 	tilePool.emplace_back(newTile);
