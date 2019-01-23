@@ -11,6 +11,7 @@ class TileType : public Resource
 public:
 	Bitmap bitmap;
 	Texture texture;
+	Palette palette;
 
 	TileType() = default;
 	TileType(const Bitmap bitmap);
@@ -23,5 +24,6 @@ public:
 	//Convert to reference later
 	Texture * getTexture();
 	Bitmap & getBitmap();
+	void changePalette(Palette & palette);
 	void updateTexture(Palette& palette);
 };
