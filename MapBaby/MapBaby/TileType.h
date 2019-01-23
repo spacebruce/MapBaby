@@ -21,9 +21,6 @@ public:
 
 	~TileType();
 
-	//Convert to reference later
-	Texture * getTexture();
-
 	void changePalette(Palette & palette);
 	void updateTexture(Palette& palette);
 	void updateTexture();

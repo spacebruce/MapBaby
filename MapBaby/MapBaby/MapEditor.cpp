@@ -70,7 +70,7 @@ void MapEditor::render(const int WindowWidth, const int WindowHeight)
 			if (!resource.isInvalid())
 			{
 				TileManager::SharedTile tile = tileManager->getTile(resource);
-				tile->getTexture()->bind();
+				tile->texture.bind();
 
 				float drawX = static_cast<float>(x * TileWidth);
 				float drawY = static_cast<float>(y * TileHeight);
@@ -104,7 +104,7 @@ void MapEditor::render(const int WindowWidth, const int WindowHeight)
 		if (!tileID.isInvalid())
 		{
 			TileManager::SharedTile tile = tileManager->getTile(tileID);
-			tile->getTexture()->testRender(mx, my);
+			tile->texture.testRender(mx, my);
 		}
 	}
 	

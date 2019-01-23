@@ -59,7 +59,7 @@ void UICreateTilePopup::updateContents()
 		ImGui::Columns(2, nullptr, false);
 
 		//Preview area
-		ImGui::ImageButton((void*)tilePreview.getTexture()->get(), ImVec2(128, 128));
+		ImGui::ImageButton(ImTextureID(tilePreview.texture.get()), ImVec2(128, 128));
 		ImGui::NextColumn();
 
 		//Edit area
@@ -109,7 +109,6 @@ void UICreateTilePopup::setTexturePattern()
 	if ((Width) < 1 && (Height < 1))
 		return;
 
-	auto texture = tilePreview.getTexture();
 	auto palette = paletteManager->getCurrentPalette();
 
 	std::size_t length = Width * Height;
@@ -121,5 +120,5 @@ void UICreateTilePopup::setTexturePattern()
 	}
 
 	tilePreview.bitmap = bitmap;
-	texture->createFromBitmap(bitmap, palette);
+	tilePreview.texture.createFromBitmap(bitmap, palette);
 }

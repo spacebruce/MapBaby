@@ -21,11 +21,6 @@ TileType::TileType(const Bitmap bitmap) : Resource()
 	this->bitmap = bitmap;
 }
 
-Texture * TileType::getTexture()
-{
-	return &this->texture;
-}
-
 void TileType::changePalette(Palette& palette)
 {
 	this->palette = palette;

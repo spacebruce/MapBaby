@@ -23,7 +23,7 @@ void TileManager::createTile(Palette &palette, TileType& tile)
 void TileManager::createTile(Palette &palette)
 {
 	SharedTile newTile = std::make_shared<TileType>();
-	Texture * tex = newTile.get()->getTexture();
+	Texture * tex = &newTile.get()->texture;
 
 	//dummy texture
 	constexpr static int width = 16;

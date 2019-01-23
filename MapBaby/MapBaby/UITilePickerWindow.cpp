@@ -31,19 +31,19 @@ void UITilePickerWindow::updateContents()
 
 	for (std::size_t i = 0; i < tileManager->getCount(); ++i)
 	{
-		if (tileManager->getTile(i)->getTexture()->isLoaded())
+		if (tileManager->getTile(i)->texture.isLoaded())
 		{
 			TileManager::SharedTile tile = tileManager->getTile(i);
 			bool selected = (tileManager->getSelectedID() == tile.get()->getID());
 
-			if (ImGui::ImageButton((void*)tile.get()->getTexture()->get(), ImVec2(32, 32)))
+			if (ImGui::ImageButton((void*)tile.get()->texture.get(), ImVec2(32, 32)))
 			{
 				tileManager->setSelected(tile.get()->getID());
 			};
 			if (ImGui::IsItemHovered())
 			{
 				ImGui::BeginTooltip();
-				ImGui::Image((void*)tile->getTexture()->get(), ImVec2(128, 128));
+				ImGui::Image((void*)tile->texture.get(), ImVec2(128, 128));
 				ImGui::EndTooltip();
 			}
 			ImGui::SameLine();
