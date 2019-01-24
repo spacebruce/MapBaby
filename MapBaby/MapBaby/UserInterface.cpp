@@ -37,7 +37,7 @@ UserInterface::UserInterface(MapManager& mapManager, TileManager& tileManager, P
 	//SDL_GetCurrentDisplayMode(0, &current);
 	this->window = SDL_CreateWindow("MapBaby", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1280, 720, SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE);
 	this->gl_context = SDL_GL_CreateContext(this->window);
-	//SDL_GL_SetSwapInterval(1); // Enable vsync
+	SDL_GL_SetSwapInterval(1); // Enable vsync
 
 	// Setup Imgui
 	ImGui::CreateContext();
