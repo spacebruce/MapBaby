@@ -34,7 +34,7 @@ void UICreateTilePopup::updateContents()
 			int i = Number;
 			while (i > 0)
 			{
-				tileManager->createTile(paletteManager->getCurrentPalette(), tilePreview);
+				tileManager->createTile(tilePreview);
 				--i;
 			}
 			ImGui::CloseCurrentPopup();

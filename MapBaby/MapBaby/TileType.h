@@ -21,7 +21,7 @@ public:
 
 	~TileType();
 
-	void changePalette(Palette & palette);
+	void changePalette(Palette& palette);
 	void updateTexture(Palette& palette);
 	void updateTexture();
 };

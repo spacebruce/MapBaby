@@ -8,10 +8,11 @@ TileManager::~TileManager()
 {
 }
 
-void TileManager::createTile(Palette &palette, TileType& tile)
+void TileManager::createTile(TileType& tile)
 {
 	SharedTile newTile = std::make_shared<TileType>();
 	Bitmap& bitmap = newTile.get()->bitmap;
+	Palette& palette = tile.palette();
 
 	bitmap = tile.bitmap;	//copy bitmap
 	newTile.get()->updateTexture(palette);	//build new texture from that bitmap
