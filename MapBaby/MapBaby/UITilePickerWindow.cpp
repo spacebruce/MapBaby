@@ -27,6 +27,13 @@ void UITilePickerWindow::updateContents()
 	{
 		importTilePopup.open();
 	}
+	
+	ImGui::SameLine();
+	if (ImGui::Button("View"))
+	{
+		ViewGrid = !ViewGrid;
+	}
+	
 	ImGui::BeginChild("TilePickerScroll", ImVec2(-1, 300), true, 0);
 
 	for (std::size_t i = 0; i < tileManager->getCount(); ++i)
