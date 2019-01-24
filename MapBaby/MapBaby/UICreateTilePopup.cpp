@@ -120,5 +120,6 @@ void UICreateTilePopup::setTexturePattern()
 	}
 
 	tilePreview.bitmap = bitmap;
+	tilePreview.palette = palette;
 	tilePreview.texture.createFromBitmap(bitmap, palette);
 }

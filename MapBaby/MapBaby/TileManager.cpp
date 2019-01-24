@@ -12,10 +12,9 @@ void TileManager::createTile(TileType& tile)
 {
 	SharedTile newTile = std::make_shared<TileType>();
 	Bitmap& bitmap = newTile.get()->bitmap;
-	Palette& palette = tile.palette();
 
 	bitmap = tile.bitmap;	//copy bitmap
-	newTile.get()->updateTexture(palette);	//build new texture from that bitmap
+	newTile.get()->updateTexture(tile.palette);	//build new texture from that bitmap
 
 	tilePool.emplace_back(newTile);
 	tileLookup.emplace(std::make_pair(newTile.get()->getID(), newTile));
