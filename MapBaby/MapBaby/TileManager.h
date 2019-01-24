@@ -19,7 +19,7 @@ public:
 	TileManager();
 	~TileManager();
 
-	void createTile(Palette &palette, TileType & tile);	//copies tile in
+	void createTile(TileType & tile);	//copies tile in
 	void createTile(Palette& palette);
 
 	std::size_t getSelectedIndex() const;
