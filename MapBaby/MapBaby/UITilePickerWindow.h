@@ -20,6 +20,7 @@ protected:
 	UICreateTilePopup createTilePopup;
 	UIImportTilePopup importTilePopup;
 
+	int ViewSize = 32;
 	bool ViewGrid = false;
 public:
 	UITilePickerWindow();

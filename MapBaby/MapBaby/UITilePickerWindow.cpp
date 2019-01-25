@@ -18,6 +18,7 @@ void UITilePickerWindow::updateContents()
 {
 	ImGui::Begin("Tiles", &visible, ImGuiWindowFlags_None);
 
+	//Header
 	if (ImGui::Button("New"))
 	{
 		createTilePopup.open();
@@ -33,14 +34,23 @@ void UITilePickerWindow::updateContents()
 	{
 		ViewGrid = !ViewGrid;
 	}
-	
+
+	ImGui::PushItemWidth(ImGui::GetWindowContentRegionWidth());
+	ImGui::SliderInt("Zoom", &ViewSize, 8, 64);
+
+	//Box
+	ImGui::BeginChild("TileBox", ImVec2(-1, 300), true, 0);
+
 	if (ViewGrid)
 		GridView();
 	else
 		ListView();
 
+	ImGui::EndChild();
+
 	ImGui::End();
 
+	//Popups
 	createTilePopup.update();
 	importTilePopup.update();
 }
@@ -48,8 +58,6 @@ void UITilePickerWindow::updateContents()
 
 void UITilePickerWindow::ListView()
 {
-	ImGui::BeginChild("TilePickerScroll", ImVec2(-1, 300), true, 0);
-
 	for (std::size_t i = 0; i < tileManager->getCount(); ++i)
 	{
 		if (tileManager->getTile(i)->texture.isLoaded())
@@ -76,8 +84,6 @@ void UITilePickerWindow::ListView()
 			}
 		}
 	}
-
-	ImGui::EndChild();
 }
 
 void UITilePickerWindow::GridView()
