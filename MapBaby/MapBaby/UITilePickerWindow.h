@@ -14,6 +14,9 @@ class UITilePickerWindow : public UIWindowBase
 protected:
 	void updateContents();
 
+	void ListView();
+	void GridView();
+
 	UICreateTilePopup createTilePopup;
 	UIImportTilePopup importTilePopup;
 

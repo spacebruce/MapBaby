@@ -34,6 +34,20 @@ void UITilePickerWindow::updateContents()
 		ViewGrid = !ViewGrid;
 	}
 	
+	if (ViewGrid)
+		GridView();
+	else
+		ListView();
+
+	ImGui::End();
+
+	createTilePopup.update();
+	importTilePopup.update();
+}
+
+
+void UITilePickerWindow::ListView()
+{
 	ImGui::BeginChild("TilePickerScroll", ImVec2(-1, 300), true, 0);
 
 	for (std::size_t i = 0; i < tileManager->getCount(); ++i)
@@ -64,8 +78,9 @@ void UITilePickerWindow::updateContents()
 	}
 
 	ImGui::EndChild();
-	ImGui::End();
+}
 
-	createTilePopup.update();
-	importTilePopup.update();
+void UITilePickerWindow::GridView()
+{
+
 }
