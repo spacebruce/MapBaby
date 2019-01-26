@@ -60,28 +60,32 @@ void UITilePickerWindow::ListView()
 {
 	for (std::size_t i = 0; i < tileManager->getCount(); ++i)
 	{
+		TileManager::SharedTile tile = tileManager->getTile(i);
+
+		int texture = 0;
 		if (tileManager->getTile(i)->texture.isLoaded())
 		{
-			TileManager::SharedTile tile = tileManager->getTile(i);
-			bool selected = (tileManager->getSelectedID() == tile.get()->getID());
+			texture = tile.get()->texture.get();
+		}
 
-			if (ImGui::ImageButton((void*)tile.get()->texture.get(), ImVec2(ViewSize, ViewSize)))
-			{
-				tileManager->setSelected(tile.get()->getID());
-			};
-			if (ImGui::IsItemHovered())
-			{
-				ImGui::BeginTooltip();
-				ImGui::Image((void*)tile->texture.get(), ImVec2(128, 128));
-				ImGui::EndTooltip();
-			}
+		bool selected = (tileManager->getSelectedID() == tile.get()->getID());
+
+		if (ImGui::ImageButton((void*)texture, ImVec2(ViewSize, ViewSize)))
+		{
+			tileManager->setSelected(tile.get()->getID());
+		};
+		if (ImGui::IsItemHovered())
+		{
+			ImGui::BeginTooltip();
+			ImGui::Image((void*)texture, ImVec2(128, 128));
+			ImGui::EndTooltip();
+		}
+		ImGui::SameLine();
+		ImGui::Text("ID : %i", tile->getID());
+		if (selected)
+		{
 			ImGui::SameLine();
-			ImGui::Text("ID : %i", tile->getID());
-			if (selected)
-			{
-				ImGui::SameLine();
-				ImGui::Text("SELECTED");
-			}
+			ImGui::Text("SELECTED");
 		}
 	}
 }
@@ -109,7 +113,7 @@ void UITilePickerWindow::GridView()
 		if (ImGui::IsItemHovered())
 		{
 			ImGui::BeginTooltip();
-			ImGui::Image((void*)tile->texture.get(), ImVec2(128, 128));
+			ImGui::Image((void*)texture, ImVec2(128, 128));
 			ImGui::EndTooltip();
 		}
 
