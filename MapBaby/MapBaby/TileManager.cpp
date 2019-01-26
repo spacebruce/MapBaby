@@ -40,6 +40,18 @@ void TileManager::createTile(Palette &palette)
 	tileLookup.emplace(std::make_pair(newTile.get()->getID(), newTile));
 }
 
+void TileManager::deleteTile(SharedTile & tile)
+{
+	for (std::size_t i = 0; i < this->tilePool.size(); ++i)
+	{
+		if (tile.get()->getID() == tilePool[i].get()->getID())
+		{
+			tilePool.erase(tilePool.begin() + i);
+			return;
+		}
+	}
+}
+
 std::size_t TileManager::getSelectedIndex() const
 {
 	for (std::size_t i = 0; i < this->tilePool.size(); ++i)

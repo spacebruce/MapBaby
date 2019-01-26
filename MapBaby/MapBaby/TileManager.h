@@ -22,6 +22,8 @@ public:
 	void createTile(TileType & tile);	//copies tile in
 	void createTile(Palette& palette);
 
+	void deleteTile(SharedTile & tile);
+
 	std::size_t getSelectedIndex() const;
 	ResourceID getSelectedID() const;
 	void setSelected(const std::size_t index);
