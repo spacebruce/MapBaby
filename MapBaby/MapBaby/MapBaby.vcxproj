@@ -169,6 +169,7 @@
     <ClCompile Include="UIAboutPopup.cpp" />
     <ClCompile Include="UICreateTilePopup.cpp" />
     <ClCompile Include="UIFileTabWindow.cpp" />
+    <ClCompile Include="UIImageEditor.cpp" />
     <ClCompile Include="UIImportTilePopup.cpp" />
     <ClCompile Include="UIMapWindow.cpp" />
     <ClCompile Include="UINewFileDialogue.cpp" />
@@ -291,6 +292,7 @@
     <ClInclude Include="UIAboutPopup.h" />
     <ClInclude Include="UICreateTilePopup.h" />
     <ClInclude Include="UIFileTabWindow.h" />
+    <ClInclude Include="UIImageEditor.h" />
     <ClInclude Include="UIImportTilePopup.h" />
     <ClInclude Include="UIMapWindow.h" />
     <ClInclude Include="UINewFileDialogue.h" />
