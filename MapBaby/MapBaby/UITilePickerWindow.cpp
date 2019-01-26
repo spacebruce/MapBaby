@@ -114,8 +114,8 @@ void UITilePickerWindow::GridView()
 		{
 			tileManager->setSelected(tile.get()->getID());
 		}
-		Tooltip(tile);
 		ContextMenu(tile);
+		Tooltip(tile);
 
 
 		float next_button_x2 = ImGui::GetItemRectMax().x + style.ItemSpacing.x + icon.x;
