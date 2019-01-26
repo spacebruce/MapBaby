@@ -85,6 +85,14 @@ void UITilePickerWindow::ListView()
 		Tooltip(tile);
 
 		ImGui::SameLine();
+		if (ImGui::SmallButton("Edit"))
+		{
+			imageEditor = UIImageEditor(tile);
+			imageEditor.visible = true;
+		}
+
+		ImGui::SameLine();
+
 		ImGui::Text("ID : %i", tile->getID());
 		if (selected)
 		{
