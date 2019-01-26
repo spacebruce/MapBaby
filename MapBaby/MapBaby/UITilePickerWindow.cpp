@@ -43,9 +43,13 @@ void UITilePickerWindow::updateContents()
 	ImGui::BeginChild("TileBox", ImVec2(-1, 300), true, 0);
 
 	if (ViewGrid)
+	{
 		GridView();
+	}
 	else
+	{
 		ListView();
+	}
 
 	ImGui::EndChild();
 
@@ -54,6 +58,7 @@ void UITilePickerWindow::updateContents()
 	//Popups
 	createTilePopup.update();
 	importTilePopup.update();
+	imageEditor.update();
 }
 
 
@@ -74,7 +79,9 @@ void UITilePickerWindow::ListView()
 		if (ImGui::ImageButton((void*)texture, ImVec2(ViewSize, ViewSize)))
 		{
 			tileManager->setSelected(tile.get()->getID());
+
 		};
+		ContextMenu(tile);
 		Tooltip(tile);
 
 		ImGui::SameLine();
@@ -108,6 +115,7 @@ void UITilePickerWindow::GridView()
 			tileManager->setSelected(tile.get()->getID());
 		}
 		Tooltip(tile);
+		ContextMenu(tile);
 
 
 		float next_button_x2 = ImGui::GetItemRectMax().x + style.ItemSpacing.x + icon.x;
@@ -126,4 +134,20 @@ void UITilePickerWindow::Tooltip(TileManager::SharedTile tile)
 		ImGui::Image((void*)tile.get()->texture.get(), ImVec2(128, 128));
 		ImGui::EndTooltip();
 	}
+}
+
+void UITilePickerWindow::ContextMenu(TileManager::SharedTile tile)
+{
+	ImGui::PushID(tile.get());
+	if (ImGui::BeginPopupContextItem("item context menu"))
+	{
+		if (ImGui::Button("Edit tile"))
+		{
+			imageEditor = UIImageEditor(tile);
+			imageEditor.visible = true;
+			ImGui::CloseCurrentPopup();
+		}
+		ImGui::EndPopup();
+	}
+	ImGui::PopID();
 }
