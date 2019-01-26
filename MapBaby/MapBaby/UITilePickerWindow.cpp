@@ -88,5 +88,35 @@ void UITilePickerWindow::ListView()
 
 void UITilePickerWindow::GridView()
 {
+	ImGuiStyle& style = ImGui::GetStyle();
+	ImVec2 icon = ImVec2(ViewSize, ViewSize);
 
+	float ClipRight = ImGui::GetWindowPos().x + ImGui::GetWindowContentRegionMax().x;
+	for (std::size_t i = 0; i < tileManager->getCount(); ++i)
+	{
+		TileManager::SharedTile tile = tileManager->getTile(i);
+
+		int texture = 0;
+		if (tileManager->getTile(i)->texture.isLoaded())
+		{
+			texture = tile.get()->texture.get();
+		}
+
+		if (ImGui::ImageButton((void*)texture, icon))
+		{
+			tileManager->setSelected(tile.get()->getID());
+		}
+		if (ImGui::IsItemHovered())
+		{
+			ImGui::BeginTooltip();
+			ImGui::Image((void*)tile->texture.get(), ImVec2(128, 128));
+			ImGui::EndTooltip();
+		}
+
+		float next_button_x2 = ImGui::GetItemRectMax().x + style.ItemSpacing.x + icon.x;
+		if (i + 1 < tileManager->getCount() && next_button_x2 < ClipRight)
+		{
+			ImGui::SameLine();
+		}
+	}
 }
