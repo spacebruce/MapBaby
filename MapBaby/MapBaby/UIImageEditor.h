@@ -7,11 +7,11 @@
 class UIImageEditor : public UIWindowBase
 {
 private:
-	TileManager::SharedTile * tile;
+	TileManager::SharedTile tile;
 
 	void updateContents();
 public:
-	UIImageEditor(TileManager::SharedTile* Tile);
+	UIImageEditor(TileManager::SharedTile tile);
 	UIImageEditor();
 	~UIImageEditor();
 };
