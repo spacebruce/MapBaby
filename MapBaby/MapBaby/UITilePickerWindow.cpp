@@ -147,12 +147,17 @@ void UITilePickerWindow::Tooltip(TileManager::SharedTile tile)
 void UITilePickerWindow::ContextMenu(TileManager::SharedTile tile)
 {
 	ImGui::PushID(tile.get());
-	if (ImGui::BeginPopupContextItem("item context menu"))
+	if (ImGui::BeginPopupContextItem("TileRightClick"))
 	{
 		if (ImGui::Button("Edit tile"))
 		{
 			imageEditor = UIImageEditor(tile);
 			imageEditor.visible = true;
+			ImGui::CloseCurrentPopup();
+		}
+		if (ImGui::Button("Delete tile"))
+		{
+			tileManager->deleteTile(tile);
 			ImGui::CloseCurrentPopup();
 		}
 		ImGui::EndPopup();
