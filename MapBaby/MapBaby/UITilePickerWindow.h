@@ -16,6 +16,7 @@ protected:
 
 	void ListView();
 	void GridView();
+	void Tooltip(TileManager::SharedTile tile);
 
 	UICreateTilePopup createTilePopup;
 	UIImportTilePopup importTilePopup;

@@ -74,12 +74,8 @@ void UITilePickerWindow::ListView()
 		{
 			tileManager->setSelected(tile.get()->getID());
 		};
-		if (ImGui::IsItemHovered())
-		{
-			ImGui::BeginTooltip();
-			ImGui::Image((void*)texture, ImVec2(128, 128));
-			ImGui::EndTooltip();
-		}
+		Tooltip(tile);
+
 		ImGui::SameLine();
 		ImGui::Text("ID : %i", tile->getID());
 		if (selected)
@@ -110,17 +106,23 @@ void UITilePickerWindow::GridView()
 		{
 			tileManager->setSelected(tile.get()->getID());
 		}
-		if (ImGui::IsItemHovered())
-		{
-			ImGui::BeginTooltip();
-			ImGui::Image((void*)texture, ImVec2(128, 128));
-			ImGui::EndTooltip();
-		}
+		Tooltip(tile);
+
 
 		float next_button_x2 = ImGui::GetItemRectMax().x + style.ItemSpacing.x + icon.x;
 		if (i + 1 < tileManager->getCount() && next_button_x2 < ClipRight)
 		{
 			ImGui::SameLine();
 		}
+	}
+}
+
+void UITilePickerWindow::Tooltip(TileManager::SharedTile tile)
+{
+	if (ImGui::IsItemHovered() && tile.get()->texture.isLoaded())
+	{
+		ImGui::BeginTooltip();
+		ImGui::Image((void*)tile.get()->texture.get(), ImVec2(128, 128));
+		ImGui::EndTooltip();
 	}
 }
