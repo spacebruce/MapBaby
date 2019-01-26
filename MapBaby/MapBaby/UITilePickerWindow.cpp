@@ -8,6 +8,7 @@ UITilePickerWindow::UITilePickerWindow() : UIWindowBase()
 UITilePickerWindow::UITilePickerWindow(MapManager *mapManager, PaletteManager *paletteManager, TileManager *tileManager, MapEditor *mapEditor) : UIWindowBase(mapManager, paletteManager, tileManager, mapEditor)
 {
 	this->createTilePopup = UICreateTilePopup(mapManager, paletteManager, tileManager, mapEditor);
+	this->imageEditor.visible = false;
 }
 
 UITilePickerWindow::~UITilePickerWindow()

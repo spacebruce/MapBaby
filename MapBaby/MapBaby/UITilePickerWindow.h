@@ -8,6 +8,7 @@
 
 #include "UICreateTilePopup.h"
 #include "UIImportTilePopup.h"
+#include "UIImageEditor.h"
 
 class UITilePickerWindow : public UIWindowBase
 {
@@ -17,9 +18,12 @@ protected:
 	void ListView();
 	void GridView();
 	void Tooltip(TileManager::SharedTile tile);
+	void ContextMenu(TileManager::SharedTile tile);
 
 	UICreateTilePopup createTilePopup;
 	UIImportTilePopup importTilePopup;
+	UIImageEditor imageEditor;
+
 
 	int ViewSize = 32;
 	bool ViewGrid = false;
