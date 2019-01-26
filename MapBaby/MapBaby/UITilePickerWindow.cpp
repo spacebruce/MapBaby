@@ -65,7 +65,7 @@ void UITilePickerWindow::ListView()
 			TileManager::SharedTile tile = tileManager->getTile(i);
 			bool selected = (tileManager->getSelectedID() == tile.get()->getID());
 
-			if (ImGui::ImageButton((void*)tile.get()->texture.get(), ImVec2(32, 32)))
+			if (ImGui::ImageButton((void*)tile.get()->texture.get(), ImVec2(ViewSize, ViewSize)))
 			{
 				tileManager->setSelected(tile.get()->getID());
 			};
