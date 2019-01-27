@@ -20,7 +20,35 @@ void UIImageEditor::updateContents()
 	ImGui::Text("Texture %i", tile.get()->texture.get());
 
 	ImGui::Separator();
+	ImGui::BeginChild("body", ImVec2(300, 140));
+	
+	ImGui::Columns(2, nullptr, false);
 
+	//Image area
 	ImGui::Image((void*)tile.get()->texture.get(), ImVec2(256, 256));
+	
+	//Tools and stuff
+	ImGui::NextColumn();
+	
+	if (ImGui::CollapsingHeader("Palette"))
+	{
+		//draw palette here
+	}
+	
+	if (ImGui::CollapsingHeader("Tools"))
+	{
+		//buttons!!
+	}
+	
+	if (ImGui::CollapsingHeader("Settings"))
+	{
+		//Tool settings and view and stuff!
+	}
+	
+	
+	ImGui::EndChild();
+	
+	ImGui::Text("Status bar??");
+	
 	ImGui::End();
 }
