@@ -20,16 +20,13 @@ void UIImageEditor::updateContents()
 	ImGui::Text("Texture %i", tile.get()->texture.get());
 
 	ImGui::Separator();
-	ImGui::BeginChild("body", ImVec2(300, 140));
-	
-	ImGui::Columns(2, nullptr, false);
 
-	//Image area
-	ImGui::Image((void*)tile.get()->texture.get(), ImVec2(256, 256));
+	const float footer_height_to_reserve = ImGui::GetFrameHeightWithSpacing(); // 1 separator, 1 input text
+	ImGui::BeginChild("Body", ImVec2(0, -footer_height_to_reserve), false, ImGuiWindowFlags_HorizontalScrollbar); // Leave room for 1 separator + 1 InputText
 	
+	ImGui::Columns(2, nullptr, true);
+
 	//Tools and stuff
-	ImGui::NextColumn();
-	
 	if (ImGui::CollapsingHeader("Palette"))
 	{
 		//draw palette here
@@ -44,10 +41,15 @@ void UIImageEditor::updateContents()
 	{
 		//Tool settings and view and stuff!
 	}
-	
-	
+
+	//Image area
+	ImGui::NextColumn();
+
+	ImGui::Image((void*)tile.get()->texture.get(), ImVec2(256, 256));
+
 	ImGui::EndChild();
-	
+
+	ImGui::Separator();
 	ImGui::Text("Status bar??");
 	
 	ImGui::End();
