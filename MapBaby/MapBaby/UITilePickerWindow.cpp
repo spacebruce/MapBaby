@@ -64,10 +64,13 @@ void UITilePickerWindow::updateContents()
 
 void UITilePickerWindow::ListView()
 {
+	//ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, 0);
 	for (std::size_t i = 0; i < tileManager->getCount(); ++i)
 	{
-		TileManager::SharedTile tile = tileManager->getTile(i);
+		ImGui::PushID(i);
+		ImGui::BeginChild("item", ImVec2(0, ViewSize + 6), true);
 
+		TileManager::SharedTile tile = tileManager->getTile(i);
 		int texture = 0;
 		if (tileManager->getTile(i)->texture.isLoaded())
 		{
@@ -81,8 +84,6 @@ void UITilePickerWindow::ListView()
 			tileManager->setSelected(tile.get()->getID());
 
 		};
-		ContextMenu(tile);
-		Tooltip(tile);
 
 		ImGui::SameLine();
 		if (ImGui::SmallButton("Edit"))
@@ -93,13 +94,26 @@ void UITilePickerWindow::ListView()
 
 		ImGui::SameLine();
 
-		ImGui::Text("ID : %i", tile->getID());
+		if (ImGui::SmallButton("delete"))
+		{
+			tileManager->deleteTile(tile);
+		}
+
+		//ImGui::Text("ID : %i", tile->getID());
 		if (selected)
 		{
 			ImGui::SameLine();
 			ImGui::Text("SELECTED");
 		}
+
+		ImGui::EndChild();
+
+		ContextMenu(tile);
+		Tooltip(tile);
+
+		ImGui::PopID();
 	}
+	//ImGui::PopStyleVar();
 }
 
 void UITilePickerWindow::GridView()
