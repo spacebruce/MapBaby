@@ -68,7 +68,7 @@ void UITilePickerWindow::ListView()
 	for (std::size_t i = 0; i < tileManager->getCount(); ++i)
 	{
 		ImGui::PushID(i);
-		ImGui::BeginChild("item", ImVec2(0, ViewSize + 6), true);
+		ImGui::BeginChild("item", ImVec2(0, ViewSize + 6), false);
 
 		TileManager::SharedTile tile = tileManager->getTile(i);
 		int texture = 0;
@@ -82,7 +82,6 @@ void UITilePickerWindow::ListView()
 		if (ImGui::ImageButton((void*)texture, ImVec2(ViewSize, ViewSize)))
 		{
 			tileManager->setSelected(tile.get()->getID());
-
 		};
 
 		ImGui::SameLine();
@@ -107,6 +106,11 @@ void UITilePickerWindow::ListView()
 		}
 
 		ImGui::EndChild();
+
+		if (ImGui::IsItemHovered() && ImGui::IsMouseClicked(0))
+		{
+			tileManager->setSelected(tile.get()->getID());
+		}
 
 		ContextMenu(tile);
 		Tooltip(tile);
