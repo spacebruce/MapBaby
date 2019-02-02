@@ -10,6 +10,7 @@ private:
 	TileManager::SharedTile tile;
 
 	void updateContents();
+	void imageView();
 public:
 	UIImageEditor(TileManager::SharedTile tile);
 	UIImageEditor();

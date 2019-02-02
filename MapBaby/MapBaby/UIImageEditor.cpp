@@ -45,7 +45,6 @@ void UIImageEditor::updateContents()
 	//Image area
 	ImGui::NextColumn();
 
-	ImGui::Image((void*)tile.get()->texture.get(), ImVec2(256, 256));
 
 	ImGui::EndChild();
 
@@ -53,4 +52,10 @@ void UIImageEditor::updateContents()
 	ImGui::Text("Status bar??");
 	
 	ImGui::End();
+}
+
+void UIImageEditor::imageView()
+{
+
+	ImGui::Image((void*)tile.get()->texture.get(), ImVec2(256, 256));
 }
