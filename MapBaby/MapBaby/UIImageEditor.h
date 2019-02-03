@@ -12,6 +12,7 @@ private:
 	void updateContents();
 	void imageView();
 public:
+	UIImageEditor(PaletteManager * paletteManager, TileManager::SharedTile tile);
 	UIImageEditor(TileManager::SharedTile tile);
 	UIImageEditor();
 	~UIImageEditor();

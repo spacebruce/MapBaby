@@ -1,6 +1,6 @@
 #include "UIImageEditor.h"
 
-UIImageEditor::UIImageEditor(TileManager::SharedTile tile)
+UIImageEditor::UIImageEditor(PaletteManager * paletteManager, TileManager::SharedTile tile) : UIWindowBase(nullptr,paletteManager,nullptr,nullptr)
 {
 	this->tile = tile;
 }
@@ -29,7 +29,18 @@ void UIImageEditor::updateContents()
 	//Tools and stuff
 	if (ImGui::CollapsingHeader("Palette"))
 	{
-		//draw palette here
+		Palette palette = paletteManager->getCurrentPalette();
+		ImGui::Text(palette.name.c_str());
+		ImGui::BeginChild("Pal area");
+		for (std::size_t i = 0; i < palette.getSize(); ++i)
+		{
+			ColourRGB col = palette.getEntry(i);
+			ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(col.r, col.g, col.b, 1.0));
+			ImGui::SmallButton(" ");
+			ImGui::PopStyleColor();
+			ImGui::SameLine();
+		}
+		ImGui::EndChild();
 	}
 	
 	if (ImGui::CollapsingHeader("Tools"))

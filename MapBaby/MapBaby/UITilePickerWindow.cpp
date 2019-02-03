@@ -87,7 +87,7 @@ void UITilePickerWindow::ListView()
 		ImGui::SameLine();
 		if (ImGui::SmallButton("Edit"))
 		{
-			imageEditor = UIImageEditor(tile);
+			imageEditor = UIImageEditor(paletteManager, tile);
 			imageEditor.visible = true;
 		}
 
@@ -169,7 +169,7 @@ void UITilePickerWindow::ContextMenu(TileManager::SharedTile tile)
 	{
 		if (ImGui::Button("Edit tile"))
 		{
-			imageEditor = UIImageEditor(tile);
+			imageEditor = UIImageEditor(paletteManager,tile);
 			imageEditor.visible = true;
 			ImGui::CloseCurrentPopup();
 		}
