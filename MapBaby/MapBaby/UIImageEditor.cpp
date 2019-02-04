@@ -35,9 +35,11 @@ void UIImageEditor::updateContents()
 		for (std::size_t i = 0; i < palette.getSize(); ++i)
 		{
 			ColourRGB col = palette.getEntry(i);
-			ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(col.r, col.g, col.b, 1.0));
+			ImVec4 colvec = ImVec4(col.r / 255.0f, col.g / 255.0f, col.b / 255.0f, 1.0);
+			ImGui::PushStyleColor(ImGuiCol_ButtonHovered, colvec);
+			ImGui::PushStyleColor(ImGuiCol_Button, colvec);
 			ImGui::SmallButton(" ");
-			ImGui::PopStyleColor();
+			ImGui::PopStyleColor(2);
 			ImGui::SameLine();
 		}
 		ImGui::EndChild();
